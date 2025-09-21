@@ -1,5 +1,5 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -41,6 +41,8 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --color-custom: var(--custom);
+  --color-custom-hover: var(--custom-hover);
 }
 
 :root {
@@ -76,10 +78,12 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --custom: #00ff99;
+  --custom-hover: #00e187;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
+  --background: #1c1c22;
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
@@ -110,6 +114,8 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  --custom: #00ff99;
+  --custom-hover: #00e187;
 }
 
 @layer base {

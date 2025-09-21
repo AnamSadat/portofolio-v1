@@ -10,8 +10,9 @@ export function Navbar() {
   const routes = [
     { lable: 'Home', href: '#home' },
     { lable: 'About', href: '#about' },
-    { lable: 'Project', href: '#project' },
-    { lable: 'Certificate', href: '#certificate' },
+    { lable: 'Skills', href: '#project' },
+    { lable: 'Experience', href: '#certificate' },
+    { lable: 'Portofolio', href: '#portofolio' },
     { lable: 'Contact', href: '#contact' },
   ];
   return (
@@ -32,16 +33,28 @@ export function Navbar() {
                 <Link
                   href={route.href}
                   className={clsx(
-                    'text-lg',
-                    pathname === route.href ? 'border-b-2 border-white' : ''
+                    'relative group text-white font-medium hover:text-custom-hover transition-all duration-300',
+                    pathname === route.href && 'text-blue-400'
                   )}
                 >
                   {route.lable}
+                  {/* underline animasi */}
+                  <span
+                    className={clsx(
+                      'absolute left-0 -bottom-1 w-full h-0.5 bg-chart-2',
+                      'scale-x-0 group-hover:scale-x-100',
+                      'origin-left group-hover:origin-left',
+                      'transition-transform duration-300 ease-out',
+                      pathname === route.href && 'scale-x-100' // kalau aktif, underline tetap muncul
+                    )}
+                  />
                 </Link>
               </li>
             ))}
-            <ModeToggle />
           </ul>
+          <div>
+            <ModeToggle />
+          </div>
         </div>
       </div>
     </>
