@@ -1,5 +1,5 @@
 'use client';
-import { ModeToggle } from '@/components/atoms';
+import { ModeToggle } from '@/components/molecules';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
