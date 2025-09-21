@@ -1,4 +1,4 @@
-import { AboutMe, HeroSection } from '@/components/organism';
+import { AboutMe, HeroSection, Skill } from '@/components/organism';
 import { ChevronsDown } from 'lucide-react';
 
 export default function Home() {
@@ -12,6 +12,7 @@ export default function Home() {
         classNameTitle=""
       />
       <AboutMe className="pb-10 pt-20" />
+      <Skill />
     </div>
   );
 }

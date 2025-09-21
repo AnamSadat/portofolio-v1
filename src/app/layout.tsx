@@ -4,6 +4,7 @@ import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Navbar } from '@/components/molecules/navbar';
 import { GridBackgroundDemo } from '@/components/organism/background-grid';
+import { Footer } from '@/components/organism';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -39,6 +40,7 @@ export default function RootLayout({
           <GridBackgroundDemo>
             <Navbar />
             {children}
+            <Footer />
           </GridBackgroundDemo>
         </ThemeProvider>
       </body>
