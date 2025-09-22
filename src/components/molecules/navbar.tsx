@@ -3,6 +3,7 @@ import { ModeToggle } from '@/components/molecules';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export function Navbar() {
   const pathname = usePathname();
@@ -15,10 +16,39 @@ export function Navbar() {
     { lable: 'Portofolio', href: '#portofolio' },
     { lable: 'Contact', href: '#contact' },
   ];
+
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 10;
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [scrolled]);
+
+  const baseClass = clsx(
+    'fixed w-full top-0 z-50',
+    scrolled ? 'border-b bg-background/80 backdrop-blur-md' : 'bg-transparent'
+  );
+
+  const baseContainer = clsx(
+    'container  mx-auto flex justify-between transition-all duration-300',
+    scrolled ? 'py-4' : 'py-5'
+  );
   return (
     <>
-      <div className="">
-        <div className="container  mx-auto py-5 flex justify-between">
+      <div className={baseClass}>
+        <div className={baseContainer}>
           <div>
             <Link
               href={'/'}
