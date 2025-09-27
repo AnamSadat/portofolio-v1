@@ -1,4 +1,4 @@
-import { AboutMe, HeroSection, Skill } from '@/components/organism';
+import { AboutMe, Experience, HeroSection, Skill } from '@/components/organism';
 import { ChevronsDown } from 'lucide-react';
 
 export default function Home() {
@@ -11,6 +11,7 @@ export default function Home() {
         icon={<ChevronsDown className="mx-auto" />}
         classNameTitle=""
       />
+      <Experience />
       <AboutMe className="pb-10 pt-20" />
       <Skill />
     </div>
