@@ -1,47 +1,108 @@
 'use client';
 import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import { Briefcase } from 'lucide-react'; // contoh icon, bisa diganti logo lain
 
+// data fleksibel
 const timelineData = [
-  { title: '2021', content: 'Mulai belajar HTML, CSS, JS.' },
-  { title: '2022', content: 'Ikut Bootcamp Fullstack.' },
-  { title: '2023', content: 'Internship sebagai Backend Dev.' },
-  { title: '2024', content: 'Freelance & Bangkit Academy.' },
+  {
+    title: 'Software Engineer Intern',
+    company: 'PT Sangati Soerya Sejahtera',
+    date: 'Jun 2024 - Agu 2025',
+    location: 'Jakarta Pusat, DKI Jakarta',
+    description:
+      'Mengembangkan aplikasi web berbasis Laravel dan CodeIgniter untuk kebutuhan internal perusahaan, termasuk sistem report karyawan, cost control, dan SPT Tax.',
+    tech: ['Laravel', 'CodeIgniter', 'Flutter', 'MySQL', 'PHP'],
+    achievements: [
+      'Membangun sistem report karyawan untuk monitoring aktivitas harian',
+      'Mengembangkan aplikasi Cost Control untuk pengelolaan anggaran',
+      'Membuat sistem SPT Tax untuk pelaporan pajak karyawan',
+      'Mempelajari aplikasi mobile menggunakan Flutter',
+    ],
+    icon: <Briefcase className="w-5 h-5 text-[#00ff99]" />,
+  },
+  {
+    title: 'Frontend Developer',
+    company: 'Freelance',
+    date: 'Jan 2023 - Mei 2024',
+    location: 'Remote',
+    description:
+      'Mengerjakan beberapa project website untuk UMKM dan startup kecil.',
+    tech: ['React', 'TailwindCSS', 'Next.js'],
+    achievements: [
+      'Membangun landing page interaktif',
+      'Meningkatkan performa SEO klien',
+    ],
+    icon: <Briefcase className="w-5 h-5 text-[#00ff99]" />,
+  },
 ];
 
+const dotColor = '#00ff99';
+
 interface TimelineItemProps {
-  item: { title: string; content: string };
-  index: number;
-  total: number;
-  scrollYProgress: any;
+  item: (typeof timelineData)[0];
+  color: string;
 }
 
-function TimelineItem({
-  item,
-  index,
-  total,
-  scrollYProgress,
-}: TimelineItemProps) {
-  const progressPoint = (index + 1) / total;
-
-  const dotColor = useTransform(
-    scrollYProgress,
-    [progressPoint - 0.1, progressPoint],
-    ['#9ca3af', '#00ff99']
-  );
-
+function TimelineItem({ item, color }: TimelineItemProps) {
   return (
-    <div className="relative flex items-start gap-6">
+    <div className="relative flex items-start">
       {/* Dot di garis */}
-      <motion.div
-        style={{ backgroundColor: dotColor }}
-        className="relative top-3 w-5 h-5 rounded-full border-2 border-[#00ff99] z-10"
-      />
+      <div className="absolute left-[11px] top-2 z-10">
+        <div
+          className="w-4 h-4 rounded-full border-2 shadow"
+          style={{ backgroundColor: color, borderColor: color }}
+        />
+      </div>
 
-      {/* Konten */}
-      <div>
-        <h3 className="text-xl font-semibold text-[#00ff99]">{item.title}</h3>
-        <p className="text-neutral-400 mt-2">{item.content}</p>
+      {/* Card full width */}
+      <div className="pl-12 w-full">
+        <Card className="w-full border border-neutral-800 bg-neutral-900 text-white shadow-lg">
+          <CardHeader className="flex items-center gap-2">
+            <div>{item.icon}</div>
+            <CardTitle className="text-xl font-bold" style={{ color }}>
+              {item.title}
+              <p className="text-neutral-300 font-medium">{item.company}</p>
+              <p className="text-sm text-neutral-400">
+                {item.date} • {item.location}
+              </p>
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <p className="text-neutral-300">{item.description}</p>
+
+            {/* Tech list */}
+            {item.tech && (
+              <div>
+                <p className="font-semibold text-white mb-1">
+                  Teknologi & Skills:
+                </p>
+                <ul className="flex flex-wrap gap-2">
+                  {item.tech.map((t, i) => (
+                    <li
+                      key={i}
+                      className="px-3 py-1 text-sm rounded-full bg-neutral-800 text-[#00ff99] border border-neutral-700"
+                    >
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Achievements */}
+            {item.achievements && (
+              <div>
+                <p className="font-semibold text-white mb-1">Pencapaian:</p>
+                <ul className="list-disc list-inside space-y-1 text-neutral-300">
+                  {item.achievements.map((a, i) => (
+                    <li key={i}>{a}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
@@ -49,41 +110,29 @@ function TimelineItem({
 
 export function Experience() {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start 0.2', 'end 0.8'],
-  });
-
-  const heightTransform = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
 
   return (
-    <div ref={ref} className="relative max-w-3xl mx-auto py-20">
-      <h1 className="text-4xl font-bold text-center mb-12">Experience</h1>
+    <>
+      <div ref={ref} className="relative w-full mx-auto pt-20 py-14">
+        <h1 className="text-4xl font-extrabold text-center mb-16 text-white">
+          Experience
+        </h1>
 
-      {/* Bungkus garis + items biar garis mulai dari content */}
-      <div className="relative pl-8">
-        {/* Garis background */}
-        <div className="absolute left-[10px] top-0 bottom-0 w-[2px] bg-neutral-700/40" />
+        <div className="relative">
+          {/* Garis background */}
+          <div className="absolute left-[18px] top-2 bottom-1 w-[3px] bg-[#00ff99]/60" />
 
-        {/* Garis progress */}
-        <motion.div
-          style={{ height: heightTransform }}
-          className="absolute left-[10px] top-0 w-[2px] bg-[#00ff99]"
-        />
-
-        {/* Items */}
-        <div className="space-y-16">
-          {timelineData.map((item, i) => (
-            <TimelineItem
-              key={i}
-              item={item}
-              index={i}
-              total={timelineData.length}
-              scrollYProgress={scrollYProgress}
-            />
-          ))}
+          {/* Items */}
+          <div className="space-y-10">
+            {timelineData.map((item, i) => (
+              <TimelineItem key={i} item={item} color={dotColor} />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+      <div>
+        <Card>Siap berkolaborasi</Card>
+      </div>
+    </>
   );
 }

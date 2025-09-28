@@ -23,16 +23,34 @@ export function HeroSection({
   const baseClassScroll = clsx('text-center', classNameScroll);
 
   const code = `{
-  "name": "portofolio-prime-react",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
-    "start": "next start",
-    "lint": "eslint"
+  "fullName": "Iqbal Prasetya",
+  "role": "Fullstack Developer",
+  "availability": "Open for new opportunities",
+  "location": {
+    "city": "Bogor",
+    "country": "Indonesia"
+  },
+  "contact": {
+    "email": "example@email.com",
+    "linkedin": "https://www.linkedin.com/in/your-name",
+    "github": "https://github.com/your-username"
   },
 }`;
+
+  // const code = `import type IDeveloperProfile from '@/types'
+
+  // class DeveloperController extends Controller {
+  //   protected developer: IDeveloperProfile = {
+  //     name: 'Iqbal Prasetya',
+  //     role: 'Software Engineer',
+  //     experience: '2+ Years',
+  //     location: 'Bogor, Indonesia',
+  //   };
+
+  //   public getDeveloperName(): string {
+  //     return this.developer.name;
+  //   }
+  // }`;
   return (
     <>
       <div className={baseClass}>
@@ -62,7 +80,11 @@ export function HeroSection({
           </div>
         </div>
         <div className="flex  items-center justify-center w-full">
-          <CodeBlockSnapshot fileName="hello.tsx" lang="tsx" code={code} />
+          <CodeBlockSnapshot
+            fileName="hello.json"
+            lang="typescript"
+            code={code}
+          />
         </div>
       </div>
       <div className={baseClassScroll}>
