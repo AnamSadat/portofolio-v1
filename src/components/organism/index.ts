@@ -4,3 +4,4 @@ export * from '@/components/organism/skill';
 export * from '@/components/organism/footer';
 export * from '@/components/organism/experience';
 export * from '@/components/organism/portofolio';
+export * from '@/components/organism/contact';

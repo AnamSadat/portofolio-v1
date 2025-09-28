@@ -4,6 +4,7 @@ import {
   HeroSection,
   Skill,
   Portofolio,
+  Contact,
 } from '@/components/organism';
 import { ChevronsDown } from 'lucide-react';
 
@@ -20,7 +21,8 @@ export default function Home() {
       <AboutMe className="pb-10 pt-20" />
       <Skill />
       <Experience />
-      <Portofolio />
+      <Portofolio className="py-10" />
+      <Contact />
     </div>
   );
 }

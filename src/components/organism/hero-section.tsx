@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { ClassNameProps } from '@/types';
 import clsx from 'clsx';
 import { Download, Github, Linkedin, Mail } from 'lucide-react';
+import Link from 'next/link';
 import { ReactNode } from 'react';
 
 type HeroSectionProps = ClassNameProps & {
@@ -21,19 +22,20 @@ export function HeroSection({
 }: HeroSectionProps) {
   const baseClass = clsx('', className);
   const baseClassScroll = clsx('text-center', classNameScroll);
+  const baseClassSocmed = 'rounded-full bg-neutral-800 p-3 border border-2';
 
   const code = `{
-  "fullName": "Iqbal Prasetya",
-  "role": "Fullstack Developer",
+  "fullName": "Anam Sadat",
+  "role": "Fullstack Web Developer",
   "availability": "Open for new opportunities",
   "location": {
-    "city": "Bogor",
+    "city": "Kuningan",
     "country": "Indonesia"
   },
   "contact": {
-    "email": "example@email.com",
-    "linkedin": "https://www.linkedin.com/in/your-name",
-    "github": "https://github.com/your-username"
+    "email": "anamsadat3@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/anamsadat",
+    "github": "https://github.com/AnamSadat"
   },
 }`;
 
@@ -67,21 +69,21 @@ export function HeroSection({
               <Download /> Download CV
             </Button>
             <Button>
-              <Mail /> Hire Me
+              <Mail /> Hubungi Saya
             </Button>
           </div>
           <div className="flex gap-4">
-            <Button className="rounded-full">
-              <Github />
-            </Button>
-            <Button className="rounded-full">
+            <Link href={'/'} className={baseClassSocmed}>
+              <Github className="" />
+            </Link>
+            <Link href={'/'} className={baseClassSocmed}>
               <Linkedin />
-            </Button>
+            </Link>
           </div>
         </div>
-        <div className="flex  items-center justify-center w-full">
+        <div className="md:flex hidden  items-center justify-center w-full">
           <CodeBlockSnapshot
-            fileName="hello.json"
+            fileName="profile.json"
             lang="typescript"
             code={code}
           />

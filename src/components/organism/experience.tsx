@@ -2,6 +2,7 @@
 import { useRef } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Briefcase } from 'lucide-react'; // contoh icon, bisa diganti logo lain
+import { Persuasif } from '../molecules';
 
 // data fleksibel
 const timelineData = [
@@ -130,9 +131,7 @@ export function Experience() {
           </div>
         </div>
       </div>
-      <div>
-        <Card>Siap berkolaborasi</Card>
-      </div>
+      <Persuasif />
     </>
   );
 }
