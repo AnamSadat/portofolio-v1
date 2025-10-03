@@ -40,7 +40,7 @@ export default function Home() {
         icon={<ChevronsDown className="mx-auto" />}
         classNameTitle=""
       />
-      <AboutMe className="pb-20 pt-20" milestones={myMilestones} />
+      <AboutMe className="pb-20 pt-20" id="about" milestones={myMilestones} />
       <Skill />
       <Experience />
       <Portofolio className="py-10" />

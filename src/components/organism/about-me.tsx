@@ -1,5 +1,5 @@
 // Ganti path '@/types' sesuai dengan struktur proyek Anda
-import { ClassNameProps } from '@/types';
+import { ClassNameProps, IdProps } from '@/types';
 import clsx from 'clsx';
 import {
   Badge,
@@ -12,6 +12,7 @@ import {
 import { MapPin, User } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react'; // Import React untuk tipe React.ReactNode
+import { Icon } from '../atoms';
 
 // Definisikan tipe untuk satu item milestone
 type Milestone = {
@@ -21,11 +22,12 @@ type Milestone = {
 };
 
 // Definisikan tipe untuk props komponen AboutMe
-type AboutMeProps = ClassNameProps & {
-  milestones: Milestone[]; // milestones adalah array dari objek Milestone
-};
+type AboutMeProps = ClassNameProps &
+  IdProps & {
+    milestones: Milestone[]; // milestones adalah array dari objek Milestone
+  };
 
-export function AboutMe({ className, milestones }: AboutMeProps) {
+export function AboutMe({ id, className, milestones }: AboutMeProps) {
   const baseClass = clsx(className);
   const baseCard = clsx('bg-[#282830] gap-4');
   const baseCardHeader = clsx('text-2xl font-bold flex gap-2 items-center');
@@ -52,7 +54,7 @@ export function AboutMe({ className, milestones }: AboutMeProps) {
   ];
 
   return (
-    <div className={baseClass}>
+    <div className={baseClass} id={id}>
       <header className="text-center ">
         <h1 className="text-5xl font-bold">About Me</h1>
         <p className="text-lg pt-5 text-[#d9fef0]">
@@ -64,11 +66,11 @@ export function AboutMe({ className, milestones }: AboutMeProps) {
         <div className="pt-20 grid grid-rows-1 gap-5">
           <Card className={baseCard}>
             <CardHeader className={baseCardHeader}>
-              <span
+              <Icon
                 className={'bg-white/20 rounded-xl p-2 text-green-500 text-md'}
               >
                 <User />
-              </span>
+              </Icon>
               Porfile saya
             </CardHeader>
             <CardContent>
@@ -116,7 +118,7 @@ export function AboutMe({ className, milestones }: AboutMeProps) {
         {milestones.map((item, index) => (
           <Card key={index} className={baseCard}>
             <CardContent className={baseCardContentInfo}>
-              <span className={baseSpan}>{item.icon}</span>
+              <Icon className={baseSpan}>{item.icon}</Icon>
               <CardDescription>
                 <h1 className="text-2xl font-bold">{item.title}</h1>
                 <p>{item.description}</p>

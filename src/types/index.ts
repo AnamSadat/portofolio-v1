@@ -1,1 +1,1 @@
-export * from '@/types/global/className-props';
+export * from '@/types/global/attribut';
