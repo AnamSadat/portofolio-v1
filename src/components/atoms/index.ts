@@ -1,1 +1,1 @@
-export * from '@/components/molecules/button-theme';
+export * from '@/components/atoms/icon';
