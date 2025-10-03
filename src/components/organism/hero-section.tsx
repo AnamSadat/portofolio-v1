@@ -22,7 +22,8 @@ export function HeroSection({
 }: HeroSectionProps) {
   const baseClass = clsx('', className);
   const baseClassScroll = clsx('text-center', classNameScroll);
-  const baseClassSocmed = 'rounded-full bg-neutral-800 p-3 border border-2';
+  const baseClassSocmed = 'rounded-full bg-neutral-800 p-2 border border-2';
+  const baseClassButton = clsx('cursor-pointer');
 
   const code = `{
   "fullName": "Anam Sadat",
@@ -65,10 +66,10 @@ export function HeroSection({
             suscipit delectus.
           </p>
           <div className="flex gap-4">
-            <Button className="p-0">
+            <Button className={baseClassButton}>
               <Download /> Download CV
             </Button>
-            <Button>
+            <Button className={baseClassButton}>
               <Mail /> Hubungi Saya
             </Button>
           </div>
