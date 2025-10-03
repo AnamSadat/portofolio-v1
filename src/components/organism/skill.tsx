@@ -1,12 +1,40 @@
 import { ClassNameProps } from '@/types';
 import clsx from 'clsx';
-import { Card } from '../ui';
+import {
+  Badge,
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+} from '@/components/ui';
+import { Icon } from '@/components/atoms';
+import { Globe } from 'lucide-react';
 
 type SkillProps = ClassNameProps;
 
 export function Skill({ className }: SkillProps) {
   const baseClass = clsx(className);
-  const baseCard = clsx('p-5 bg-[#282830]');
+  const baseCard = clsx(' bg-[#282830]');
+  const count = 3;
+  const skill = [
+    'HTML',
+    'CSS',
+    'JavaScript',
+    'TypeScript',
+    'TailwindCSS',
+    'Bootstrap',
+    'ReactJs',
+    'NextJs',
+    'VueJs',
+    'ExpressJs',
+    'HapiJs',
+    'SQL',
+    'NoSQL',
+    'Git',
+    'Docker',
+    'CI / CD',
+  ];
+
   return (
     <div className={baseClass}>
       <header className="text-center ">
@@ -16,13 +44,47 @@ export function Skill({ className }: SkillProps) {
         </p>
       </header>
       <div className="grid grid-cols-3 gap-5 pt-10">
-        <Card className={baseCard}>Saya belajar</Card>
-        <Card className={baseCard}>Saya belajar</Card>
-        <Card className={baseCard}>Saya belajar</Card>
+        {Array(count)
+          .fill(null)
+          .map((_, index) => (
+            <Card key={index} className={baseCard}>
+              <CardHeader className="gap-3 flex">
+                <Icon>
+                  <Globe />
+                </Icon>
+                <h1 className="font-bold text-xl">Front-End Developer</h1>
+              </CardHeader>
+              <CardDescription>
+                <p>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Praesentium, molestiae asperiores? Sed laboriosam aut adipisci
+                  pariatur eveniet eius ex perspiciatis.
+                </p>
+              </CardDescription>
+              <CardContent>
+                <span>
+                  {skill.map((item, index) => (
+                    <Badge
+                      key={index}
+                      variant={'outline'}
+                      className="rounded-2xl"
+                    >
+                      {item}
+                    </Badge>
+                  ))}
+                </span>
+              </CardContent>
+            </Card>
+          ))}
       </div>
       <div className="flex mx-auto justify-center gap-5 mt-5">
-        <Card className={`w-md ${baseCard}`}>Saya belajar</Card>
-        <Card className={`w-md ${baseCard}`}>Saya belajar</Card>
+        {Array(count - 1)
+          .fill(null)
+          .map((_, index) => (
+            <Card key={index} className={`w-md ${baseCard}`}>
+              Saya belajar
+            </Card>
+          ))}
       </div>
     </div>
   );

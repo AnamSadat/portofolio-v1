@@ -1,8 +1,9 @@
 'use client';
 import { useRef } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { Briefcase } from 'lucide-react'; // contoh icon, bisa diganti logo lain
-import { Persuasif } from '../molecules';
+import { Briefcase } from 'lucide-react';
+import { Persuasif } from '@/components/molecules';
+import { Icon } from '@/components/atoms';
 
 // data fleksibel
 const timelineData = [
@@ -60,7 +61,7 @@ function TimelineItem({ item, color }: TimelineItemProps) {
       <div className="pl-12 w-full">
         <Card className="w-full border border-neutral-800 bg-neutral-900 text-white shadow-lg">
           <CardHeader className="flex items-center gap-2">
-            <div>{item.icon}</div>
+            <Icon>{item.icon}</Icon>
             <CardTitle className="text-xl font-bold" style={{ color }}>
               {item.title}
               <p className="text-neutral-300 font-medium">{item.company}</p>
@@ -131,7 +132,7 @@ export function Experience() {
           </div>
         </div>
       </div>
-      <Persuasif />
+      <Persuasif title="Oke ini title"></Persuasif>
     </>
   );
 }
