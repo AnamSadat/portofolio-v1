@@ -48,13 +48,17 @@ export function Skill({ className }: SkillProps) {
           .fill(null)
           .map((_, index) => (
             <Card key={index} className={baseCard}>
-              <CardHeader className="gap-3 flex">
-                <Icon>
+              <CardHeader className="gap-3 flex items-center">
+                <Icon
+                  className={
+                    'bg-white/20 rounded-xl p-2 text-green-500 text-md'
+                  }
+                >
                   <Globe />
                 </Icon>
                 <h1 className="font-bold text-xl">Front-End Developer</h1>
               </CardHeader>
-              <CardDescription>
+              <CardDescription className="px-7">
                 <p>
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                   Praesentium, molestiae asperiores? Sed laboriosam aut adipisci
@@ -82,7 +86,36 @@ export function Skill({ className }: SkillProps) {
           .fill(null)
           .map((_, index) => (
             <Card key={index} className={`w-md ${baseCard}`}>
-              Saya belajar
+              <CardHeader className="gap-3 flex items-center">
+                <Icon
+                  className={
+                    'bg-white/20 rounded-xl p-2 text-green-500 text-md'
+                  }
+                >
+                  <Globe />
+                </Icon>
+                <h1 className="font-bold text-xl">Front-End Developer</h1>
+              </CardHeader>
+              <CardDescription className="px-7">
+                <p>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Praesentium, molestiae asperiores? Sed laboriosam aut adipisci
+                  pariatur eveniet eius ex perspiciatis.
+                </p>
+              </CardDescription>
+              <CardContent>
+                <span>
+                  {skill.map((item, index) => (
+                    <Badge
+                      key={index}
+                      variant={'outline'}
+                      className="rounded-2xl"
+                    >
+                      {item}
+                    </Badge>
+                  ))}
+                </span>
+              </CardContent>
             </Card>
           ))}
       </div>

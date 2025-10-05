@@ -2,7 +2,8 @@
 import { useRef } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Briefcase } from 'lucide-react';
-import { Persuasif } from '../molecules';
+import { Persuasif } from '@/components/molecules';
+import { Icon } from '@/components/atoms';
 import { Badge } from '../ui';
 
 // data fleksibel
@@ -59,9 +60,13 @@ function TimelineItem({ item, color }: TimelineItemProps) {
 
       {/* Card full width */}
       <div className="pl-12 w-full">
-        <Card className="w-full border border-neutral-800 bg-neutral-900 text-white shadow-lg">
+        <Card className="w-full border-2 bg-[#282830] text-white shadow-lg">
           <CardHeader className="flex items-center gap-2">
-            {/* <Icon>{item.icon}</Icon> */}
+            <Icon
+              className={'bg-white/20 rounded-xl p-2 text-green-500 text-md'}
+            >
+              {item.icon}
+            </Icon>
             <CardTitle className="text-xl font-bold" style={{ color }}>
               {item.title}
               <p className="text-neutral-300 font-medium">{item.company}</p>
@@ -81,17 +86,10 @@ function TimelineItem({ item, color }: TimelineItemProps) {
                 </p>
                 <ul className="flex flex-wrap gap-2 items-center">
                   {item.tech.map((t, i) => (
-                    // <li
-                    //   key={i}
-                    //   className="px-3 py-1 text-sm rounded-full bg-neutral-800 text-[#00ff99] border border-neutral-700"
-                    // >
-                    //   {t}
-                    // </li>
-
                     <Badge
                       key={i}
-                      className="rounded-2xl border-2 border-neutral-700 text-[#00ff99]"
-                      variant={'secondary'}
+                      variant={'outline'}
+                      className="rounded-2xl text-[#00ff99]"
                     >
                       {t}
                     </Badge>
@@ -140,7 +138,13 @@ export function Experience() {
           </div>
         </div>
       </div>
-      <Persuasif title="Oke ini title"></Persuasif>
+      <Persuasif
+        className="text-center bg-[#282830] border-2"
+        title="Siap untuk colaborations"
+        classNameTitle="text-2xl font-bold"
+        description="Mari berdiskusi tentang proyek selanjutnya dan bagaimana saya dapat membantu mewujudkan visi digital Anda."
+        classNameDescription=""
+      />
     </>
   );
 }

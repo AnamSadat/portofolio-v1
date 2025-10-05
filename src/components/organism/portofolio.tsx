@@ -12,10 +12,10 @@ export function Portofolio({ className }: PortofolioProps) {
     <>
       <div className={baseClass}>
         <div>
-          <h1>Portofolio saya</h1>
+          <h1 className="text-5xl font-bold text-center">Portofolio saya</h1>
           <p>ya begitulah der</p>
         </div>
-        <div>
+        <div className="gap-3 flex">
           <Button>saya</Button>
           <Button>saya</Button>
           <Button>saya</Button>
