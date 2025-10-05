@@ -2,8 +2,8 @@
 import { useRef } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Briefcase } from 'lucide-react';
-import { Persuasif } from '@/components/molecules';
-import { Icon } from '@/components/atoms';
+import { Persuasif } from '../molecules';
+import { Badge } from '../ui';
 
 // data fleksibel
 const timelineData = [
@@ -61,7 +61,7 @@ function TimelineItem({ item, color }: TimelineItemProps) {
       <div className="pl-12 w-full">
         <Card className="w-full border border-neutral-800 bg-neutral-900 text-white shadow-lg">
           <CardHeader className="flex items-center gap-2">
-            <Icon>{item.icon}</Icon>
+            {/* <Icon>{item.icon}</Icon> */}
             <CardTitle className="text-xl font-bold" style={{ color }}>
               {item.title}
               <p className="text-neutral-300 font-medium">{item.company}</p>
@@ -76,17 +76,25 @@ function TimelineItem({ item, color }: TimelineItemProps) {
             {/* Tech list */}
             {item.tech && (
               <div>
-                <p className="font-semibold text-white mb-1">
+                <p className="font-semibold text-white mb-2">
                   Teknologi & Skills:
                 </p>
-                <ul className="flex flex-wrap gap-2">
+                <ul className="flex flex-wrap gap-2 items-center">
                   {item.tech.map((t, i) => (
-                    <li
+                    // <li
+                    //   key={i}
+                    //   className="px-3 py-1 text-sm rounded-full bg-neutral-800 text-[#00ff99] border border-neutral-700"
+                    // >
+                    //   {t}
+                    // </li>
+
+                    <Badge
                       key={i}
-                      className="px-3 py-1 text-sm rounded-full bg-neutral-800 text-[#00ff99] border border-neutral-700"
+                      className="rounded-2xl border-2 border-neutral-700 text-[#00ff99]"
+                      variant={'secondary'}
                     >
                       {t}
-                    </li>
+                    </Badge>
                   ))}
                 </ul>
               </div>
