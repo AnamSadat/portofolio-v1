@@ -55,45 +55,56 @@ export function HeroSection({
   //   }
   // }`;
   return (
-    <>
-      <div className={baseClass}>
-        <div className="flex flex-col gap-5">
-          <h1 className="text-6xl font-bold">Hello, Saya</h1>
-          <h1 className="text-6xl font-bold">Anam Sadat</h1>
-          <p className="text-lg text-custom">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo
-            magni dicta laborum, debitis totam reiciendis quasi soluta cum
-            suscipit delectus.
-          </p>
-          <div className="flex gap-4">
-            <Button className={baseClassButton}>
-              <Download /> Download CV
-            </Button>
-            <Button className={baseClassButton}>
-              <Mail /> Hubungi Saya
-            </Button>
+    <div className={baseClass}>
+      <div className="flex-grow flex items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="flex flex-col gap-5 justify-center">
+            <h1 className="text-6xl font-bold">Hello, Saya</h1>
+            <h1 className="text-6xl font-bold">Anam Sadat</h1>
+            <p className="text-lg text-custom">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo
+              magni dicta laborum, debitis totam reiciendis quasi soluta cum
+              suscipit delectus.
+            </p>
+            <div className="flex gap-4">
+              <Button className={baseClassButton}>
+                <Download /> Download CV
+              </Button>
+              <Button className={baseClassButton}>
+                <Mail /> Hubungi Saya
+              </Button>
+            </div>
+            <div className="flex gap-4">
+              <Link
+                href={'https://github.com/AnamSadat'}
+                target="_blank"
+                className={baseClassSocmed}
+              >
+                <Github className="" />
+              </Link>
+              <Link
+                href={'https://www.linkedin.com/in/anamsadat'}
+                target="_blank"
+                className={baseClassSocmed}
+              >
+                <Linkedin />
+              </Link>
+            </div>
           </div>
-          <div className="flex gap-4">
-            <Link href={'/'} className={baseClassSocmed}>
-              <Github className="" />
-            </Link>
-            <Link href={'/'} className={baseClassSocmed}>
-              <Linkedin />
-            </Link>
+          <div className="md:flex hidden items-center justify-center w-full">
+            <CodeBlockSnapshot
+              fileName="profile.json"
+              lang="typescript"
+              code={code}
+            />
           </div>
-        </div>
-        <div className="md:flex hidden  items-center justify-center w-full">
-          <CodeBlockSnapshot
-            fileName="profile.json"
-            lang="typescript"
-            code={code}
-          />
         </div>
       </div>
+
       <div className={baseClassScroll}>
         <h1 className={classNameTitle}>{title}</h1>
         {icon}
       </div>
-    </>
+    </div>
   );
 }

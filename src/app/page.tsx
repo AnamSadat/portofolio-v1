@@ -32,10 +32,10 @@ export default function Home() {
     },
   ];
   return (
-    <div className="container mx-auto  items-center w-full py-10">
+    <div className="container mx-auto  items-center w-full">
       <HeroSection
-        className="grid grid-cols-2 pt-28"
-        classNameScroll="pt-24"
+        className="h-screen flex flex-col pb-12"
+        classNameScroll=""
         title="Scroll Down"
         icon={<ChevronsDown className="mx-auto" />}
         classNameTitle=""
