@@ -34,7 +34,7 @@ export default function Home() {
   return (
     <div className="container mx-auto  items-center w-full">
       <HeroSection
-        className="h-screen flex flex-col pb-10"
+        className="h-screen flex flex-col pb-8"
         classNameScroll=""
         title="Scroll Down"
         icon={<ChevronsDown className="mx-auto" />}
