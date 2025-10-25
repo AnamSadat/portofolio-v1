@@ -43,6 +43,7 @@
   --radius-xl: calc(var(--radius) + 4px);
   --color-custom: var(--custom);
   --color-custom-hover: var(--custom-hover);
+  --color-custom-border-button: var(--custom-border-button);
 }
 
 :root {
@@ -80,6 +81,7 @@
   --sidebar-ring: oklch(0.708 0 0);
   --custom: #00ff99;
   --custom-hover: #00e187;
+  --custom-border-button: #00ad68;
 }
 
 .dark {
@@ -116,6 +118,7 @@
   --sidebar-ring: oklch(0.556 0 0);
   --custom: #00ff99;
   --custom-hover: #00e187;
+  --custom-border-button: #00ad68;
 }
 
 @layer base {
