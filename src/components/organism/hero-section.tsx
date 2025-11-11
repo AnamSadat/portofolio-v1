@@ -1,3 +1,5 @@
+'use client';
+
 import { CodeBlockSnapshot } from '@/components/molecules/code';
 import { Button } from '@/components/ui/button';
 import { green } from '@/constants';
@@ -6,6 +8,7 @@ import clsx from 'clsx';
 import { Download, Github, Linkedin, Mail } from 'lucide-react';
 import Link from 'next/link';
 import { ReactNode } from 'react';
+import { motion } from 'framer-motion';
 
 type HeroSectionProps = ClassNameProps & {
   classNameScroll?: string;
@@ -57,6 +60,7 @@ export function HeroSection({
   //     return this.developer.name;
   //   }
   // }`;
+
   return (
     <div className={baseClass} id="home">
       <div className="flex-grow flex items-center bor">
@@ -105,8 +109,35 @@ export function HeroSection({
       </div>
 
       <div className={baseClassScroll}>
-        <h1 className={classNameTitle}>{title}</h1>
-        {icon}
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 1.7, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          <Link
+            className={classNameTitle}
+            href="#about"
+            onClick={(e) => {
+              e.preventDefault();
+              const target = document.querySelector<HTMLElement>('#about');
+              if (!target) return;
+
+              // hitung offset navbar (jika ada navbar fixed)
+              const nav = document.querySelector<HTMLElement>('nav');
+              const offset = (nav?.offsetHeight ?? 0) + 16; // +16px padding aman
+
+              const y =
+                target.getBoundingClientRect().top +
+                window.pageYOffset -
+                offset;
+
+              window.scrollTo({ top: y, behavior: 'smooth' });
+              history.pushState(null, '', '#about'); // update hash tanpa reload
+            }}
+          >
+            {title}
+            {icon}
+          </Link>
+        </motion.div>
       </div>
     </div>
   );
