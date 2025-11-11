@@ -1,5 +1,6 @@
 import { CodeBlockSnapshot } from '@/components/molecules/code';
 import { Button } from '@/components/ui/button';
+import { green } from '@/constants';
 import { ClassNameProps } from '@/types';
 import clsx from 'clsx';
 import { Download, Github, Linkedin, Mail } from 'lucide-react';
@@ -23,7 +24,9 @@ export function HeroSection({
   const baseClass = clsx('', className);
   const baseClassScroll = clsx('text-center', classNameScroll);
   const baseClassSocmed = 'rounded-full bg-neutral-800 p-2 border border-2';
-  const baseClassButton = clsx('cursor-pointer');
+  const baseClassButton = clsx(
+    'cursor-pointer bg-green-200 border-2 border-green-500 text-green-800 hover:bg-green-300'
+  );
 
   const code = `{
   "fullName": "Anam Sadat",
@@ -55,8 +58,8 @@ export function HeroSection({
   //   }
   // }`;
   return (
-    <div className={baseClass}>
-      <div className="flex-grow flex items-center">
+    <div className={baseClass} id="home">
+      <div className="flex-grow flex items-center bor">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="flex flex-col gap-5 justify-center">
             <h1 className="text-6xl font-bold">Hello, Saya</h1>

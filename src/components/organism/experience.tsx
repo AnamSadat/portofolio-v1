@@ -121,7 +121,11 @@ export function Experience() {
 
   return (
     <>
-      <div ref={ref} className="relative w-full mx-auto pt-20 py-14">
+      <div
+        ref={ref}
+        className="relative w-full mx-auto pt-20 py-14"
+        id="experience"
+      >
         <h1 className="text-4xl font-extrabold text-center mb-16 text-white">
           Experience
         </h1>

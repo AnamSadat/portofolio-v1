@@ -4,7 +4,10 @@ import Link from 'next/link';
 
 export function Footer() {
   return (
-    <footer className="bg-[#f9fafb] dark:bg-[#1c1c22] border-t-2 px-28 py-12  text-white">
+    <footer
+      className="bg-[#f9fafb] dark:bg-[#1c1c22] border-t-2 px-28 py-12  text-white"
+      id="kawan perlu apa"
+    >
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Logo, Description & Social */}
         <div className="flex flex-col space-y-4">

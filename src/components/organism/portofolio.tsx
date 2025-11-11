@@ -1,7 +1,7 @@
 import { ClassNameProps } from '@/types';
 import { Card, ToggleGroup, ToggleGroupItem } from '@/components/ui';
 import clsx from 'clsx';
-import { Persuasif } from '../molecules';
+import { CardProject, Persuasif } from '../molecules';
 
 type PortofolioProps = ClassNameProps;
 
@@ -46,11 +46,25 @@ export function Portofolio({ className }: PortofolioProps) {
           {Array(count)
             .fill(null)
             .map((_, index) => (
-              <Card key={index}>Card ke-{index + 1}</Card>
+              <CardProject
+                title="Todo App"
+                description="Aplikasi todo sederhana dengan autentikasi."
+                categories={['Web Development']}
+                techStack={['Next.js', 'TypeScript', 'TailwindCSS', 'Prisma']}
+                repoUrl="https://github.com/vercel/next.js"
+                demoUrl="https://todo-demo.example.com"
+                key={index}
+              />
             ))}
         </div>
       </div>
-      <Persuasif />
+      <Persuasif
+        className="text-center bg-[#282830] border-2"
+        title="Siap untuk colaborations"
+        classNameTitle="text-2xl font-bold"
+        description="Mari berdiskusi tentang proyek selanjutnya dan bagaimana saya dapat membantu mewujudkan visi digital Anda."
+        classNameDescription=""
+      />
     </>
   );
 }

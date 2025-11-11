@@ -36,7 +36,7 @@ export function Skill({ className }: SkillProps) {
   ];
 
   return (
-    <div className={baseClass}>
+    <div className={baseClass} id="skills">
       <header className="text-center ">
         <h1 className="text-5xl font-bold">Skill</h1>
         <p className="text-lg pt-5 text-[#d9fef0]">
