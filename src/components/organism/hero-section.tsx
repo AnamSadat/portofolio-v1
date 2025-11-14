@@ -2,13 +2,13 @@
 
 import { CodeBlockSnapshot } from '@/components/molecules/code';
 import { Button } from '@/components/ui/button';
-import { green } from '@/constants';
 import { ClassNameProps } from '@/types';
 import clsx from 'clsx';
 import { Download, Github, Linkedin, Mail } from 'lucide-react';
 import Link from 'next/link';
 import { ReactNode } from 'react';
 import { motion } from 'framer-motion';
+import profile from '@/data/profile.json';
 
 type HeroSectionProps = ClassNameProps & {
   classNameScroll?: string;
@@ -30,36 +30,7 @@ export function HeroSection({
   const baseClassButton = clsx(
     'cursor-pointer bg-green-200 border-2 border-green-500 text-green-800 hover:bg-green-300'
   );
-
-  const code = `{
-  "fullName": "Anam Sadat",
-  "role": "Fullstack Web Developer",
-  "availability": "Open for new opportunities",
-  "location": {
-    "city": "Kuningan",
-    "country": "Indonesia"
-  },
-  "contact": {
-    "email": "anamsadat3@gmail.com",
-    "linkedin": "https://www.linkedin.com/in/anamsadat",
-    "github": "https://github.com/AnamSadat"
-  },
-}`;
-
-  // const code = `import type IDeveloperProfile from '@/types'
-
-  // class DeveloperController extends Controller {
-  //   protected developer: IDeveloperProfile = {
-  //     name: 'Iqbal Prasetya',
-  //     role: 'Software Engineer',
-  //     experience: '2+ Years',
-  //     location: 'Bogor, Indonesia',
-  //   };
-
-  //   public getDeveloperName(): string {
-  //     return this.developer.name;
-  //   }
-  // }`;
+  const code = JSON.stringify(profile, null, 2);
 
   return (
     <div className={baseClass} id="home">
@@ -101,7 +72,7 @@ export function HeroSection({
           <div className="md:flex hidden items-center justify-center w-full">
             <CodeBlockSnapshot
               fileName="profile.json"
-              lang="typescript"
+              lang="json"
               code={code}
             />
           </div>

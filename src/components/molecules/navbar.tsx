@@ -6,11 +6,12 @@ import { useEffect, useState } from 'react';
 
 export function Navbar() {
   const routes = [
-    { lable: 'Home', href: '#home' },
-    { lable: 'About', href: '#about' },
-    { lable: 'Skills', href: '#skills' },
-    { lable: 'Experience', href: '#experience' },
-    { lable: 'Contact', href: '#contact' },
+    { label: 'Home', href: '#home' },
+    { label: 'About', href: '#about' },
+    { label: 'Skills', href: '#skills' },
+    { label: 'Experience', href: '#experience' },
+    { label: 'Portofolio', href: '#portofolio' },
+    { label: 'Contact', href: '#contact' },
   ];
 
   const [scrolled, setScrolled] = useState(false);
@@ -88,7 +89,7 @@ export function Navbar() {
                   activeSection === route.href && '!text-custom-hover'
                 )}
               >
-                {route.lable}
+                {route.label}
                 <span
                   className={clsx(
                     'absolute left-0 -bottom-1 w-full h-0.5 bg-chart-2',

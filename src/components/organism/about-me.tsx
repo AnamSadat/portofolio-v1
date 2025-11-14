@@ -1,4 +1,3 @@
-// Ganti path '@/types' sesuai dengan struktur proyek Anda
 import { ClassNameProps, IdProps } from '@/types';
 import clsx from 'clsx';
 import {
@@ -11,20 +10,19 @@ import {
 } from '@/components/ui';
 import { MapPin, User } from 'lucide-react';
 import Image from 'next/image';
-import React from 'react'; // Import React untuk tipe React.ReactNode
+import React from 'react';
 import { Icon } from '../atoms';
+import { skill } from '@/data/skill';
 
-// Definisikan tipe untuk satu item milestone
 type Milestone = {
-  icon: React.ReactNode; // Tipe untuk komponen ikon (JSX.Element)
+  icon: React.ReactNode;
   title: string;
   description: string;
 };
 
-// Definisikan tipe untuk props komponen AboutMe
 type AboutMeProps = ClassNameProps &
   IdProps & {
-    milestones: Milestone[]; // milestones adalah array dari objek Milestone
+    milestones: Milestone[];
   };
 
 export function AboutMe({ id, className, milestones }: AboutMeProps) {
@@ -33,25 +31,6 @@ export function AboutMe({ id, className, milestones }: AboutMeProps) {
   const baseCardHeader = clsx('text-2xl font-bold flex gap-2 items-center');
   const baseCardContentInfo = clsx('flex items-center gap-4');
   const baseSpan = clsx('bg-white/20 rounded-xl p-4 text-green-500');
-
-  const skill = [
-    'HTML',
-    'CSS',
-    'JavaScript',
-    'TypeScript',
-    'TailwindCSS',
-    'Bootstrap',
-    'ReactJs',
-    'NextJs',
-    'VueJs',
-    'ExpressJs',
-    'HapiJs',
-    'SQL',
-    'NoSQL',
-    'Git',
-    'Docker',
-    'CI / CD',
-  ];
 
   return (
     <div className={baseClass} id={id}>

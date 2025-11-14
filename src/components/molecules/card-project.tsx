@@ -69,7 +69,7 @@ export function CardProject({
     >
       <div className="pointer-events-none absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-indigo-500/30 via-fuchsia-500/30 to-emerald-500/30 opacity-0 blur transition-opacity duration-300 group-hover:opacity-100" />
 
-      <Card className="relative overflow-hidden rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm shadow-sm transition-shadow group-hover:shadow-xl">
+      <Card className="relative overflow-hidden rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm shadow-sm transition-shadow group-hover:shadow-xl pt-0">
         {/* Gambar full ke atas */}
         <div className="relative w-full h-56 overflow-hidden">
           {og ? (

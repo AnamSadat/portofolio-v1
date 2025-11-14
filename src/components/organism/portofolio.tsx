@@ -1,21 +1,32 @@
 import { ClassNameProps } from '@/types';
-import { Card, ToggleGroup, ToggleGroupItem } from '@/components/ui';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui';
 import clsx from 'clsx';
 import { CardProject, Persuasif } from '../molecules';
+import projects from '@/data/portofolio.json';
+import { cn } from '@/lib/utils';
+import { black } from '@/constants';
 
 type PortofolioProps = ClassNameProps;
+export type Project = {
+  title: string;
+  description: string;
+  categories: string[];
+  techStack: string[];
+  repoUrl: string;
+  demoUrl: string;
+};
 
 export function Portofolio({ className }: PortofolioProps) {
   const baseClass = clsx(className);
-  const count = 6;
   const filter = [
     { name: 'All' },
     { name: 'Front-End Development' },
     { name: 'Back-End Development' },
   ];
+  const data: Project[] = projects;
   return (
     <>
-      <div className={baseClass}>
+      <div className={baseClass} id="portofolio">
         <div>
           <h1 className="text-5xl font-bold text-center pb-10">
             Portofolio saya
@@ -35,7 +46,10 @@ export function Portofolio({ className }: PortofolioProps) {
                 key={index}
                 value={item.name}
                 aria-label="Toggle bookmark"
-                className="data-[state=on]:bg-custom data-[state=on]:text-black border-custom-border-button"
+                className={cn(
+                  'data-[state=on]:bg-custom data-[state=on]:text-black border-custom-border-button',
+                  black
+                )}
               >
                 {item.name}
               </ToggleGroupItem>
@@ -43,19 +57,17 @@ export function Portofolio({ className }: PortofolioProps) {
           </ToggleGroup>
         </div>
         <div className="grid grid-cols-3 gap-5">
-          {Array(count)
-            .fill(null)
-            .map((_, index) => (
-              <CardProject
-                title="Todo App"
-                description="Aplikasi todo sederhana dengan autentikasi."
-                categories={['Web Development']}
-                techStack={['Next.js', 'TypeScript', 'TailwindCSS', 'Prisma']}
-                repoUrl="https://github.com/vercel/next.js"
-                demoUrl="https://todo-demo.example.com"
-                key={index}
-              />
-            ))}
+          {data.map((project, index) => (
+            <CardProject
+              title={project.title}
+              description={project.description}
+              categories={project.categories}
+              techStack={project.techStack}
+              repoUrl={project.repoUrl}
+              demoUrl={project.demoUrl}
+              key={index}
+            />
+          ))}
         </div>
       </div>
       <Persuasif
