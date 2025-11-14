@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Todo App",
+    "description": "Aplikasi todo sederhana dengan autentikasi.",
+    "categories": ["Web Development"],
+    "techStack": ["Next.js", "TypeScript", "TailwindCSS", "Prisma"],
+    "repoUrl": "https://github.com/vercel/next.js",
+    "demoUrl": "https://todo-demo.example.com"
+  },
+  {
+    "title": "Onnnnn",
+    "description": "Aplikasi todo sederhana dengan autentikasi.",
+    "categories": ["Web Development"],
+    "techStack": ["Next.js", "TypeScript", "TailwindCSS", "Prisma"],
+    "repoUrl": "https://github.com/vercel/next.js",
+    "demoUrl": "https://todo-demo.example.com"
+  }
+]

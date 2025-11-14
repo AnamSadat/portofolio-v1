@@ -1,0 +1,14 @@
+{
+  "fullName": "Anam Sadat",
+  "role": "Fullstack Web Developer",
+  "availability": "Open for new opportunities",
+  "location": {
+    "city": "Kuningan",
+    "country": "Indonesia"
+  },
+  "contact": {
+    "email": "anamsadat3@gmail.com",
+    "linkedin": "www.linkedin.com/in/anamsadat",
+    "github": "github.com/AnamSadat"
+  }
+}
