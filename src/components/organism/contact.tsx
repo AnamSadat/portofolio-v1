@@ -1,14 +1,45 @@
 'use client';
 import * as React from 'react';
-import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Send, CheckCircle } from 'lucide-react';
+import { Send, Phone, Mail, MapPin, CheckCircle } from 'lucide-react';
 import { Persuasif } from '../molecules';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
+import {
+  Field,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+  FieldLegend,
+  FieldSet,
+} from '@/components/ui/field';
+import toast from 'react-hot-toast';
+import Link from 'next/link';
+import { useForm, Controller } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+
+// <-- tambahan import untuk InputGroup
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
+  InputGroupTextarea,
+} from '@/components/ui/input-group';
+
+const contactSchema = z.object({
+  name: z.string().min(2, { message: 'Nama minimal 2 karakter' }),
+  email: z.string().email({ message: 'Email tidak valid' }),
+  subject: z.string().min(3, { message: 'Subjek minimal 3 karakter' }),
+  message: z.string().min(10, { message: 'Pesan minimal 10 karakter' }),
+  agree: z.boolean().refine((v) => v === true, {
+    message: 'Anda harus menyetujui kebijakan',
+  }),
+});
+
+type ContactFormValues = z.infer<typeof contactSchema>;
 
 export function Contact() {
   const WA_NUMBER = '+6281234567890';
@@ -21,25 +52,46 @@ export function Contact() {
     LOCATION
   )}`;
 
-  const [agree, setAgree] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
+  const {
+    register,
+    handleSubmit,
+    control,
+    reset,
+    watch,
+    formState: { isSubmitting, isValid, errors },
+  } = useForm<ContactFormValues>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
+      agree: false,
+    },
+  });
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    if (!agree || loading) return;
-    setLoading(true);
+  const messageValue = watch('message', '');
+  const agree = watch('agree', false);
 
-    const fd = new FormData(e.currentTarget);
-    const payload = Object.fromEntries(fd.entries());
+  async function onSubmit(values: ContactFormValues) {
+    console.log('FORM VALUES AT SUBMIT:', values);
+    const payload = {
+      name: values.name,
+      email: values.email,
+      subject: values.subject,
+      message: values.message,
+    };
 
     console.log('Contact form payload', payload);
 
-    setTimeout(() => {
-      setLoading(false);
-      alert('Pesan terkirim! Terima kasih sudah menghubungi.');
-      e.currentTarget.reset();
-      setAgree(false);
-    }, 600);
+    try {
+      await new Promise((res) => setTimeout(res, 600));
+      toast.success('Pesan terkirim! Terima kasih sudah menghubungi.');
+      reset();
+    } catch (err) {
+      console.error(err);
+      toast.error('Terjadi kesalahan saat mengirim pesan.');
+    }
   }
 
   return (
@@ -57,11 +109,8 @@ export function Contact() {
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {/* Informasi Kontak */}
-          <motion.div
-            whileHover={{ y: -4 }}
-            transition={{ type: 'spring', stiffness: 250, damping: 18 }}
-          >
-            <Card className="rounded-2xl border border-border bg-background shadow-sm">
+          <div className="transition-transform duration-300 hover:-translate-y-1 max-h-80">
+            <Card className="rounded-2xl border border-border bg-background hover:shadow-custom-hover transition-all duration-300">
               <CardHeader>
                 <CardTitle className="text-xl font-semibold">
                   Informasi Kontak
@@ -73,141 +122,264 @@ export function Contact() {
                     <Phone className="h-5 w-5" />
                     <div>
                       <p className="text-sm text-muted-foreground">WhatsApp</p>
-                      <a
+                      <Link
                         href={waLink}
                         target="_blank"
                         rel="noreferrer"
                         className="hover:underline"
                       >
                         {WA_NUMBER}
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <Mail className="h-5 w-5" />
                     <div>
                       <p className="text-sm text-muted-foreground">Email</p>
-                      <a href={mailto} className="hover:underline">
+                      <Link href={mailto} className="hover:underline">
                         {EMAIL}
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <MapPin className="h-5 w-5" />
                     <div>
                       <p className="text-sm text-muted-foreground">Lokasi</p>
-                      <a
+                      <Link
                         href={gmaps}
                         target="_blank"
                         rel="noreferrer"
                         className="hover:underline"
                       >
                         {LOCATION}
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
 
                 <div className="flex flex-wrap gap-3 pt-4">
                   <Button asChild variant="outline">
-                    <a href={waLink} target="_blank" rel="noreferrer">
+                    <Link href={waLink} target="_blank" rel="noreferrer">
                       <Phone className="mr-2 h-4 w-4" /> Chat WhatsApp
-                    </a>
+                    </Link>
                   </Button>
                   <Button asChild>
-                    <a href={mailto}>
+                    <Link href={mailto}>
                       <Mail className="mr-2 h-4 w-4" /> Kirim Email
-                    </a>
+                    </Link>
                   </Button>
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
+          </div>
 
-          {/* Kirim Pesan */}
-          <motion.div
-            whileHover={{ y: -4 }}
-            transition={{ type: 'spring', stiffness: 250, damping: 18 }}
-          >
-            <Card className="rounded-2xl border border-border bg-background shadow-sm">
+          {/* Kirim Pesan (RHF + Zod + shadcn Field + InputGroup) */}
+          <div className="transition-transform duration-300 hover:-translate-y-1">
+            <Card className="rounded-2xl border border-border bg-background hover:shadow-custom-hover transition-all duration-300">
               <CardHeader>
                 <CardTitle className="text-xl font-semibold">
                   Kirim Pesan
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="name">Nama</Label>
-                      <Input
-                        id="name"
-                        name="name"
-                        required
-                        placeholder="Nama lengkap"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Email</Label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        required
-                        placeholder="email@domain.com"
-                      />
-                    </div>
-                  </div>
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+                  <FieldGroup>
+                    <FieldSet>
+                      <FieldLegend>Informasi Pengirim</FieldLegend>
+                      <FieldDescription>
+                        Isi data di bawah agar kami dapat membalas pesanmu.
+                      </FieldDescription>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="subject">Subjek</Label>
-                    <Input
-                      id="subject"
-                      name="subject"
-                      required
-                      placeholder="Judul pesan"
-                    />
-                  </div>
+                      <FieldGroup>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          {/* Nama dengan InputGroup (ikon) */}
+                          <Field>
+                            <FieldLabel htmlFor="name">Nama</FieldLabel>
+                            <InputGroup>
+                              <Input
+                                id="name"
+                                {...register('name')}
+                                placeholder="Nama lengkap"
+                                aria-invalid={!!errors.name}
+                                className="rounded-r-md"
+                              />
+                              {/* <InputGroupAddon align="block-end">
+                                <InputGroupText>
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="16"
+                                    height="16"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="h-4 w-4"
+                                  >
+                                    <path d="M20 21v-2a4 4 0 0 0-3-3.87" />
+                                    <path d="M4 21v-2a4 4 0 0 1 3-3.87" />
+                                    <circle cx="12" cy="7" r="4" />
+                                  </svg>
+                                </InputGroupText>
+                              </InputGroupAddon> */}
+                            </InputGroup>
+                            {errors.name && (
+                              <FieldDescription className="text-red-500">
+                                {errors.name.message}
+                              </FieldDescription>
+                            )}
+                          </Field>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Pesan</Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      required
-                      placeholder="Tulis pesanmu di sini..."
-                    />
-                  </div>
+                          {/* Email dengan InputGroup (ikon) */}
+                          <Field>
+                            <FieldLabel htmlFor="email">Email</FieldLabel>
+                            <InputGroup>
+                              <Input
+                                id="email"
+                                type="email"
+                                {...register('email')}
+                                placeholder="email@domain.com"
+                                aria-invalid={!!errors.email}
+                                className="rounded-r-md"
+                              />
+                              {/* <InputGroupAddon align="block-end">
+                                <InputGroupText>
+                                  <Mail className="h-4 w-4" />
+                                </InputGroupText>
+                              </InputGroupAddon> */}
+                            </InputGroup>
+                            {errors.email && (
+                              <FieldDescription className="text-red-500">
+                                {errors.email.message}
+                              </FieldDescription>
+                            )}
+                          </Field>
+                        </div>
+                      </FieldGroup>
+                    </FieldSet>
 
-                  <div className="flex items-start gap-2">
-                    <Checkbox
-                      id="agree"
-                      checked={agree}
-                      onCheckedChange={(v) => setAgree(!!v)}
-                    />
-                    <Label htmlFor="agree" className="text-sm">
-                      Saya setuju untuk dihubungi kembali dan data saya diproses
-                      sesuai kebijakan privasi.
-                    </Label>
-                  </div>
+                    <FieldSet>
+                      <FieldLegend>Pesan</FieldLegend>
+                      <FieldGroup>
+                        {/* Subjek - gunakan InputGroup agar konsisten */}
+                        <Field>
+                          <FieldLabel htmlFor="subject">Subjek</FieldLabel>
+                          <InputGroup>
+                            <Input
+                              id="subject"
+                              {...register('subject')}
+                              placeholder="Judul pesan"
+                              aria-invalid={!!errors.subject}
+                              className="rounded-r-md"
+                            />
+                            {/* <InputGroupAddon align="block-end">
+                              <InputGroupText className="tabular-nums">
+                                {watch('subject')?.length ?? 0}/10
+                              </InputGroupText>
+                            </InputGroupAddon> */}
+                          </InputGroup>
+                          {errors.subject && (
+                            <FieldDescription className="text-red-500">
+                              {errors.subject.message}
+                            </FieldDescription>
+                          )}
+                        </Field>
 
-                  <Button
-                    type="submit"
-                    disabled={!agree || loading}
-                    className="w-full sm:w-auto"
-                  >
-                    <Send className="mr-2 h-4 w-4" />{' '}
-                    {loading ? 'Mengirim...' : 'Kirim Pesan'}
-                  </Button>
+                        {/* Message - ganti Textarea -> InputGroupTextarea + counter */}
+                        <Field>
+                          <FieldLabel htmlFor="message">Pesan</FieldLabel>
+                          <InputGroup>
+                            <InputGroupTextarea
+                              id="message"
+                              {...register('message')}
+                              placeholder="Tulis pesanmu di sini..."
+                              rows={5}
+                              className="min-h-24 resize-none"
+                              aria-invalid={!!errors.message}
+                            />
+                            <InputGroupAddon align="block-end">
+                              <InputGroupText className="tabular-nums">
+                                {messageValue.length}/10
+                              </InputGroupText>
+                            </InputGroupAddon>
+                          </InputGroup>
+                          <FieldDescription>
+                            Minimal 10 Karakter
+                          </FieldDescription>
+                          {errors.message && (
+                            <FieldDescription className="text-red-500">
+                              {errors.message.message}
+                            </FieldDescription>
+                          )}
+                        </Field>
+                      </FieldGroup>
+                    </FieldSet>
 
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground pt-2">
-                    <CheckCircle className="h-3.5 w-3.5" /> Informasi Anda aman.
-                    Kami tidak akan membagikannya.
-                  </div>
+                    <FieldSet>
+                      <FieldGroup>
+                        <Field orientation="horizontal">
+                          <Controller
+                            control={control}
+                            name="agree"
+                            render={({ field }) => (
+                              <Checkbox
+                                id="agree"
+                                checked={!!field.value}
+                                onCheckedChange={(v) =>
+                                  field.onChange(v === true)
+                                }
+                              />
+                            )}
+                          />
+                          <FieldLabel
+                            htmlFor="agree"
+                            className="font-normal"
+                            style={{ cursor: 'pointer' }}
+                          >
+                            Saya setuju untuk dihubungi kembali dan data saya
+                            diproses sesuai kebijakan privasi.
+                          </FieldLabel>
+                        </Field>
+
+                        {errors.agree && (
+                          <FieldDescription className="text-red-500">
+                            {errors.agree.message}
+                          </FieldDescription>
+                        )}
+
+                        <Field orientation="horizontal">
+                          <div className="flex items-center gap-2">
+                            <Button
+                              type="submit"
+                              disabled={!agree || isSubmitting || !isValid}
+                            >
+                              <Send className="mr-2 h-4 w-4" />
+                              {isSubmitting ? 'Mengirim...' : 'Kirim Pesan'}
+                            </Button>
+                            <Button
+                              variant="outline"
+                              type="button"
+                              onClick={() => reset()}
+                            >
+                              Cancel
+                            </Button>
+                          </div>
+                        </Field>
+
+                        <Field>
+                          <FieldDescription className="flex items-center gap-2 text-xs text-muted-foreground pt-2">
+                            <CheckCircle className="h-3.5 w-3.5" /> Informasi
+                            Anda aman. Kami tidak akan membagikannya.
+                          </FieldDescription>
+                        </Field>
+                      </FieldGroup>
+                    </FieldSet>
+                  </FieldGroup>
                 </form>
               </CardContent>
             </Card>
-          </motion.div>
+          </div>
         </div>
 
         <div className="mt-16">
@@ -217,7 +389,11 @@ export function Contact() {
             classNameTitle="text-2xl font-bold"
             description="Mari berdiskusi tentang proyek selanjutnya dan bagaimana saya dapat membantu mewujudkan visi digital Anda."
             classNameDescription=""
-          />
+            classNameChildren="flex gap-5 mx-auto"
+          >
+            <Button>Download CV</Button>
+            <Button>Lets start project</Button>
+          </Persuasif>
         </div>
       </div>
     </section>
