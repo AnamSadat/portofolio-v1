@@ -52,9 +52,9 @@ export const skillBackend = [
   'NodeJs',
   'ExpressJs',
   'HapiJs',
-  'python',
-  'flask',
-  'fastAPI',
+  'Python',
+  'Flask',
+  'FastAPI',
 ];
 
 export const skillDatabase = [
