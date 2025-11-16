@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { Navbar } from '@/components/molecules/navbar';
 import { GridBackgroundDemo } from '@/components/organism/background-grid';
 import { Footer } from '@/components/organism';
+import { Toaster } from 'react-hot-toast';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -37,6 +38,22 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Toaster
+            position={'top-right'}
+            reverseOrder={false}
+            toastOptions={{
+              success: {
+                style: {
+                  background: 'oklch(96.2% 0.044 156.743)',
+                },
+              },
+              error: {
+                style: {
+                  background: 'oklch(93.6% 0.032 17.717)',
+                },
+              },
+            }}
+          />
           <GridBackgroundDemo>
             <Navbar />
             {children}
