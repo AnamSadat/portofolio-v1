@@ -1,10 +1,9 @@
 import { ClassNameProps } from '@/types';
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui';
-import clsx from 'clsx';
+import { Button, ToggleGroup, ToggleGroupItem } from '@/components/ui';
 import { CardProject, Persuasif } from '../molecules';
 import projects from '@/data/portofolio.json';
 import { cn } from '@/lib/utils';
-import { black } from '@/constants';
+import { isBlack } from '@/constants';
 
 type PortofolioProps = ClassNameProps;
 export type Project = {
@@ -17,7 +16,7 @@ export type Project = {
 };
 
 export function Portofolio({ className }: PortofolioProps) {
-  const baseClass = clsx(className);
+  const baseClass = cn(className);
   const filter = [
     { name: 'All' },
     { name: 'Front-End Development' },
@@ -48,7 +47,7 @@ export function Portofolio({ className }: PortofolioProps) {
                 aria-label="Toggle bookmark"
                 className={cn(
                   'data-[state=on]:bg-custom data-[state=on]:text-black border-custom-border-button',
-                  black
+                  isBlack
                 )}
               >
                 {item.name}
@@ -76,7 +75,10 @@ export function Portofolio({ className }: PortofolioProps) {
         classNameTitle="text-2xl font-bold"
         description="Mari berdiskusi tentang proyek selanjutnya dan bagaimana saya dapat membantu mewujudkan visi digital Anda."
         classNameDescription=""
-      />
+        classNameChildren="max-w-2xl mx-auto"
+      >
+        <Button>Mulai project baru</Button>
+      </Persuasif>
     </>
   );
 }

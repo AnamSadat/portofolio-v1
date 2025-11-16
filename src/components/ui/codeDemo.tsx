@@ -1,4 +1,4 @@
-import { CodeEditor } from '@/components/ui/code';
+import { CodeEditor } from '@/components/ui';
 import { Code } from 'lucide-react';
 export const CodeEditorDemo = () => {
   return (
@@ -12,7 +12,22 @@ export const CodeEditorDemo = () => {
       delay={0.5}
       copyButton
     >
-      {`saya belajar`}
+      {`'use client';
+import * as React from 'react';
+type MyComponentProps = {
+  myProps: string;
+} & React.HTMLAttributes<HTMLDivElement>;
+const MyComponent = React.forwardRef<HTMLDivElement, MyComponentProps>(
+  ({ myProps, ...props }, ref) => {
+    return (
+      <div ref={ref} {...props}>
+        <p>My Component</p>
+      </div>
+    );
+  },
+);
+MyComponent.displayName = 'MyComponent';
+export { MyComponent, type MyComponentProps };`}
     </CodeEditor>
   );
 };

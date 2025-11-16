@@ -1,6 +1,6 @@
 'use client';
 import { ModeToggle } from '@/components/molecules';
-import clsx from 'clsx';
+import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
@@ -49,12 +49,12 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [scrolled]);
 
-  const baseClass = clsx(
+  const baseClass = cn(
     'fixed w-full top-0 z-50',
     scrolled ? 'border-b bg-background/80 backdrop-blur-md' : 'bg-transparent'
   );
 
-  const baseContainer = clsx(
+  const baseContainer = cn(
     'container  mx-auto flex justify-between transition-all duration-300',
     scrolled ? 'py-4' : 'py-5'
   );
@@ -84,14 +84,14 @@ export function Navbar() {
                   e.preventDefault();
                   smoothScrollToHash(route.href);
                 }}
-                className={clsx(
+                className={cn(
                   'relative group text-white font-medium hover:text-custom-hover transition-all duration-300',
                   activeSection === route.href && '!text-custom-hover'
                 )}
               >
                 {route.label}
                 <span
-                  className={clsx(
+                  className={cn(
                     'absolute left-0 -bottom-1 w-full h-0.5 bg-chart-2',
                     'scale-x-0 group-hover:scale-x-100',
                     'origin-left group-hover:origin-left',

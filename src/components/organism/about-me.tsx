@@ -1,5 +1,4 @@
 import { ClassNameProps, IdProps } from '@/types';
-import clsx from 'clsx';
 import {
   Badge,
   Card,
@@ -13,6 +12,7 @@ import Image from 'next/image';
 import React from 'react';
 import { Icon } from '../atoms';
 import { skill } from '@/data/skill';
+import { cn } from '@/lib/utils';
 
 type Milestone = {
   icon: React.ReactNode;
@@ -26,11 +26,11 @@ type AboutMeProps = ClassNameProps &
   };
 
 export function AboutMe({ id, className, milestones }: AboutMeProps) {
-  const baseClass = clsx(className);
-  const baseCard = clsx('bg-[#282830] gap-4');
-  const baseCardHeader = clsx('text-2xl font-bold flex gap-2 items-center');
-  const baseCardContentInfo = clsx('flex items-center gap-4');
-  const baseSpan = clsx('bg-white/20 rounded-xl p-4 text-green-500');
+  const baseClass = cn(className);
+  const baseCard = cn('bg-[#282830] gap-4');
+  const baseCardHeader = cn('text-2xl font-bold flex gap-2 items-center');
+  const baseCardContentInfo = cn('flex items-center gap-4');
+  const baseSpan = cn('bg-white/20 rounded-xl p-4 text-green-500');
 
   return (
     <div className={baseClass} id={id}>

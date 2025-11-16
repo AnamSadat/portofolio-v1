@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { cn } from '@/lib/utils';
 import { Card } from '../ui';
 import { ClassNameProps } from '@/types';
 
@@ -10,6 +10,7 @@ type PersuasifProps = ClassNameProps & {
   description?: string;
   span?: React.ReactNode;
   classNameSpan?: string;
+  classNameChildren?: string;
 };
 
 export function Persuasif({
@@ -20,11 +21,13 @@ export function Persuasif({
   description,
   span,
   className,
+  classNameChildren,
   children,
 }: PersuasifProps) {
-  const baseClassTitle = clsx('', classNameTitle);
-  const baseClassDescription = clsx('text-wrap', classNameDescription);
-  const baseClassSpan = clsx('', classNameSpan);
+  const baseClassTitle = cn('', classNameTitle);
+  const baseClassDescription = cn('text-wrap', classNameDescription);
+  const baseClassSpan = cn('', classNameSpan);
+  const baseClassChildren = cn('', classNameChildren);
 
   return (
     <Card className={className}>
@@ -33,7 +36,7 @@ export function Persuasif({
         <span className={baseClassSpan}>{span}</span>
       </h1>
       <p className={baseClassDescription}>{description}</p>
-      {children}
+      <span className={baseClassChildren}>{children}</span>
     </Card>
   );
 }

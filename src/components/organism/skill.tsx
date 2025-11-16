@@ -1,5 +1,4 @@
 import { ClassNameProps } from '@/types';
-import clsx from 'clsx';
 import {
   Badge,
   Card,
@@ -16,12 +15,13 @@ import {
   skillDatabase,
   skillDevopsTools,
 } from '@/data/skill';
+import { cn } from '@/lib/utils';
 
 type SkillProps = ClassNameProps;
 
 export function Skill({ className }: SkillProps) {
-  const baseClass = clsx(className);
-  const baseCard = clsx(' bg-[#282830]');
+  const baseClass = cn(className);
+  const baseCard = cn(' bg-[#282830]');
 
   // Menggunakan mapping untuk skill sesuai kategori
   const skillsByCategory: { [key: string]: string[] } = {
