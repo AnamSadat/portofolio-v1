@@ -3,12 +3,13 @@
 import { CodeBlockSnapshot } from '@/components/molecules/code';
 import { Button } from '@/components/ui/button';
 import { ClassNameProps } from '@/types';
-import clsx from 'clsx';
 import { Download, Github, Linkedin, Mail } from 'lucide-react';
 import Link from 'next/link';
 import { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import profile from '@/data/profile.json';
+import { cn } from '@/lib/utils';
+import { CodeEditorDemo } from '../ui';
 
 type HeroSectionProps = ClassNameProps & {
   classNameScroll?: string;
@@ -24,10 +25,10 @@ export function HeroSection({
   title,
   icon,
 }: HeroSectionProps) {
-  const baseClass = clsx('', className);
-  const baseClassScroll = clsx('text-center', classNameScroll);
+  const baseClass = cn('', className);
+  const baseClassScroll = cn('text-center', classNameScroll);
   const baseClassSocmed = 'rounded-full bg-neutral-800 p-2 border border-2';
-  const baseClassButton = clsx(
+  const baseClassButton = cn(
     'cursor-pointer bg-green-200 border-2 border-green-500 text-green-800 hover:bg-green-300'
   );
   const code = JSON.stringify(profile, null, 2);
@@ -45,11 +46,18 @@ export function HeroSection({
               suscipit delectus.
             </p>
             <div className="flex gap-4">
-              <Button className={baseClassButton}>
-                <Download /> Download CV
+              <Button className={baseClassButton} asChild>
+                <Link
+                  href={'/files/Resume-Anam-Sadat.pdf'}
+                  download={'Resume-Anam-Sadat.pdf'}
+                >
+                  <Download /> Download CV
+                </Link>
               </Button>
-              <Button className={baseClassButton}>
-                <Mail /> Hubungi Saya
+              <Button className={baseClassButton} asChild>
+                <Link href={'mailto:anamsadat3@gmail.com'}>
+                  <Mail /> Hubungi Saya
+                </Link>
               </Button>
             </div>
             <div className="flex gap-4">
@@ -71,10 +79,11 @@ export function HeroSection({
           </div>
           <div className="md:flex hidden items-center justify-center w-full">
             <CodeBlockSnapshot
-              fileName="profile.json"
+              fileName="{} profile.json"
               lang="json"
               code={code}
             />
+            {/* <CodeEditorDemo /> */}
           </div>
         </div>
       </div>

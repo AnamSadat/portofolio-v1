@@ -5,6 +5,8 @@ import { Persuasif } from '@/components/molecules';
 import { Icon } from '@/components/atoms';
 import { Badge } from '../ui';
 import { timeLine } from '@/data/experience';
+import { CalendarDays, MapPin } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 export type Experience = {
   title: string;
@@ -25,6 +27,7 @@ type TimelineItemProps = {
 };
 
 function TimelineItem({ item, color }: TimelineItemProps) {
+  const baseSizeIcon = 17;
   return (
     <div className="relative flex items-start">
       {/* Dot di garis */}
@@ -44,11 +47,17 @@ function TimelineItem({ item, color }: TimelineItemProps) {
             >
               {item.icon}
             </Icon>
-            <CardTitle className="text-xl font-bold" style={{ color }}>
+            <CardTitle
+              className="text-xl font-bold flex flex-col gap-3 pl-5"
+              style={{ color }}
+            >
               {item.title}
               <p className="text-neutral-300 font-medium">{item.company}</p>
-              <p className="text-sm text-neutral-400">
-                {item.date} • {item.location}
+              <p className="text-sm text-neutral-400 flex gap-2 items-center">
+                <CalendarDays size={baseSizeIcon} />
+                <span>{item.date}</span>
+                <MapPin size={baseSizeIcon} />
+                <span>{item.location}</span>
               </p>
             </CardTitle>
           </CardHeader>
