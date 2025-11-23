@@ -47,4 +47,40 @@ export const timeLine = [
     ],
     icon: <Briefcase className={baseClassName} size={baseSizeIcon} />,
   },
+  {
+    title: 'Cloud Computing',
+    company: 'Bangkit Academy Batch 2 2024',
+    date: 'Sep 2024 - Des 2024',
+    location: 'Remote, Indonesia',
+    description:
+      'Mengerjakan beberapa project website untuk UMKM dan startup kecil.',
+    tech: [
+      'Google Cloud',
+      'Docker',
+      'JavaScript',
+      'Express.js',
+      'TypeScript',
+      'CI/CD',
+      'Terraform',
+    ],
+    achievements: [
+      'Membangun landing page interaktif',
+      'Meningkatkan performa SEO klien',
+    ],
+    icon: <Briefcase className={baseClassName} size={baseSizeIcon} />,
+  },
+  {
+    title: 'Oracle Database Developer',
+    company: 'Digital Talent Scholarship',
+    date: 'Sep 2024 - Des 2024',
+    location: 'Remote, Indonesia',
+    description:
+      'Mengerjakan beberapa project website untuk UMKM dan startup kecil.',
+    tech: ['Oracle', 'APEX', 'Data Modeler', 'DDL'],
+    achievements: [
+      'Membangun landing page interaktif',
+      'Meningkatkan performa SEO klien',
+    ],
+    icon: <Briefcase className={baseClassName} size={baseSizeIcon} />,
+  },
 ];
