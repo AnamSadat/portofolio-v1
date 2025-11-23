@@ -4,7 +4,6 @@ import { Send, Phone, Mail, MapPin, CheckCircle } from 'lucide-react';
 import { Persuasif } from '../molecules';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import {
@@ -20,14 +19,17 @@ import Link from 'next/link';
 import { useForm, Controller } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-
-// <-- tambahan import untuk InputGroup
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupText,
   InputGroupTextarea,
 } from '@/components/ui/input-group';
+import { ClassNameProps } from '@/types';
+import { cn } from '@/lib/utils';
+import { isColorCard } from '@/constants';
+
+export type ContactProps = ClassNameProps;
 
 const contactSchema = z.object({
   name: z.string().min(2, { message: 'Nama minimal 2 karakter' }),
@@ -41,7 +43,9 @@ const contactSchema = z.object({
 
 type ContactFormValues = z.infer<typeof contactSchema>;
 
-export function Contact() {
+export function Contact({ className }: ContactProps) {
+  const baseClass = cn(className);
+
   const WA_NUMBER = '+6281234567890';
   const EMAIL = 'halo@example.com';
   const LOCATION = 'Kuningan, Jawa Barat';
@@ -61,6 +65,8 @@ export function Contact() {
     formState: { isSubmitting, isValid, errors },
   } = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
+    mode: 'onChange',
+    reValidateMode: 'onChange',
     defaultValues: {
       name: '',
       email: '',
@@ -95,10 +101,10 @@ export function Contact() {
   }
 
   return (
-    <section className="w-full py-16 md:py-24 lg:py-28" id="contact">
+    <section className={baseClass} id="contact">
       <div className="container mx-auto px-4">
         <div className="mb-10 text-center">
-          <h1 className="text-3xl font-semibold tracking-tight md:text-4xl">
+          <h1 className="text-3xl font-semibold tracking-tight md:text-5xl md:font-bold">
             Mari Berkomunikasi
           </h1>
           <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">
@@ -322,16 +328,17 @@ export function Contact() {
                           <Controller
                             control={control}
                             name="agree"
+                            defaultValue={false}
                             render={({ field }) => (
                               <Checkbox
                                 id="agree"
-                                checked={!!field.value}
-                                onCheckedChange={(v) =>
-                                  field.onChange(v === true)
-                                }
+                                checked={field.value}
+                                onCheckedChange={field.onChange}
+                                ref={field.ref}
                               />
                             )}
                           />
+
                           <FieldLabel
                             htmlFor="agree"
                             className="font-normal"
@@ -384,7 +391,7 @@ export function Contact() {
 
         <div className="mt-16">
           <Persuasif
-            className="text-center bg-[#282830] border-2"
+            className={cn('text-center border-2', isColorCard)}
             title="Siap untuk colaborations"
             classNameTitle="text-2xl font-bold"
             description="Mari berdiskusi tentang proyek selanjutnya dan bagaimana saya dapat membantu mewujudkan visi digital Anda."
