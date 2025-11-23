@@ -1,3 +1,5 @@
+'use client';
+
 import { ClassNameProps, IdProps } from '@/types';
 import {
   Badge,
@@ -9,15 +11,19 @@ import {
 } from '@/components/ui';
 import { MapPin, User } from 'lucide-react';
 import Image from 'next/image';
-import React from 'react';
 import { Icon } from '../atoms';
-import { skill } from '@/data/skill';
+import { titleSkill } from '@/data/skill';
 import { cn } from '@/lib/utils';
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { isColorCard } from '@/constants';
 
 type Milestone = {
   icon: React.ReactNode;
   title: string;
   description: string;
+  time: string;
 };
 
 type AboutMeProps = ClassNameProps &
@@ -27,10 +33,20 @@ type AboutMeProps = ClassNameProps &
 
 export function AboutMe({ id, className, milestones }: AboutMeProps) {
   const baseClass = cn(className);
-  const baseCard = cn('bg-[#282830] gap-4');
+  const baseCard = cn(
+    // 'bg-[#282830] '
+    isColorCard
+  );
   const baseCardHeader = cn('text-2xl font-bold flex gap-2 items-center');
   const baseCardContentInfo = cn('flex items-center gap-4');
   const baseSpan = cn('bg-white/20 rounded-xl p-4 text-green-500');
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+    });
+  }, []);
 
   return (
     <div className={baseClass} id={id}>
@@ -40,10 +56,10 @@ export function AboutMe({ id, className, milestones }: AboutMeProps) {
           Mengenal lebih dekat sosok di balik karya-karya digital
         </p>
       </header>
-      <div className="grid grid-cols-2 ">
+      <div className="grid grid-cols-2">
         {/* ... bagian profile dan skill tetap sama ... */}
         <div className="pt-20 grid grid-rows-1 gap-5">
-          <Card className={baseCard}>
+          <Card className={baseCard} data-aos={'fade-right'}>
             <CardHeader className={baseCardHeader}>
               <Icon
                 className={'bg-white/20 rounded-xl p-2 text-green-500 text-md'}
@@ -53,26 +69,31 @@ export function AboutMe({ id, className, milestones }: AboutMeProps) {
               Porfile saya
             </CardHeader>
             <CardContent>
-              I am an Informatics Engineering student with a strong interest in
-              cloud computing and fullstack development...
+              Saya adalah mahasiswa Teknik Komputer yang memiliki minat besar
+              pada Web Development dan Cloud Computing. Saya terbiasa membangun
+              aplikasi web yang intuitif, responsif, dan mudah digunakan dengan
+              teknologi modern seperti React, Next.js, Vue, Express, SQL/NoSQL,
+              serta Docker untuk containerization. Saya senang belajar hal baru
+              dan terus mengembangkan kemampuan untuk menciptakan solusi digital
+              yang bermanfaat.
             </CardContent>
             <CardFooter className="text-[15px]">
               <MapPin size={16} /> &nbsp; Kuningan, Jawa Barat
             </CardFooter>
           </Card>
-          <Card className={baseCard}>
+          <Card className={baseCard} data-aos={'fade-up'}>
             <CardHeader className={baseCardHeader}>
               Minat dan keahlian
             </CardHeader>
             <CardContent>
               <span className="flex flex-wrap gap-2">
-                {skill.map((item, index) => (
+                {titleSkill.map((item, index) => (
                   <Badge
                     key={index}
                     variant={'outline'}
-                    className="rounded-2xl"
+                    className="rounded-2xl text-white border-2 border-green-700/50 bg-[#282830]"
                   >
-                    {item}
+                    {item.title}
                   </Badge>
                 ))}
               </span>
@@ -80,7 +101,10 @@ export function AboutMe({ id, className, milestones }: AboutMeProps) {
           </Card>
         </div>
         <div className="pt-20 mx-auto">
-          <Card className={`p-5 rounded-2xl ${baseCard}`}>
+          <Card
+            className={`p-5 rounded-2xl ${baseCard}`}
+            data-aos={'fade-left'}
+          >
             <Image
               src={'/anam.jpg'}
               alt="belajar"
@@ -95,7 +119,12 @@ export function AboutMe({ id, className, milestones }: AboutMeProps) {
       {/* Bagian ini me-render data dari props `milestones` */}
       <div className="pt-12 gap-5 grid grid-cols-4">
         {milestones.map((item, index) => (
-          <Card key={index} className={baseCard}>
+          <Card
+            key={index}
+            className={baseCard}
+            data-aos="fade-up"
+            data-aos-delay={item.time}
+          >
             <CardContent className={baseCardContentInfo}>
               <Icon className={baseSpan}>{item.icon}</Icon>
               <CardDescription>
