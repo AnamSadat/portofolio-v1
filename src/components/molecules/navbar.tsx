@@ -16,7 +16,7 @@ export function Navbar() {
 
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string>('#home');
-  const NAV_OFFSET = 100; // tinggi kira-kira navbar; sesuaikan jika perlu
+  const NAV_OFFSET = 30; // tinggi kira-kira navbar; sesuaikan jika perlu
 
   // smooth scroll on click
   const smoothScrollToHash = (hash: string) => {
@@ -85,7 +85,7 @@ export function Navbar() {
                   smoothScrollToHash(route.href);
                 }}
                 className={cn(
-                  'relative group text-white font-medium hover:text-custom-hover transition-all duration-300',
+                  'relative group dark:text-white font-medium hover:text-custom-hover transition-all duration-300 text-black',
                   activeSection === route.href && '!text-custom-hover'
                 )}
               >

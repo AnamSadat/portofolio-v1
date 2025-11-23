@@ -6,6 +6,8 @@ import { Navbar } from '@/components/molecules/navbar';
 import { GridBackgroundDemo } from '@/components/organism/background-grid';
 import { Footer } from '@/components/organism';
 import { Toaster } from 'react-hot-toast';
+import { BackToTopButton } from '@/components/molecules/back-to-top-button';
+// import { AOS } from '@/components/aos-init';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -38,6 +40,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          {/* <AOSInit /> */}
           <Toaster
             position={'top-right'}
             reverseOrder={false}
@@ -58,6 +61,7 @@ export default function RootLayout({
             <Navbar />
             {children}
             <Footer />
+            <BackToTopButton />
           </GridBackgroundDemo>
         </ThemeProvider>
       </body>

@@ -9,7 +9,7 @@ import { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import profile from '@/data/profile.json';
 import { cn } from '@/lib/utils';
-import { CodeEditorDemo } from '../ui';
+// import { CodeEditorDemo } from '../ui';
 
 type HeroSectionProps = ClassNameProps & {
   classNameScroll?: string;
@@ -27,9 +27,12 @@ export function HeroSection({
 }: HeroSectionProps) {
   const baseClass = cn('', className);
   const baseClassScroll = cn('text-center', classNameScroll);
-  const baseClassSocmed = 'rounded-full bg-neutral-800 p-2 border border-2';
+  const baseClassSocmed =
+    'rounded-full bg-zinc-100 dark:bg-zinc-900 p-2 border border-zinc-200 dark:border-zinc-700 ' +
+    'text-zinc-700 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-800 ' +
+    'transition-colors duration-200';
   const baseClassButton = cn(
-    'cursor-pointer bg-green-200 border-2 border-green-500 text-green-800 hover:bg-green-300'
+    'cursor-pointer bg-green-200 border-2 border-green-500 text-green-800 hover:bg-green-300 dark:border-green-400 dark:bg-zinc-900/50 dark:text-white dark:hover:bg-green-500 transition-all duration-300'
   );
   const code = JSON.stringify(profile, null, 2);
 
@@ -38,25 +41,29 @@ export function HeroSection({
       <div className="flex-grow flex items-center bor">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="flex flex-col gap-5 justify-center">
-            <h1 className="text-6xl font-bold">Hello, Saya</h1>
-            <h1 className="text-6xl font-bold">Anam Sadat</h1>
-            <p className="text-lg text-custom">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo
-              magni dicta laborum, debitis totam reiciendis quasi soluta cum
-              suscipit delectus.
+            <h1 className="text-3xl md:text-4xl font-semibold text-zinc-500 dark:text-zinc-400">
+              Hello, Saya
+            </h1>
+            <h2 className="text-6xl md:text-6xl font-bold tracking-tight">
+              Anam Sadat
+            </h2>
+            <p className="text-lg dark:text-zinc-400">
+              Mahasiswa Teknik Komputer yang fokus pada Web Development dan
+              Cloud Computing. Berpengalaman membangun aplikasi modern dengan
+              React, Next.js, Express, dan Docker.
             </p>
             <div className="flex gap-4">
               <Button className={baseClassButton} asChild>
                 <Link
-                  href={'/files/Resume-Anam-Sadat.pdf'}
-                  download={'Resume-Anam-Sadat.pdf'}
+                  href="/files/Resume-Anam-Sadat.pdf"
+                  download="Resume-Anam-Sadat.pdf"
                 >
-                  <Download /> Download CV
+                  <Download className="w-4 h-4" /> Download CV
                 </Link>
               </Button>
               <Button className={baseClassButton} asChild>
-                <Link href={'mailto:anamsadat3@gmail.com'}>
-                  <Mail /> Hubungi Saya
+                <Link href="mailto:anamsadat3@gmail.com">
+                  <Mail className="w-4 h-4" /> Hubungi Saya
                 </Link>
               </Button>
             </div>

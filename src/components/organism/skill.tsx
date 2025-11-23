@@ -16,12 +16,13 @@ import {
   skillDevopsTools,
 } from '@/data/skill';
 import { cn } from '@/lib/utils';
+import { isColorCard } from '@/constants';
 
 type SkillProps = ClassNameProps;
 
 export function Skill({ className }: SkillProps) {
   const baseClass = cn(className);
-  const baseCard = cn(' bg-[#282830]');
+  const baseCard = cn(isColorCard);
 
   // Menggunakan mapping untuk skill sesuai kategori
   const skillsByCategory: { [key: string]: string[] } = {
@@ -60,12 +61,12 @@ export function Skill({ className }: SkillProps) {
                 <p>{skills.description}</p>
               </CardDescription>
               <CardContent>
-                <span>
+                <span className="flex flex-wrap gap-2">
                   {skillsList.map((item, index) => (
                     <Badge
                       key={index}
                       variant={'outline'}
-                      className="rounded-2xl"
+                      className="rounded-2xl text-white border-2 border-green-700/50 bg-[#282830]"
                     >
                       {item}
                     </Badge>

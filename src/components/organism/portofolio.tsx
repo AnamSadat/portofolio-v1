@@ -3,7 +3,7 @@ import { Button, ToggleGroup, ToggleGroupItem } from '@/components/ui';
 import { CardProject, Persuasif } from '../molecules';
 import projects from '@/data/portofolio.json';
 import { cn } from '@/lib/utils';
-import { isBlack } from '@/constants';
+import { isBlack, isColorCard } from '@/constants';
 
 type PortofolioProps = ClassNameProps;
 export type Project = {
@@ -70,7 +70,8 @@ export function Portofolio({ className }: PortofolioProps) {
         </div>
       </div>
       <Persuasif
-        className="text-center bg-[#282830] border-2"
+        className={cn('text-center border-2', isColorCard)}
+        classNameLayout="py-8"
         title="Siap untuk colaborations"
         classNameTitle="text-2xl font-bold"
         description="Mari berdiskusi tentang proyek selanjutnya dan bagaimana saya dapat membantu mewujudkan visi digital Anda."

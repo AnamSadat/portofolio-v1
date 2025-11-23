@@ -11,6 +11,7 @@ type PersuasifProps = ClassNameProps & {
   span?: React.ReactNode;
   classNameSpan?: string;
   classNameChildren?: string;
+  classNameLayout?: string;
 };
 
 export function Persuasif({
@@ -22,21 +23,25 @@ export function Persuasif({
   span,
   className,
   classNameChildren,
+  classNameLayout,
   children,
 }: PersuasifProps) {
   const baseClassTitle = cn('', classNameTitle);
   const baseClassDescription = cn('text-wrap', classNameDescription);
   const baseClassSpan = cn('', classNameSpan);
   const baseClassChildren = cn('', classNameChildren);
+  const baseClassLayout = cn('', classNameLayout);
 
   return (
-    <Card className={className}>
-      <h1 className={baseClassTitle}>
-        {title}
-        <span className={baseClassSpan}>{span}</span>
-      </h1>
-      <p className={baseClassDescription}>{description}</p>
-      <span className={baseClassChildren}>{children}</span>
-    </Card>
+    <div className={baseClassLayout}>
+      <Card className={className}>
+        <h1 className={baseClassTitle}>
+          {title}
+          <span className={baseClassSpan}>{span}</span>
+        </h1>
+        <p className={baseClassDescription}>{description}</p>
+        <span className={baseClassChildren}>{children}</span>
+      </Card>
+    </div>
   );
 }

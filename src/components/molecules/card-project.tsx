@@ -12,6 +12,8 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 export type CardProjectProps = {
   title: string;
@@ -69,14 +71,17 @@ export function CardProject({
     >
       <div className="pointer-events-none absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-indigo-500/30 via-fuchsia-500/30 to-emerald-500/30 opacity-0 blur transition-opacity duration-300 group-hover:opacity-100" />
 
-      <Card className="relative overflow-hidden rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm shadow-sm transition-shadow group-hover:shadow-xl pt-0">
+      <Card className="relative overflow-hidden rounded-2xl border border-border/60 bg-background/90 backdrop-blur-sm shadow-sm transition-shadow group-hover:shadow-xl pt-0">
         {/* Gambar full ke atas */}
         <div className="relative w-full h-56 overflow-hidden">
           {og ? (
             <Image
               src={og}
               alt={`Preview untuk ${title}`}
-              className="absolute inset-0 h-full w-full object-cover"
+              className={cn(
+                'absolute inset-0 h-full w-full'
+                // "object-cover"
+              )}
               width={1000}
               height={1000}
             />
@@ -120,16 +125,16 @@ export function CardProject({
           <div className="mt-2 flex flex-wrap items-center gap-3">
             {demoUrl && (
               <Button asChild className="rounded-xl">
-                <a href={demoUrl} target="_blank" rel="noreferrer">
+                <Link href={demoUrl} target="_blank" rel="noreferrer">
                   <ExternalLink className="mr-2 h-4 w-4" /> Demo
-                </a>
+                </Link>
               </Button>
             )}
 
             <Button asChild variant="secondary" className="rounded-xl">
-              <a href={repoUrl} target="_blank" rel="noreferrer">
+              <Link href={repoUrl} target="_blank" rel="noreferrer">
                 <Github className="mr-2 h-4 w-4" /> GitHub
-              </a>
+              </Link>
             </Button>
           </div>
         </CardContent>
