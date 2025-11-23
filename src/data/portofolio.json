@@ -1,18 +1,64 @@
 [
   {
-    "title": "Todo App",
-    "description": "Aplikasi todo sederhana dengan autentikasi.",
+    "title": "Cerita.in",
+    "description": "A web app for sharing stories with features like posting & public sharing, authentication, like & bookmark, and image upload to Cloud Storage. Built with fullstack Next.js (Route Handler & Next Auth), Postgresql, Shadcn/UI, and Aceternity UI.",
     "categories": ["Web Development"],
-    "techStack": ["Next.js", "TypeScript", "TailwindCSS", "Prisma"],
-    "repoUrl": "https://github.com/vercel/next.js",
-    "demoUrl": "https://todo-demo.example.com"
+    "techStack": [
+      "Next.js",
+      "TypeScript",
+      "TailwindCSS",
+      "Route Handler",
+      "Prisma"
+    ],
+    "repoUrl": "https://github.com/AnamSadat/cerita.in",
+    "demoUrl": "https://cerita-in.vercel.app"
   },
   {
-    "title": "Onnnnn",
-    "description": "Aplikasi todo sederhana dengan autentikasi.",
+    "title": "Nutrify with AI",
+    "description": "An AI-powered app that predicts disease vulnerability based on food ingredients, featuring authentication & role-based access (admin, moderator, user), food/drink data management, and OAuth integration. Deployed on Cloud Run & App Engine.",
     "categories": ["Web Development"],
     "techStack": ["Next.js", "TypeScript", "TailwindCSS", "Prisma"],
-    "repoUrl": "https://github.com/vercel/next.js",
-    "demoUrl": "https://todo-demo.example.com"
+    "repoUrl": "https://github.com/Capstone-Team-Nutrify/Nutrify-Frontend-Project",
+    "demoUrl": "https://nutrify.web.id"
+  },
+  {
+    "title": "Nutrify with AI",
+    "description": "An AI-powered app that predicts disease vulnerability based on food ingredients, featuring authentication & role-based access (admin, moderator, user), food/drink data management, and OAuth integration. Deployed on Cloud Run & App Engine.",
+    "categories": ["Web Development"],
+    "techStack": ["Next.js", "TypeScript", "TailwindCSS", "Prisma"],
+    "repoUrl": "https://github.com/Capstone-Team-Nutrify/Nutrify-Backend-Project",
+    "demoUrl": "https://nutrify.web.id"
+  },
+  {
+    "title": "Nutrify with AI",
+    "description": "An AI-powered app that predicts disease vulnerability based on food ingredients, featuring authentication & role-based access (admin, moderator, user), food/drink data management, and OAuth integration. Deployed on Cloud Run & App Engine.",
+    "categories": ["Web Development"],
+    "techStack": ["Next.js", "TypeScript", "TailwindCSS", "Prisma"],
+    "repoUrl": "https://github.com/Capstone-Team-Nutrify/nutrify_ml_api",
+    "demoUrl": "https://nutrify.web.id"
+  },
+  {
+    "title": "Smartbite with AI",
+    "description": "A food calorie prediction app using CNN, with OAuth authentication, image upload, and storage integration with Cloud Storage and Cloud SQL.",
+    "categories": ["Cloud Computing"],
+    "techStack": ["Next.js", "TypeScript", "TailwindCSS", "Prisma"],
+    "repoUrl": "https://github.com/AnamSadat/SmartBite",
+    "demoUrl": "https://nutrify.web.id"
+  },
+  {
+    "title": "Storyly App",
+    "description": "A PWA for sharing public stories with authentication, service workers, maps & location, push notifications, camera & screenshot via Canvas, and support for Workbox, IndexedDB, and device permissions (GPS, camera, notifications).",
+    "categories": ["Cloud Computing"],
+    "techStack": ["Next.js", "TypeScript", "TailwindCSS", "Prisma"],
+    "repoUrl": "https://github.com/AnamSadat/storyly-app-native",
+    "demoUrl": "https://nutrify.web.id"
+  },
+  {
+    "title": "OpenMusic API",
+    "description": "A backend API for managing music playlists built with Hapi.js, featuring authentication & authorization, playlist collaboration, validation, Hapi plugins, caching with Redis (AWS ElastiCache), file uploads (Amazon S3),relational database (Amazon RDS), message queue with Amazon MQ (RabbitMQ), Nodemailer integration for consumers, and deployment on AWS EC2.",
+    "categories": ["Cloud Computing"],
+    "techStack": ["Next.js", "TypeScript", "TailwindCSS", "Prisma"],
+    "repoUrl": "https://github.com/AnamSadat/openmusic-api",
+    "demoUrl": "https://nutrify.web.id"
   }
 ]
