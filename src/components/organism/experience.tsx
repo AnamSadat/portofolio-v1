@@ -4,9 +4,11 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Persuasif } from '@/components/molecules';
 import { Icon } from '@/components/atoms';
 import { Badge } from '../ui';
-import { timeLine } from '@/data/experience';
+import { timeLine } from '@/data/experience-data';
 import { CalendarDays, MapPin } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { ClassNameProps } from '@/types';
+import { isColorCard } from '@/constants';
 
 export type Experience = {
   title: string;
@@ -18,6 +20,8 @@ export type Experience = {
   achievements: [];
   icon: React.ReactNode;
 };
+
+export type ExperienceProps = ClassNameProps;
 
 const dotColor = '#00ff99';
 
@@ -40,7 +44,9 @@ function TimelineItem({ item, color }: TimelineItemProps) {
 
       {/* Card full width */}
       <div className="pl-12 w-full">
-        <Card className="w-full border-2 bg-[#282830] text-white shadow-lg">
+        <Card
+          className={cn('w-full border-2 text-white shadow-lg', isColorCard)}
+        >
           <CardHeader className="flex items-center gap-2">
             <Icon
               className={'bg-white/20 rounded-xl p-2 text-green-500 text-md'}
@@ -75,7 +81,7 @@ function TimelineItem({ item, color }: TimelineItemProps) {
                     <Badge
                       key={i}
                       variant={'outline'}
-                      className="rounded-2xl text-[#00ff99]"
+                      className="rounded-2xl text-[#00ff99] border-2 border-green-700 bg-[#00ff99]/5"
                     >
                       {t}
                     </Badge>
@@ -102,17 +108,14 @@ function TimelineItem({ item, color }: TimelineItemProps) {
   );
 }
 
-export function Experience() {
+export function Experience({ className }: ExperienceProps) {
   const ref = useRef(null);
+  const baseClass = cn(className);
 
   return (
     <>
-      <div
-        ref={ref}
-        className="relative w-full mx-auto pt-20 py-14"
-        id="experience"
-      >
-        <h1 className="text-4xl font-extrabold text-center mb-16 text-white">
+      <div ref={ref} className={baseClass} id="experience">
+        <h1 className="text-5xl font-bold text-center mb-16 text-white">
           Experience
         </h1>
 
@@ -128,12 +131,14 @@ export function Experience() {
           </div>
         </div>
       </div>
+      {/* 1d1d22 */}
       <Persuasif
-        className="text-center bg-[#282830] border-2"
-        title="Siap untuk colaborations"
+        className={cn('text-center border-2', isColorCard)}
+        classNameLayout="py-8"
+        title="Siap untuk Kolaborasi?"
         classNameTitle="text-2xl font-bold"
         description="Mari berdiskusi tentang proyek selanjutnya dan bagaimana saya dapat membantu mewujudkan visi digital Anda."
-        classNameDescription=""
+        classNameDescription="max-w-2xl mx-auto"
       />
     </>
   );
