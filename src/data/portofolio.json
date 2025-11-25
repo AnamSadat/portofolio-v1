@@ -11,7 +11,8 @@
       "Prisma"
     ],
     "repoUrl": "https://github.com/AnamSadat/cerita.in",
-    "demoUrl": "https://cerita-in.vercel.app"
+    "demoUrl": "https://cerita-in.vercel.app",
+    "duration": "100"
   },
   {
     "title": "Nutrify with AI",
@@ -19,7 +20,8 @@
     "categories": ["Web Development"],
     "techStack": ["Next.js", "TypeScript", "TailwindCSS", "Prisma"],
     "repoUrl": "https://github.com/Capstone-Team-Nutrify/Nutrify-Frontend-Project",
-    "demoUrl": "https://nutrify.web.id"
+    "demoUrl": "https://nutrify.web.id",
+    "duration": "200"
   },
   {
     "title": "Nutrify with AI",
@@ -27,7 +29,8 @@
     "categories": ["Web Development"],
     "techStack": ["Next.js", "TypeScript", "TailwindCSS", "Prisma"],
     "repoUrl": "https://github.com/Capstone-Team-Nutrify/Nutrify-Backend-Project",
-    "demoUrl": "https://nutrify.web.id"
+    "demoUrl": "https://nutrify.web.id",
+    "duration": "300"
   },
   {
     "title": "Nutrify with AI",
@@ -35,7 +38,8 @@
     "categories": ["Web Development"],
     "techStack": ["Next.js", "TypeScript", "TailwindCSS", "Prisma"],
     "repoUrl": "https://github.com/Capstone-Team-Nutrify/nutrify_ml_api",
-    "demoUrl": "https://nutrify.web.id"
+    "demoUrl": "https://nutrify.web.id",
+    "duration": "400"
   },
   {
     "title": "Smartbite with AI",
@@ -43,7 +47,8 @@
     "categories": ["Cloud Computing"],
     "techStack": ["Next.js", "TypeScript", "TailwindCSS", "Prisma"],
     "repoUrl": "https://github.com/AnamSadat/SmartBite",
-    "demoUrl": "https://nutrify.web.id"
+    "demoUrl": "",
+    "duration": "500"
   },
   {
     "title": "Storyly App",
@@ -51,7 +56,8 @@
     "categories": ["Cloud Computing"],
     "techStack": ["Next.js", "TypeScript", "TailwindCSS", "Prisma"],
     "repoUrl": "https://github.com/AnamSadat/storyly-app-native",
-    "demoUrl": "https://nutrify.web.id"
+    "demoUrl": "https://storyly-app-b2d55.web.app/",
+    "duration": "600"
   },
   {
     "title": "OpenMusic API",
@@ -59,6 +65,7 @@
     "categories": ["Cloud Computing"],
     "techStack": ["Next.js", "TypeScript", "TailwindCSS", "Prisma"],
     "repoUrl": "https://github.com/AnamSadat/openmusic-api",
-    "demoUrl": "https://nutrify.web.id"
+    "demoUrl": "",
+    "duration": "700"
   }
 ]

@@ -1,4 +1,4 @@
-import { Briefcase } from 'lucide-react';
+import { University } from 'lucide-react';
 
 const baseSizeIcon = 28;
 const baseClassName = 'text-[#00ff99]';
@@ -31,7 +31,8 @@ export const timeLine = [
       'Membuat sistem SPT Tax untuk pelaporan pajak karyawan',
       'Mempelajari aplikasi mobile menggunakan Flutter',
     ],
-    icon: <Briefcase className={baseClassName} size={baseSizeIcon} />,
+    icon: <University className={baseClassName} size={baseSizeIcon} />,
+    duration: '100',
   },
   {
     title: 'Front-End & Back-End Developer',
@@ -45,7 +46,8 @@ export const timeLine = [
       'Membangun landing page interaktif',
       'Meningkatkan performa SEO klien',
     ],
-    icon: <Briefcase className={baseClassName} size={baseSizeIcon} />,
+    icon: <University className={baseClassName} size={baseSizeIcon} />,
+    duration: '200',
   },
   {
     title: 'Cloud Computing',
@@ -67,7 +69,8 @@ export const timeLine = [
       'Membangun landing page interaktif',
       'Meningkatkan performa SEO klien',
     ],
-    icon: <Briefcase className={baseClassName} size={baseSizeIcon} />,
+    icon: <University className={baseClassName} size={baseSizeIcon} />,
+    duration: '300',
   },
   {
     title: 'Oracle Database Developer',
@@ -81,6 +84,7 @@ export const timeLine = [
       'Membangun landing page interaktif',
       'Meningkatkan performa SEO klien',
     ],
-    icon: <Briefcase className={baseClassName} size={baseSizeIcon} />,
+    icon: <University className={baseClassName} size={baseSizeIcon} />,
+    duration: '400',
   },
 ];
