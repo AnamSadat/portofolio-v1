@@ -9,6 +9,8 @@ import { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import profile from '@/data/profile.json';
 import { cn } from '@/lib/utils';
+import BlurText from '../animations/blur-text';
+import TextType from '../animations/text-type';
 // import { CodeEditorDemo } from '../ui';
 
 type HeroSectionProps = ClassNameProps & {
@@ -31,9 +33,10 @@ export function HeroSection({
     'rounded-full bg-zinc-100 dark:bg-zinc-900 p-2 border border-zinc-200 dark:border-zinc-700 ' +
     'text-zinc-700 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-800 ' +
     'transition-colors duration-200';
-  const baseClassButton = cn(
-    'cursor-pointer bg-green-200 border-2 border-green-500 text-green-800 hover:bg-green-300 dark:border-green-400 dark:bg-zinc-900/50 dark:text-white dark:hover:bg-green-500 transition-all duration-300'
-  );
+  const primaryButton =
+    'cursor-pointer rounded-full bg-green-200 border-2 border-green-500 text-green-800 hover:bg-green-300 dark:border-emerald-400 dark:bg-emerald-900 dark:text-white dark:hover:bg-emerald-500 transition-all duration-300';
+  const secondaryButton =
+    'cursor-pointer rounded-full bg-green-200 border-2 border-emerald-500 text-green-800 hover:bg-green-300 dark:border-emerald-400 dark:bg-zinc-900/50 dark:text-white dark:hover:bg-emerald-500 transition-all duration-300';
   const code = JSON.stringify(profile, null, 2);
 
   return (
@@ -44,16 +47,28 @@ export function HeroSection({
             <h1 className="text-3xl md:text-4xl font-semibold text-zinc-500 dark:text-zinc-400">
               Hello, Saya
             </h1>
-            <h2 className="text-6xl md:text-6xl font-bold tracking-tight">
+            {/* <h2 className="text-7xl md:text-6xl font-bold tracking-tight">
               Anam Sadat
-            </h2>
-            <p className="text-lg dark:text-zinc-400">
-              Mahasiswa Teknik Komputer yang fokus pada Web Development dan
+            </h2> */}
+            <TextType
+              text={['Anam Sadat', 'FullStack Developer']}
+              className="text-7xl md:text-6xl font-bold tracking-tight"
+              typingSpeed={75}
+              pauseDuration={1500}
+              showCursor={true}
+              cursorCharacter="|"
+            />
+            <BlurText
+              text="Mahasiswa Teknik Komputer yang fokus pada Web Development dan
               Cloud Computing. Berpengalaman membangun aplikasi modern dengan
-              React, Next.js, Express, dan Docker.
-            </p>
+              React, Next.js, Express, dan Docker."
+              delay={150}
+              animateBy="words"
+              direction="top"
+              className="text-lg dark:text-zinc-400"
+            />
             <div className="flex gap-4">
-              <Button className={baseClassButton} asChild>
+              <Button className={primaryButton} asChild>
                 <Link
                   href="/files/Resume-Anam-Sadat.pdf"
                   download="Resume-Anam-Sadat.pdf"
@@ -61,7 +76,7 @@ export function HeroSection({
                   <Download className="w-4 h-4" /> Download CV
                 </Link>
               </Button>
-              <Button className={baseClassButton} asChild>
+              <Button className={secondaryButton} asChild>
                 <Link href="mailto:anamsadat3@gmail.com">
                   <Mail className="w-4 h-4" /> Hubungi Saya
                 </Link>
