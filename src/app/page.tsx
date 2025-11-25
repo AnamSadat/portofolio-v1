@@ -6,37 +6,12 @@ import {
   Portofolio,
   Contact,
 } from '@/components/organism';
-import { Archive, Award, Briefcase, ChevronsDown, Smile } from 'lucide-react';
+import { milestones } from '@/data/milestones';
+import { ChevronsDown } from 'lucide-react';
 
 export default function Home() {
-  const myMilestones = [
-    {
-      icon: <Briefcase />,
-      title: '< 1',
-      description: 'Tahun Pengalaman',
-      time: '100',
-    },
-    {
-      icon: <Archive />,
-      title: '5+',
-      description: 'Proyek Selesai',
-      time: '200',
-    },
-    {
-      icon: <Smile />,
-      title: '15+',
-      description: 'Teknologi Dikuasai',
-      time: '300',
-    },
-    {
-      icon: <Award />,
-      title: '3+',
-      description: 'Sertifikasi',
-      time: '400',
-    },
-  ];
   return (
-    <div className="container mx-auto  items-center w-full">
+    <div className="px-40 mx-auto items-center w-full">
       <HeroSection
         className="h-screen flex flex-col pb-8"
         classNameScroll=""
@@ -44,7 +19,7 @@ export default function Home() {
         icon={<ChevronsDown className="mx-auto" />}
         classNameTitle=""
       />
-      <AboutMe className="pt-20 pb-8" id="about" milestones={myMilestones} />
+      <AboutMe className="pt-20 pb-8" id="about" milestones={milestones} />
       <Skill className="pt-20 pb-8" />
       <Experience className="relative w-full mx-auto pt-20 pb-8" />
       <Portofolio className="pt-20 pb-8" />
