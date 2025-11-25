@@ -23,7 +23,7 @@ type Milestone = {
   icon: React.ReactNode;
   title: string;
   description: string;
-  time: string;
+  duration: string;
 };
 
 type AboutMeProps = ClassNameProps &
@@ -37,9 +37,9 @@ export function AboutMe({ id, className, milestones }: AboutMeProps) {
     // 'bg-[#282830] '
     isColorCard
   );
-  const baseCardHeader = cn('text-2xl font-bold flex gap-2 items-center');
+  const baseCardHeader = cn('text-2xl font-bold flex gap-3 items-center');
   const baseCardContentInfo = cn('flex items-center gap-4');
-  const baseSpan = cn('bg-white/20 rounded-xl p-4 text-green-500');
+  const baseIcon = cn('bg-zinc-500/20 rounded-xl p-4 text-green-500');
 
   useEffect(() => {
     AOS.init({
@@ -62,7 +62,9 @@ export function AboutMe({ id, className, milestones }: AboutMeProps) {
           <Card className={baseCard} data-aos={'fade-right'}>
             <CardHeader className={baseCardHeader}>
               <Icon
-                className={'bg-white/20 rounded-xl p-2 text-green-500 text-md'}
+                className={
+                  'bg-zinc-500/20 rounded-xl p-2 text-green-500 text-md'
+                }
               >
                 <User />
               </Icon>
@@ -123,10 +125,10 @@ export function AboutMe({ id, className, milestones }: AboutMeProps) {
             key={index}
             className={baseCard}
             data-aos="fade-up"
-            data-aos-delay={item.time}
+            data-aos-delay={item.duration}
           >
             <CardContent className={baseCardContentInfo}>
-              <Icon className={baseSpan}>{item.icon}</Icon>
+              <Icon className={baseIcon}>{item.icon}</Icon>
               <CardDescription>
                 <h1 className="text-2xl font-bold">{item.title}</h1>
                 <p>{item.description}</p>

@@ -56,6 +56,11 @@ export function Contact({ className }: ContactProps) {
     LOCATION
   )}`;
 
+  const secondaryButton =
+    'cursor-pointer rounded-full bg-green-200 border-2 border-green-500 text-green-800 hover:bg-green-300 dark:border-emerald-400 dark:bg-emerald-900 dark:text-white dark:hover:bg-emerald-500 transition-all duration-300';
+  const primaryButton =
+    'cursor-pointer rounded-full bg-green-200 border-2 border-emerald-500 text-green-800 hover:bg-green-300 dark:border-emerald-400 dark:bg-zinc-900/50 dark:text-white dark:hover:bg-emerald-500 transition-all duration-300';
+
   const {
     register,
     handleSubmit,
@@ -164,12 +169,12 @@ export function Contact({ className }: ContactProps) {
                 </div>
 
                 <div className="flex flex-wrap gap-3 pt-4">
-                  <Button asChild variant="outline">
+                  <Button asChild className={primaryButton}>
                     <Link href={waLink} target="_blank" rel="noreferrer">
                       <Phone className="mr-2 h-4 w-4" /> Chat WhatsApp
                     </Link>
                   </Button>
-                  <Button asChild>
+                  <Button asChild className={secondaryButton}>
                     <Link href={mailto}>
                       <Mail className="mr-2 h-4 w-4" /> Kirim Email
                     </Link>
@@ -360,14 +365,21 @@ export function Contact({ className }: ContactProps) {
                             <Button
                               type="submit"
                               disabled={!agree || isSubmitting || !isValid}
+                              className={cn(
+                                secondaryButton,
+                                'dark:bg-emerald-500 dark:hover:bg-emerald-700'
+                              )}
                             >
                               <Send className="mr-2 h-4 w-4" />
                               {isSubmitting ? 'Mengirim...' : 'Kirim Pesan'}
                             </Button>
                             <Button
-                              variant="outline"
                               type="button"
                               onClick={() => reset()}
+                              className={cn(
+                                primaryButton,
+                                'dark:hover:bg-red-500 dark:hover:border-red-500'
+                              )}
                             >
                               Cancel
                             </Button>
