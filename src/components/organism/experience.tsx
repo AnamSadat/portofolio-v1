@@ -1,11 +1,9 @@
 'use client';
+
 import { useRef } from 'react';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { Persuasif } from '@/components/molecules';
-import { Icon } from '@/components/atoms';
-import { Badge } from '../ui';
+import { Persuasif, TimelineItem } from '@/components/molecules';
+
 import { timeLine } from '@/data/experience-data';
-import { CalendarDays, MapPin } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ClassNameProps } from '@/types';
 import { isColorCard } from '@/constants';
@@ -24,89 +22,6 @@ export type Experience = {
 export type ExperienceProps = ClassNameProps;
 
 const dotColor = '#00ff99';
-
-type TimelineItemProps = {
-  item: (typeof timeLine)[0];
-  color: string;
-};
-
-function TimelineItem({ item, color }: TimelineItemProps) {
-  const baseSizeIcon = 17;
-  return (
-    <div className="relative flex items-start">
-      {/* Dot di garis */}
-      <div className="absolute left-[11px] top-2 z-10">
-        <div
-          className="w-4 h-4 rounded-full border-2 shadow"
-          style={{ backgroundColor: color, borderColor: color }}
-        />
-      </div>
-
-      {/* Card full width */}
-      <div className="pl-12 w-full">
-        <Card
-          className={cn('w-full border-2 text-white shadow-lg', isColorCard)}
-        >
-          <CardHeader className="flex items-center gap-2">
-            <Icon
-              className={'bg-white/20 rounded-xl p-2 text-green-500 text-md'}
-            >
-              {item.icon}
-            </Icon>
-            <CardTitle
-              className="text-xl font-bold flex flex-col gap-3 pl-5"
-              style={{ color }}
-            >
-              {item.title}
-              <p className="text-neutral-300 font-medium">{item.company}</p>
-              <p className="text-sm text-neutral-400 flex gap-2 items-center">
-                <CalendarDays size={baseSizeIcon} />
-                <span>{item.date}</span>
-                <MapPin size={baseSizeIcon} />
-                <span>{item.location}</span>
-              </p>
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            <p className="text-neutral-300">{item.description}</p>
-
-            {/* Tech list */}
-            {item.tech && (
-              <div>
-                <p className="font-semibold text-white mb-2">
-                  Teknologi & Skills:
-                </p>
-                <ul className="flex flex-wrap gap-2 items-center">
-                  {item.tech.map((t, i) => (
-                    <Badge
-                      key={i}
-                      variant={'outline'}
-                      className="rounded-2xl text-[#00ff99] border-2 border-green-700 bg-[#00ff99]/5"
-                    >
-                      {t}
-                    </Badge>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {/* Achievements */}
-            {item.achievements && (
-              <div>
-                <p className="font-semibold text-white mb-1">Pencapaian:</p>
-                <ul className="list-disc list-inside space-y-1 text-neutral-300">
-                  {item.achievements.map((a, i) => (
-                    <li key={i}>{a}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </CardContent>
-        </Card>
-      </div>
-    </div>
-  );
-}
 
 export function Experience({ className }: ExperienceProps) {
   const ref = useRef(null);
@@ -135,8 +50,10 @@ export function Experience({ className }: ExperienceProps) {
       <Persuasif
         className={cn('text-center border-2', isColorCard)}
         classNameLayout="py-8"
-        title="Siap untuk Kolaborasi?"
+        title="Siap untuk"
         classNameTitle="text-2xl font-bold"
+        span="Kolaborasi?"
+        classNameSpan="text-emerald-500"
         description="Mari berdiskusi tentang proyek selanjutnya dan bagaimana saya dapat membantu mewujudkan visi digital Anda."
         classNameDescription="max-w-2xl mx-auto"
       />
