@@ -1,3 +1,5 @@
+'use client';
+
 import { ClassNameProps } from '@/types';
 import {
   Badge,
@@ -7,7 +9,6 @@ import {
   CardHeader,
 } from '@/components/ui';
 import { Icon } from '@/components/atoms';
-import { Globe } from 'lucide-react';
 import {
   titleSkill,
   skillFrontend,
@@ -17,6 +18,9 @@ import {
 } from '@/data/skill';
 import { cn } from '@/lib/utils';
 import { isColorCard } from '@/constants';
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 type SkillProps = ClassNameProps;
 
@@ -32,6 +36,13 @@ export function Skill({ className }: SkillProps) {
     'Devops & Devtools': skillDevopsTools,
   };
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+    });
+  }, []);
+
   return (
     <div className={baseClass} id="skills">
       <header className="text-center">
@@ -46,14 +57,19 @@ export function Skill({ className }: SkillProps) {
           const skillsList = skillsByCategory[skillCategory] || []; // Ambil skill berdasarkan kategori
 
           return (
-            <Card key={index} className={baseCard}>
+            <Card
+              key={index}
+              className={baseCard}
+              data-aos="fade-up"
+              data-aos-delay={skills.duration}
+            >
               <CardHeader className="gap-3 flex items-center">
                 <Icon
                   className={
-                    'bg-white/20 rounded-xl p-2 text-green-500 text-md'
+                    'bg-zinc-500/20 rounded-xl p-2 text-green-500 text-md'
                   }
                 >
-                  <Globe />
+                  {skills.icon}
                 </Icon>
                 <h1 className="font-bold text-xl">{skillCategory}</h1>
               </CardHeader>
