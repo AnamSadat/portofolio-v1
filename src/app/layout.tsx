@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Navbar } from '@/components/molecules/navbar';
-import { GridBackgroundDemo } from '@/components/organism/background-grid';
+import { GridBackground } from '@/components/organism/background-grid';
 import { Footer } from '@/components/organism';
 import { Toaster } from 'react-hot-toast';
 import { BackToTopButton } from '@/components/molecules/back-to-top-button';
@@ -57,12 +57,12 @@ export default function RootLayout({
               },
             }}
           />
-          <GridBackgroundDemo>
+          <GridBackground>
             <Navbar />
             {children}
             <Footer />
             <BackToTopButton />
-          </GridBackgroundDemo>
+          </GridBackground>
         </ThemeProvider>
       </body>
     </html>

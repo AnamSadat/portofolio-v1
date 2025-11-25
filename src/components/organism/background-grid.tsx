@@ -2,11 +2,7 @@ import { isDark } from '@/constants';
 import { cn } from '@/lib/utils';
 import React from 'react';
 
-export function GridBackgroundDemo({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export function GridBackground({ children }: { children: React.ReactNode }) {
   return (
     <div
       className={cn(
