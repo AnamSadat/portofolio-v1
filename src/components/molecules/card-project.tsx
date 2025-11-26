@@ -1,5 +1,5 @@
 'use client';
-import * as React from 'react';
+
 import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 import {
@@ -12,6 +12,9 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
+import { useMemo } from 'react';
 
 export type CardProjectProps = {
   title: string;
@@ -21,6 +24,7 @@ export type CardProjectProps = {
   repoUrl: string;
   demoUrl?: string;
   imageUrl?: string;
+  aosDelay?: string;
   className?: string;
 };
 
@@ -49,29 +53,41 @@ export function CardProject({
   repoUrl,
   demoUrl,
   imageUrl,
+  aosDelay,
   className,
 }: CardProjectProps) {
-  const og = React.useMemo(
+  const og = useMemo(
     () => imageUrl || githubOgFromRepo(repoUrl),
     [imageUrl, repoUrl]
   );
+
   const cats = Array.isArray(categories)
     ? categories
     : categories
     ? [categories]
     : [];
 
+  // styling visual button aja, bukan layout flex-nya
+  const primaryButton =
+    'px-4 py-2 text-sm rounded-full flex items-center gap-2 font-medium bg-emerald-400 dark:bg-emerald-500 text-black hover:bg-emerald-500 dark:hover:bg-emerald-600 transition-all';
+  const secondaryButton =
+    'px-4 py-2 text-sm bg-gray-200 dark:bg-[#1b1b1b] rounded-full flex items-center gap-2 font-medium border border-emerald-400 text-emerald-600 hover:bg-emerald-100 transition dark:text-white dark:hover:bg-emerald-500 dark:hover:text-black';
+
   return (
     <motion.div
       whileHover={{ y: -4, scale: 1.01 }}
       transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-      className={'group relative ' + (className ?? '')}
+      className={cn('group relative h-full', className)}
     >
-      <div className="pointer-events-none absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-indigo-500/30 via-fuchsia-500/30 to-emerald-500/30 opacity-0 blur transition-opacity duration-300 group-hover:opacity-100" />
+      <div className="pointer-events-none absolute -inset-0.5 rounded-2xl bg-linear-to-r from-indigo-500/30 via-fuchsia-500/30 to-emerald-500/30 opacity-0 blur transition-opacity duration-300 group-hover:opacity-100" />
 
-      <Card className="relative overflow-hidden rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm shadow-sm transition-shadow group-hover:shadow-xl pt-0">
-        {/* Gambar full ke atas */}
-        <div className="relative w-full h-56 overflow-hidden">
+      <Card
+        className="relative flex h-full min-h-[500px] flex-col overflow-hidden rounded-2xl border border-border/60 bg-background/90 pt-0 shadow-sm backdrop-blur-sm transition-shadow group-hover:shadow-xl"
+        data-aos="fade-up"
+        data-aos-delay={aosDelay}
+      >
+        {/* Gambar */}
+        <div className="relative h-56 w-full overflow-hidden">
           {og ? (
             <Image
               src={og}
@@ -90,7 +106,7 @@ export function CardProject({
                 <Badge
                   key={c}
                   variant="secondary"
-                  className="backdrop-blur bg-background/80"
+                  className="rounded-2xl text-black dark:text-white border-2 dark:border-green-700/50 bg-[#282830]/20 dark:bg-[#282830]"
                 >
                   {c}
                 </Badge>
@@ -106,7 +122,8 @@ export function CardProject({
           </CardDescription>
         </CardHeader>
 
-        <CardContent className="space-y-4">
+        {/* flex-1 biar konten isi ngisi tinggi, dan button bisa didorong ke bawah */}
+        <CardContent className="flex flex-1 flex-col space-y-4">
           {techStack && techStack.length > 0 && (
             <div className="flex flex-wrap gap-2">
               {techStack.map((t) => (
@@ -117,19 +134,32 @@ export function CardProject({
             </div>
           )}
 
-          <div className="mt-2 flex flex-wrap items-center gap-3">
+          {/* mt-auto: dorong button ke bawah */}
+          <div className="mt-auto pt-2 flex flex-wrap justify-start items-center gap-3">
             {demoUrl && (
-              <Button asChild className="rounded-xl">
-                <a href={demoUrl} target="_blank" rel="noreferrer">
-                  <ExternalLink className="mr-2 h-4 w-4" /> Demo
-                </a>
+              <Button asChild className={primaryButton}>
+                <Link
+                  href={demoUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-2"
+                >
+                  <ExternalLink className="h-4 w-4 shrink-0" />
+                  <span className="leading-none">Demo</span>
+                </Link>
               </Button>
             )}
 
-            <Button asChild variant="secondary" className="rounded-xl">
-              <a href={repoUrl} target="_blank" rel="noreferrer">
-                <Github className="mr-2 h-4 w-4" /> GitHub
-              </a>
+            <Button asChild className={secondaryButton}>
+              <Link
+                href={repoUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2"
+              >
+                <Github className="h-4 w-4 shrink-0" />
+                <span className="leading-none">GitHub</span>
+              </Link>
             </Button>
           </div>
         </CardContent>
@@ -137,13 +167,3 @@ export function CardProject({
     </motion.div>
   );
 }
-
-// Contoh penggunaan
-// <CardProject
-//   title="Todo App"
-//   description="Aplikasi todo sederhana dengan autentikasi."
-//   categories={["Web Development"]}
-//   techStack={["Next.js", "TypeScript", "TailwindCSS", "Prisma"]}
-//   repoUrl="https://github.com/vercel/next.js"
-//   demoUrl="https://todo-demo.example.com"
-// />

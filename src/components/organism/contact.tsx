@@ -1,10 +1,9 @@
 'use client';
 import * as React from 'react';
 import { Send, Phone, Mail, MapPin, CheckCircle } from 'lucide-react';
-import { Persuasif } from '../molecules';
+import { Header, Persuasif } from '../molecules';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import {
@@ -20,14 +19,17 @@ import Link from 'next/link';
 import { useForm, Controller } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-
-// <-- tambahan import untuk InputGroup
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupText,
   InputGroupTextarea,
 } from '@/components/ui/input-group';
+import { ClassNameProps } from '@/types';
+import { cn } from '@/lib/utils';
+import { isColorCard } from '@/constants';
+
+export type ContactProps = ClassNameProps;
 
 const contactSchema = z.object({
   name: z.string().min(2, { message: 'Nama minimal 2 karakter' }),
@@ -41,7 +43,9 @@ const contactSchema = z.object({
 
 type ContactFormValues = z.infer<typeof contactSchema>;
 
-export function Contact() {
+export function Contact({ className }: ContactProps) {
+  const baseClass = cn(className);
+
   const WA_NUMBER = '+6281234567890';
   const EMAIL = 'halo@example.com';
   const LOCATION = 'Kuningan, Jawa Barat';
@@ -52,6 +56,11 @@ export function Contact() {
     LOCATION
   )}`;
 
+  const secondaryButton =
+    'cursor-pointer rounded-full bg-green-200 border-2 border-green-500 text-green-800 hover:bg-green-300 dark:border-emerald-400 dark:bg-emerald-900 dark:text-white dark:hover:bg-emerald-500 transition-all duration-300';
+  const primaryButton =
+    'cursor-pointer rounded-full bg-green-200 border-2 border-emerald-500 text-green-800 hover:bg-green-300 dark:border-emerald-400 dark:bg-zinc-900/50 dark:text-white dark:hover:bg-emerald-500 transition-all duration-300';
+
   const {
     register,
     handleSubmit,
@@ -61,6 +70,8 @@ export function Contact() {
     formState: { isSubmitting, isValid, errors },
   } = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
+    mode: 'onChange',
+    reValidateMode: 'onChange',
     defaultValues: {
       name: '',
       email: '',
@@ -95,12 +106,16 @@ export function Contact() {
   }
 
   return (
-    <section className="w-full py-16 md:py-24 lg:py-28" id="contact">
+    <section className={baseClass} id="contact">
       <div className="container mx-auto px-4">
         <div className="mb-10 text-center">
-          <h1 className="text-3xl font-semibold tracking-tight md:text-4xl">
-            Mari Berkomunikasi
-          </h1>
+          <Header
+            title="Mari"
+            titleColor="Berkomunikasi"
+            className="text-3xl font-semibold tracking-tight md:text-5xl md:font-bold"
+            classNameTitleColor="text-custom"
+            space
+          />
           <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">
             Punya ide, kolaborasi, atau butuh bantuan? Kirim pesan langsung atau
             hubungi melalui WhatsApp & email.
@@ -158,12 +173,12 @@ export function Contact() {
                 </div>
 
                 <div className="flex flex-wrap gap-3 pt-4">
-                  <Button asChild variant="outline">
+                  <Button asChild className={primaryButton}>
                     <Link href={waLink} target="_blank" rel="noreferrer">
                       <Phone className="mr-2 h-4 w-4" /> Chat WhatsApp
                     </Link>
                   </Button>
-                  <Button asChild>
+                  <Button asChild className={secondaryButton}>
                     <Link href={mailto}>
                       <Mail className="mr-2 h-4 w-4" /> Kirim Email
                     </Link>
@@ -322,16 +337,17 @@ export function Contact() {
                           <Controller
                             control={control}
                             name="agree"
+                            defaultValue={false}
                             render={({ field }) => (
                               <Checkbox
                                 id="agree"
-                                checked={!!field.value}
-                                onCheckedChange={(v) =>
-                                  field.onChange(v === true)
-                                }
+                                checked={field.value}
+                                onCheckedChange={field.onChange}
+                                ref={field.ref}
                               />
                             )}
                           />
+
                           <FieldLabel
                             htmlFor="agree"
                             className="font-normal"
@@ -353,14 +369,21 @@ export function Contact() {
                             <Button
                               type="submit"
                               disabled={!agree || isSubmitting || !isValid}
+                              className={cn(
+                                secondaryButton,
+                                'dark:bg-emerald-500 dark:hover:bg-emerald-700'
+                              )}
                             >
                               <Send className="mr-2 h-4 w-4" />
                               {isSubmitting ? 'Mengirim...' : 'Kirim Pesan'}
                             </Button>
                             <Button
-                              variant="outline"
                               type="button"
                               onClick={() => reset()}
+                              className={cn(
+                                primaryButton,
+                                'dark:hover:bg-red-500 dark:hover:border-red-500'
+                              )}
                             >
                               Cancel
                             </Button>
@@ -384,15 +407,15 @@ export function Contact() {
 
         <div className="mt-16">
           <Persuasif
-            className="text-center bg-[#282830] border-2"
+            className={cn('text-center border-2', isColorCard)}
             title="Siap untuk colaborations"
             classNameTitle="text-2xl font-bold"
             description="Mari berdiskusi tentang proyek selanjutnya dan bagaimana saya dapat membantu mewujudkan visi digital Anda."
             classNameDescription=""
             classNameChildren="flex gap-5 mx-auto"
           >
-            <Button>Download CV</Button>
-            <Button>Lets start project</Button>
+            <Button className={secondaryButton}>Download CV</Button>
+            <Button className={primaryButton}>Lets start project</Button>
           </Persuasif>
         </div>
       </div>

@@ -11,7 +11,7 @@ export function Footer() {
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Logo, Description & Social */}
         <div className="flex flex-col space-y-4">
-          <Image src="/logo-white.png" alt="Logo" width={200} height={50} />
+          <p className="text-4xl font-bold">Portofolio</p>
           <p className="text-gray-400 text-sm">
             Kami menyediakan layanan terbaik untuk kebutuhan Anda. Terima kasih
             telah bersama kami.

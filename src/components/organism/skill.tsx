@@ -1,3 +1,5 @@
+'use client';
+
 import { ClassNameProps } from '@/types';
 import {
   Badge,
@@ -7,7 +9,6 @@ import {
   CardHeader,
 } from '@/components/ui';
 import { Icon } from '@/components/atoms';
-import { Globe } from 'lucide-react';
 import {
   titleSkill,
   skillFrontend,
@@ -16,12 +17,15 @@ import {
   skillDevopsTools,
 } from '@/data/skill';
 import { cn } from '@/lib/utils';
+import { isColorCard } from '@/constants';
+import { Header } from '../molecules';
+import { AOSInit } from '@/lib/aos-init';
 
 type SkillProps = ClassNameProps;
 
 export function Skill({ className }: SkillProps) {
   const baseClass = cn(className);
-  const baseCard = cn(' bg-[#282830]');
+  const baseCard = cn('hover:shadow-custom-hover', isColorCard);
 
   // Menggunakan mapping untuk skill sesuai kategori
   const skillsByCategory: { [key: string]: string[] } = {
@@ -31,10 +35,12 @@ export function Skill({ className }: SkillProps) {
     'Devops & Devtools': skillDevopsTools,
   };
 
+  AOSInit();
+
   return (
     <div className={baseClass} id="skills">
       <header className="text-center">
-        <h1 className="text-5xl font-bold">Skill</h1>
+        <Header title="Skill" className="text-5xl font-bold" />
         <p className="text-lg pt-5 text-[#d9fef0]">
           Mengenal lebih dekat sosok di balik karya-karya digital
         </p>
@@ -45,14 +51,19 @@ export function Skill({ className }: SkillProps) {
           const skillsList = skillsByCategory[skillCategory] || []; // Ambil skill berdasarkan kategori
 
           return (
-            <Card key={index} className={baseCard}>
+            <Card
+              key={index}
+              className={baseCard}
+              data-aos="fade-up"
+              data-aos-delay={skills.duration}
+            >
               <CardHeader className="gap-3 flex items-center">
                 <Icon
                   className={
-                    'bg-white/20 rounded-xl p-2 text-green-500 text-md'
+                    'bg-zinc-500/20 rounded-xl p-2 text-green-500 text-md'
                   }
                 >
-                  <Globe />
+                  {skills.icon}
                 </Icon>
                 <h1 className="font-bold text-xl">{skillCategory}</h1>
               </CardHeader>
@@ -60,12 +71,12 @@ export function Skill({ className }: SkillProps) {
                 <p>{skills.description}</p>
               </CardDescription>
               <CardContent>
-                <span>
+                <span className="flex flex-wrap gap-2">
                   {skillsList.map((item, index) => (
                     <Badge
                       key={index}
                       variant={'outline'}
-                      className="rounded-2xl"
+                      className="rounded-2xl text-white border-2 border-green-700/50 bg-[#282830]"
                     >
                       {item}
                     </Badge>

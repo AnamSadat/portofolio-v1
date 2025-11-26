@@ -3,6 +3,9 @@ import { ModeToggle } from '@/components/molecules';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { Button } from '../ui';
+import { Download, Mail } from 'lucide-react';
+import { buttonColor } from '@/lib/button-custom';
 
 export function Navbar() {
   const routes = [
@@ -16,7 +19,7 @@ export function Navbar() {
 
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string>('#home');
-  const NAV_OFFSET = 100; // tinggi kira-kira navbar; sesuaikan jika perlu
+  const NAV_OFFSET = 30; // tinggi kira-kira navbar; sesuaikan jika perlu
 
   // smooth scroll on click
   const smoothScrollToHash = (hash: string) => {
@@ -59,6 +62,11 @@ export function Navbar() {
     scrolled ? 'py-4' : 'py-5'
   );
 
+  const primaryButton =
+    'cursor-pointer rounded-full bg-green-200 border-2 border-green-500 text-green-800 hover:bg-green-300 dark:border-emerald-400 dark:bg-emerald-900 dark:text-white dark:hover:bg-emerald-500 transition-all duration-300';
+  const secondaryButton =
+    'cursor-pointer rounded-full bg-green-200 border-2 border-emerald-500 text-green-800 hover:bg-green-300 dark:border-emerald-400 dark:bg-background dark:text-white dark:hover:bg-emerald-500 transition-all duration-300';
+
   return (
     <div className={baseClass}>
       <div className={baseContainer}>
@@ -85,8 +93,8 @@ export function Navbar() {
                   smoothScrollToHash(route.href);
                 }}
                 className={cn(
-                  'relative group text-white font-medium hover:text-custom-hover transition-all duration-300',
-                  activeSection === route.href && '!text-custom-hover'
+                  'relative group dark:text-white font-medium hover:text-custom-hover transition-all duration-300 text-black',
+                  activeSection === route.href && 'text-custom-hover!'
                 )}
               >
                 {route.label}
@@ -103,8 +111,23 @@ export function Navbar() {
             </li>
           ))}
         </ul>
+        <div className="flex gap-4">
+          <Button className={primaryButton} asChild>
+            <Link
+              href="/files/Resume-Anam-Sadat.pdf"
+              download="Resume-Anam-Sadat.pdf"
+            >
+              <Download className="w-4 h-4" /> Unduh
+            </Link>
+          </Button>
+          <Button className={secondaryButton} asChild>
+            <Link href="mailto:anamsadat3@gmail.com">
+              <Mail className="w-4 h-4" /> Hire Me
+            </Link>
+          </Button>
 
-        <ModeToggle />
+          {/* <ModeToggle /> */}
+        </div>
       </div>
     </div>
   );

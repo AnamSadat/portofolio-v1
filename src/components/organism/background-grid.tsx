@@ -1,13 +1,15 @@
+import { isDark } from '@/constants';
 import { cn } from '@/lib/utils';
 import React from 'react';
 
-export function GridBackgroundDemo({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export function GridBackground({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative flex h-full w-full items-center justify-center bg-[#f9fafb] dark:bg-[#1c1c22]">
+    <div
+      className={cn(
+        'relative flex h-full w-full items-center justify-center bg-[#f9fafb]',
+        isDark
+      )}
+    >
       <div
         className={cn(
           'absolute inset-0',

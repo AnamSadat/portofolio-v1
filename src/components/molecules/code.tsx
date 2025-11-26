@@ -68,7 +68,7 @@ export function CodeBlockSnapshot({
           onClick={handleCopy}
           size="sm"
           variant="ghost"
-          className="h-7 w-7 p-0"
+          className="h-7 w-7 p-0 cursor-pointer"
         >
           {copied ? (
             <Check className="h-4 w-4 text-green-500" />
