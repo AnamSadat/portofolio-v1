@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 import { Send, Phone, Mail, MapPin, CheckCircle } from 'lucide-react';
-import { Persuasif } from '../molecules';
+import { Header, Persuasif } from '../molecules';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -109,9 +109,13 @@ export function Contact({ className }: ContactProps) {
     <section className={baseClass} id="contact">
       <div className="container mx-auto px-4">
         <div className="mb-10 text-center">
-          <h1 className="text-3xl font-semibold tracking-tight md:text-5xl md:font-bold">
-            Mari Berkomunikasi
-          </h1>
+          <Header
+            title="Mari"
+            titleColor="Berkomunikasi"
+            className="text-3xl font-semibold tracking-tight md:text-5xl md:font-bold"
+            classNameTitleColor="text-custom"
+            space
+          />
           <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">
             Punya ide, kolaborasi, atau butuh bantuan? Kirim pesan langsung atau
             hubungi melalui WhatsApp & email.
@@ -410,8 +414,8 @@ export function Contact({ className }: ContactProps) {
             classNameDescription=""
             classNameChildren="flex gap-5 mx-auto"
           >
-            <Button>Download CV</Button>
-            <Button>Lets start project</Button>
+            <Button className={secondaryButton}>Download CV</Button>
+            <Button className={primaryButton}>Lets start project</Button>
           </Persuasif>
         </div>
       </div>

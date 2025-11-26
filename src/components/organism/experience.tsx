@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
-import { Persuasif, TimelineItem } from '@/components/molecules';
+import { Header, Persuasif, TimelineItem } from '@/components/molecules';
 
 import { timeLine } from '@/data/experience-data';
 import { cn } from '@/lib/utils';
@@ -30,9 +30,12 @@ export function Experience({ className }: ExperienceProps) {
   return (
     <>
       <div ref={ref} className={baseClass} id="experience">
-        <h1 className="text-5xl font-bold text-center mb-16 text-white">
-          Experience
-        </h1>
+        <Header
+          title="Expe"
+          titleColor="rience"
+          className="text-5xl font-bold text-center mb-16 text-white"
+          classNameTitleColor="text-custom"
+        />
 
         <div className="relative">
           {/* Garis background */}
@@ -48,7 +51,10 @@ export function Experience({ className }: ExperienceProps) {
       </div>
       {/* 1d1d22 */}
       <Persuasif
-        className={cn('text-center border-2', isColorCard)}
+        className={cn(
+          'text-center border-2 hover:shadow-custom-hover',
+          isColorCard
+        )}
         classNameLayout="py-8"
         title="Siap untuk"
         classNameTitle="text-2xl font-bold"
