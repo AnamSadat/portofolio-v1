@@ -45,7 +45,10 @@ export function TimelineItem({ item, color }: TimelineItemProps) {
         data-aos-delay={item.duration}
       >
         <Card
-          className={cn('w-full border-2 text-white shadow-lg', isColorCard)}
+          className={cn(
+            'w-full border-2 text-white shadow-md hover:shadow-custom-hover',
+            isColorCard
+          )}
         >
           <CardHeader className="flex gap-1">
             <Icon
