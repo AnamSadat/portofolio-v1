@@ -1,5 +1,5 @@
 'use client';
-import * as React from 'react';
+
 import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 import {
@@ -14,6 +14,7 @@ import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
+import { useMemo } from 'react';
 
 export type CardProjectProps = {
   title: string;
@@ -23,6 +24,7 @@ export type CardProjectProps = {
   repoUrl: string;
   demoUrl?: string;
   imageUrl?: string;
+  aosDelay?: string;
   className?: string;
 };
 
@@ -51,9 +53,10 @@ export function CardProject({
   repoUrl,
   demoUrl,
   imageUrl,
+  aosDelay,
   className,
 }: CardProjectProps) {
-  const og = React.useMemo(
+  const og = useMemo(
     () => imageUrl || githubOgFromRepo(repoUrl),
     [imageUrl, repoUrl]
   );
@@ -78,7 +81,11 @@ export function CardProject({
     >
       <div className="pointer-events-none absolute -inset-0.5 rounded-2xl bg-linear-to-r from-indigo-500/30 via-fuchsia-500/30 to-emerald-500/30 opacity-0 blur transition-opacity duration-300 group-hover:opacity-100" />
 
-      <Card className="relative flex h-full min-h-[500px] flex-col overflow-hidden rounded-2xl border border-border/60 bg-background/90 pt-0 shadow-sm backdrop-blur-sm transition-shadow group-hover:shadow-xl">
+      <Card
+        className="relative flex h-full min-h-[500px] flex-col overflow-hidden rounded-2xl border border-border/60 bg-background/90 pt-0 shadow-sm backdrop-blur-sm transition-shadow group-hover:shadow-xl"
+        data-aos="fade-up"
+        data-aos-delay={aosDelay}
+      >
         {/* Gambar */}
         <div className="relative h-56 w-full overflow-hidden">
           {og ? (
