@@ -14,10 +14,9 @@ import Image from 'next/image';
 import { Icon } from '../atoms';
 import { titleSkill } from '@/data/skill';
 import { cn } from '@/lib/utils';
-import React, { useEffect } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 import { isColorCard } from '@/constants';
+import { Header } from '../molecules';
+import { AOSInit } from '@/lib/aos-init';
 
 type Milestone = {
   icon: React.ReactNode;
@@ -35,24 +34,26 @@ export function AboutMe({ id, className, milestones }: AboutMeProps) {
   const baseClass = cn(className);
   const baseCard = cn(
     // 'bg-[#282830] '
+    'hover:shadow-custom-hover transition-all duration-300',
     isColorCard
   );
   const baseCardHeader = cn('text-2xl font-bold flex gap-3 items-center');
   const baseCardContentInfo = cn('flex items-center gap-4');
   const baseIcon = cn('bg-zinc-500/20 rounded-xl p-4 text-green-500');
 
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: false,
-    });
-  }, []);
+  AOSInit();
 
   return (
     <div className={baseClass} id={id}>
       <header className="text-center ">
-        <h1 className="text-5xl font-bold">About Me</h1>
-        <p className="text-lg pt-5 text-[#d9fef0]">
+        <Header
+          title="About"
+          titleColor="Me"
+          className=""
+          classNameTitleColor="text-custom"
+          space
+        />
+        <p className="text-lg pt-5 text-white">
           Mengenal lebih dekat sosok di balik karya-karya digital
         </p>
       </header>

@@ -18,15 +18,14 @@ import {
 } from '@/data/skill';
 import { cn } from '@/lib/utils';
 import { isColorCard } from '@/constants';
-import { useEffect } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import { Header } from '../molecules';
+import { AOSInit } from '@/lib/aos-init';
 
 type SkillProps = ClassNameProps;
 
 export function Skill({ className }: SkillProps) {
   const baseClass = cn(className);
-  const baseCard = cn(isColorCard);
+  const baseCard = cn('hover:shadow-custom-hover', isColorCard);
 
   // Menggunakan mapping untuk skill sesuai kategori
   const skillsByCategory: { [key: string]: string[] } = {
@@ -36,17 +35,12 @@ export function Skill({ className }: SkillProps) {
     'Devops & Devtools': skillDevopsTools,
   };
 
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: false,
-    });
-  }, []);
+  AOSInit();
 
   return (
     <div className={baseClass} id="skills">
       <header className="text-center">
-        <h1 className="text-5xl font-bold">Skill</h1>
+        <Header title="Skill" className="text-5xl font-bold" />
         <p className="text-lg pt-5 text-[#d9fef0]">
           Mengenal lebih dekat sosok di balik karya-karya digital
         </p>

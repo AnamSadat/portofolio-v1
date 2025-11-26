@@ -13,10 +13,11 @@ import {
   ToggleGroup,
   ToggleGroupItem,
 } from '@/components/ui';
-import { CardProject, Persuasif } from '../molecules';
+import { CardProject, Header, Persuasif } from '../molecules';
 import projects from '@/data/portofolio.json';
 import { cn } from '@/lib/utils';
 import { isBlack, isColorCard } from '@/constants';
+import { AOSInit } from '@/lib/aos-init';
 import { useState } from 'react';
 
 type PortofolioProps = ClassNameProps;
@@ -28,6 +29,7 @@ export type Project = {
   techStack: string[];
   repoUrl: string;
   demoUrl: string;
+  duration: string;
 };
 
 export function Portofolio({ className }: PortofolioProps) {
@@ -57,13 +59,19 @@ export function Portofolio({ className }: PortofolioProps) {
     ).length,
   };
 
+  AOSInit();
+
   return (
     <>
       <div className={baseClass} id="portofolio">
         <div>
-          <h1 className="text-5xl font-bold text-center pb-10">
-            Portofolio saya
-          </h1>
+          <Header
+            title="Portofolio"
+            titleColor="Saya"
+            className="xt-5xl font-bold text-center pb-10"
+            classNameTitleColor="text-custom"
+            space
+          />
           <p>ya begitulah der</p>
         </div>
         <div className="gap-3 flex justify-center py-10">
@@ -102,6 +110,7 @@ export function Portofolio({ className }: PortofolioProps) {
               techStack={project.techStack}
               repoUrl={project.repoUrl}
               demoUrl={project.demoUrl}
+              aosDelay={project.duration}
               key={index}
             />
           ))}
