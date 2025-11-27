@@ -7,9 +7,6 @@ import { CalendarDays, MapPin } from 'lucide-react';
 import { timeLine } from '@/data/experience-data';
 import { cn } from '@/lib/utils';
 import { isColorCard } from '@/constants';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import { useEffect } from 'react';
 
 type TimelineItemProps = {
   item: (typeof timeLine)[0];
@@ -18,13 +15,6 @@ type TimelineItemProps = {
 
 export function TimelineItem({ item, color }: TimelineItemProps) {
   const baseSizeIcon = 17;
-
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: false,
-    });
-  });
 
   return (
     <div className="relative flex items-start">
@@ -35,6 +25,7 @@ export function TimelineItem({ item, color }: TimelineItemProps) {
           style={{ backgroundColor: color, borderColor: color }}
           data-aos="fade-up"
           data-aos-delay={item.duration}
+          data-aos-once={item.once}
         />
       </div>
 
@@ -43,6 +34,7 @@ export function TimelineItem({ item, color }: TimelineItemProps) {
         className="pl-12 w-full"
         data-aos="fade-up"
         data-aos-delay={item.duration}
+        data-aos-once={item.once}
       >
         <Card
           className={cn(

@@ -17,12 +17,14 @@ import { cn } from '@/lib/utils';
 import { isColorCard } from '@/constants';
 import { Header } from '../molecules';
 import { AOSInit } from '@/lib/aos-init';
+import { Description } from '../molecules/description';
 
 type Milestone = {
   icon: React.ReactNode;
   title: string;
   description: string;
   duration: string;
+  once: boolean;
 };
 
 type AboutMeProps = ClassNameProps &
@@ -53,14 +55,18 @@ export function AboutMe({ id, className, milestones }: AboutMeProps) {
           classNameTitleColor="text-custom"
           space
         />
-        <p className="text-lg pt-5 text-white">
+        <Description>
           Mengenal lebih dekat sosok di balik karya-karya digital
-        </p>
+        </Description>
       </header>
       <div className="grid grid-cols-2">
         {/* ... bagian profile dan skill tetap sama ... */}
         <div className="pt-20 grid grid-rows-1 gap-5">
-          <Card className={baseCard} data-aos={'fade-right'}>
+          <Card
+            className={baseCard}
+            data-aos={'fade-right'}
+            data-aos-once={true}
+          >
             <CardHeader className={baseCardHeader}>
               <Icon
                 className={
@@ -84,7 +90,7 @@ export function AboutMe({ id, className, milestones }: AboutMeProps) {
               <MapPin size={16} /> &nbsp; Kuningan, Jawa Barat
             </CardFooter>
           </Card>
-          <Card className={baseCard} data-aos={'fade-up'}>
+          <Card className={baseCard} data-aos={'fade-up'} data-aos-once={true}>
             <CardHeader className={baseCardHeader}>
               Minat dan keahlian
             </CardHeader>
@@ -107,6 +113,7 @@ export function AboutMe({ id, className, milestones }: AboutMeProps) {
           <Card
             className={`p-5 rounded-2xl ${baseCard}`}
             data-aos={'fade-left'}
+            data-aos-once={true}
           >
             <Image
               src={'/anam.jpg'}
@@ -127,6 +134,7 @@ export function AboutMe({ id, className, milestones }: AboutMeProps) {
             className={baseCard}
             data-aos="fade-up"
             data-aos-delay={item.duration}
+            data-aos-once={item.once}
           >
             <CardContent className={baseCardContentInfo}>
               <Icon className={baseIcon}>{item.icon}</Icon>

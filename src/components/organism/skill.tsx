@@ -20,6 +20,7 @@ import { cn } from '@/lib/utils';
 import { isColorCard } from '@/constants';
 import { Header } from '../molecules';
 import { AOSInit } from '@/lib/aos-init';
+import { Description } from '../molecules/description';
 
 type SkillProps = ClassNameProps;
 
@@ -41,9 +42,9 @@ export function Skill({ className }: SkillProps) {
     <div className={baseClass} id="skills">
       <header className="text-center">
         <Header title="Skill" className="text-5xl font-bold" />
-        <p className="text-lg pt-5 text-[#d9fef0]">
+        <Description>
           Mengenal lebih dekat sosok di balik karya-karya digital
-        </p>
+        </Description>
       </header>
       <div className="grid grid-cols-3 gap-5 pt-10">
         {titleSkill.map((skills, index) => {
@@ -56,6 +57,7 @@ export function Skill({ className }: SkillProps) {
               className={baseCard}
               data-aos="fade-up"
               data-aos-delay={skills.duration}
+              data-aos-once={skills.once}
             >
               <CardHeader className="gap-3 flex items-center">
                 <Icon

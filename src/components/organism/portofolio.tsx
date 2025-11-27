@@ -19,6 +19,7 @@ import { cn } from '@/lib/utils';
 import { isBlack, isColorCard } from '@/constants';
 import { AOSInit } from '@/lib/aos-init';
 import { useState } from 'react';
+import { Description } from '../molecules/description';
 
 type PortofolioProps = ClassNameProps;
 
@@ -30,6 +31,7 @@ export type Project = {
   repoUrl: string;
   demoUrl: string;
   duration: string;
+  once: boolean;
 };
 
 export function Portofolio({ className }: PortofolioProps) {
@@ -40,6 +42,9 @@ export function Portofolio({ className }: PortofolioProps) {
     { name: 'Cloud Computing' },
   ];
   const data: Project[] = projects;
+
+  const secondaryButton =
+    'cursor-pointer rounded-full bg-green-200 border-2 border-green-500 text-green-800 hover:bg-green-300 dark:border-emerald-400 dark:bg-emerald-900 dark:text-white dark:hover:bg-emerald-500 transition-all duration-300';
 
   const [selectedFilter, setSelectedFilter] = useState('All');
 
@@ -64,15 +69,15 @@ export function Portofolio({ className }: PortofolioProps) {
   return (
     <>
       <div className={baseClass} id="portofolio">
-        <div>
+        <div className="pb-6">
           <Header
             title="Portofolio"
             titleColor="Saya"
-            className="xt-5xl font-bold text-center pb-10"
+            className="xt-5xl font-bold text-center"
             classNameTitleColor="text-custom"
             space
           />
-          <p>ya begitulah der</p>
+          <Description>ya begitulah der</Description>
         </div>
         <div className="gap-3 flex justify-center py-10">
           <ToggleGroup
@@ -111,6 +116,7 @@ export function Portofolio({ className }: PortofolioProps) {
               repoUrl={project.repoUrl}
               demoUrl={project.demoUrl}
               aosDelay={project.duration}
+              aosOnce={project.once}
               key={index}
             />
           ))}
@@ -143,15 +149,26 @@ export function Portofolio({ className }: PortofolioProps) {
         </div> */}
       </div>
       <Persuasif
-        className={cn('text-center border-2', isColorCard)}
+        className={cn(
+          'text-center border-2 border-emerald-700 bg-emerald-950/30'
+        )}
         classNameLayout="py-8"
-        title="Siap untuk colaborations"
-        classNameTitle="text-2xl font-bold"
+        title="Punya Ide Project"
+        span="Menarik?"
+        classNameSpan="text-emerald-500"
+        classNameTitle="text-3xl font-bold"
         description="Mari berdiskusi tentang proyek selanjutnya dan bagaimana saya dapat membantu mewujudkan visi digital Anda."
         classNameDescription=""
         classNameChildren="max-w-2xl mx-auto"
       >
-        <Button>Mulai project baru</Button>
+        <Button
+          className={cn(
+            secondaryButton,
+            'dark:bg-emerald-500 dark:hover:bg-emerald-700'
+          )}
+        >
+          Mulai project baru
+        </Button>
       </Persuasif>
     </>
   );

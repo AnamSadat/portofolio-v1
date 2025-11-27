@@ -29,10 +29,11 @@ export function HeroSection({
 }: HeroSectionProps) {
   const baseClass = cn('', className);
   const baseClassScroll = cn('text-center', classNameScroll);
-  const baseClassSocmed =
-    'rounded-full bg-zinc-100 dark:bg-zinc-900 p-2 border border-zinc-200 dark:border-zinc-700 ' +
-    'text-zinc-700 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-800 ' +
-    'transition-colors duration-200';
+  const baseClassSocmed = cn(
+    'rounded-full bg-zinc-100 dark:bg-zinc-900 p-2 border border-zinc-200 dark:border-zinc-700 ',
+    'text-zinc-700 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:shadow-md dark:hover:shadow-emerald-800',
+    'transition-colors duration-200'
+  );
   const primaryButton =
     'cursor-pointer rounded-full bg-green-200 border-2 border-green-500 text-green-800 hover:bg-green-300 dark:border-emerald-400 dark:bg-emerald-900 dark:text-white dark:hover:bg-emerald-500 transition-all duration-300';
   const secondaryButton =
@@ -68,7 +69,13 @@ export function HeroSection({
               className="text-lg dark:text-zinc-400"
             />
             <div className="flex gap-4">
-              <Button className={primaryButton} asChild>
+              <Button
+                className={primaryButton}
+                asChild
+                data-aos="fade-up"
+                data-aos-delay="100"
+                data-aos-once="true"
+              >
                 <Link
                   href="/files/Resume-Anam-Sadat.pdf"
                   download="Resume-Anam-Sadat.pdf"
@@ -76,7 +83,13 @@ export function HeroSection({
                   <Download className="w-4 h-4" /> Download CV
                 </Link>
               </Button>
-              <Button className={secondaryButton} asChild>
+              <Button
+                className={secondaryButton}
+                asChild
+                data-aos="fade-up"
+                data-aos-delay="200"
+                data-aos-once="true"
+              >
                 <Link href="mailto:anamsadat3@gmail.com">
                   <Mail className="w-4 h-4" /> Hubungi Saya
                 </Link>
@@ -87,6 +100,9 @@ export function HeroSection({
                 href={'https://github.com/AnamSadat'}
                 target="_blank"
                 className={baseClassSocmed}
+                data-aos="fade-up"
+                data-aos-delay="300"
+                data-aos-once="true"
               >
                 <Github className="" />
               </Link>
@@ -94,6 +110,9 @@ export function HeroSection({
                 href={'https://www.linkedin.com/in/anamsadat'}
                 target="_blank"
                 className={baseClassSocmed}
+                data-aos="fade-up"
+                data-aos-delay="400"
+                data-aos-once="true"
               >
                 <Linkedin />
               </Link>

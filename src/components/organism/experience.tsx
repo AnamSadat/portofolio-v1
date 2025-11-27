@@ -6,7 +6,7 @@ import { Header, Persuasif, TimelineItem } from '@/components/molecules';
 import { timeLine } from '@/data/experience-data';
 import { cn } from '@/lib/utils';
 import { ClassNameProps } from '@/types';
-import { isColorCard } from '@/constants';
+import { Description } from '../molecules/description';
 
 export type Experience = {
   title: string;
@@ -33,16 +33,17 @@ export function Experience({ className }: ExperienceProps) {
         <Header
           title="Expe"
           titleColor="rience"
-          className="text-5xl font-bold text-center mb-16 text-white"
+          className="text-5xl font-bold text-center text-white"
           classNameTitleColor="text-custom"
         />
+        <Description>saya</Description>
 
         <div className="relative">
           {/* Garis background */}
           <div className="absolute left-[18px] top-2 bottom-1 w-[3px] bg-[#00ff99]/60" />
 
           {/* Items */}
-          <div className="space-y-10">
+          <div className="space-y-10 mt-16">
             {timeLine.map((item, i) => (
               <TimelineItem key={i} item={item} color={dotColor} />
             ))}
@@ -53,7 +54,7 @@ export function Experience({ className }: ExperienceProps) {
       <Persuasif
         className={cn(
           'text-center border-2 hover:shadow-custom-hover',
-          isColorCard
+          'text-center border-2 border-emerald-700 bg-emerald-950/30'
         )}
         classNameLayout="py-8"
         title="Siap untuk"

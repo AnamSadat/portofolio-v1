@@ -43,7 +43,7 @@ export function Persuasif({
   });
 
   return (
-    <div className={baseClassLayout} data-aos="fade-up">
+    <div className={baseClassLayout} data-aos="fade-up" data-aos-once={true}>
       <Card className={className}>
         <h1 className={baseClassTitle}>
           {title}

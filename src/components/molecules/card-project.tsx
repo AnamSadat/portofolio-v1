@@ -25,6 +25,7 @@ export type CardProjectProps = {
   demoUrl?: string;
   imageUrl?: string;
   aosDelay?: string;
+  aosOnce?: boolean;
   className?: string;
 };
 
@@ -54,6 +55,7 @@ export function CardProject({
   demoUrl,
   imageUrl,
   aosDelay,
+  aosOnce,
   className,
 }: CardProjectProps) {
   const og = useMemo(
@@ -85,6 +87,7 @@ export function CardProject({
         className="relative flex h-full min-h-[500px] flex-col overflow-hidden rounded-2xl border border-border/60 bg-background/90 pt-0 shadow-sm backdrop-blur-sm transition-shadow group-hover:shadow-xl"
         data-aos="fade-up"
         data-aos-delay={aosDelay}
+        data-aos-once={aosOnce}
       >
         {/* Gambar */}
         <div className="relative h-56 w-full overflow-hidden">
@@ -105,8 +108,7 @@ export function CardProject({
               {cats.map((c) => (
                 <Badge
                   key={c}
-                  variant="secondary"
-                  className="rounded-2xl text-black dark:text-white border-2 dark:border-green-700/50 bg-[#282830]/20 dark:bg-[#282830]"
+                  className="rounded-full text-black dark:text-white border-2 dark:border-green-700/50 bg-[#282830]/20 dark:bg-emerald-900/50"
                 >
                   {c}
                 </Badge>
@@ -127,7 +129,10 @@ export function CardProject({
           {techStack && techStack.length > 0 && (
             <div className="flex flex-wrap gap-2">
               {techStack.map((t) => (
-                <Badge key={t} variant="outline" className="rounded-full">
+                <Badge
+                  key={t}
+                  className="rounded-full text-black dark:text-white border-2 dark:border-green-700/50 bg-[#282830]/20 dark:bg-[#282830]/70"
+                >
                   {t}
                 </Badge>
               ))}

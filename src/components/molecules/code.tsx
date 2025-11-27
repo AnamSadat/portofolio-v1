@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { Copy, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTheme } from 'next-themes';
+import { AOSInit } from '@/lib/aos-init';
 
 type CodeBlockSnapshotProps = {
   code: string;
@@ -47,12 +48,17 @@ export function CodeBlockSnapshot({
     setTimeout(() => setCopied(false), 2000);
   };
 
+  AOSInit();
+
   return (
     <div
       className={cn(
         'relative w-lg max-w-3xl rounded-xl border border-border shadow-lg overflow-hidden bg-white dark:bg-[#1e1e1e]',
         className
       )}
+      data-aos="zoom-in-up"
+      data-aos-delay="400"
+      data-aos-once="true"
     >
       {/* header ala vscode */}
       <div className="flex items-center justify-between border-b border-border/50 px-4 h-10 bg-gray-100 dark:bg-[#2d2d2d]">
