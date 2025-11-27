@@ -1,7 +1,14 @@
 'use client';
 import * as React from 'react';
-import { Send, Phone, Mail, MapPin, CheckCircle } from 'lucide-react';
-import { Header, Persuasif } from '../molecules';
+import {
+  Send,
+  Phone,
+  Mail,
+  MapPin,
+  CheckCircle,
+  ExternalLink,
+} from 'lucide-react';
+import { ContactItem, Header, Persuasif } from '../molecules';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -15,7 +22,6 @@ import {
   FieldSet,
 } from '@/components/ui/field';
 import toast from 'react-hot-toast';
-import Link from 'next/link';
 import { useForm, Controller } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -27,7 +33,7 @@ import {
 } from '@/components/ui/input-group';
 import { ClassNameProps } from '@/types';
 import { cn } from '@/lib/utils';
-import { isColorCard } from '@/constants';
+import { Description } from '../molecules/description';
 
 export type ContactProps = ClassNameProps;
 
@@ -46,15 +52,13 @@ type ContactFormValues = z.infer<typeof contactSchema>;
 export function Contact({ className }: ContactProps) {
   const baseClass = cn(className);
 
-  const WA_NUMBER = '+6281234567890';
-  const EMAIL = 'halo@example.com';
+  const WA_NUMBER = '+62895343428566';
+  const EMAIL = 'anamsadat3@gmail.com';
   const LOCATION = 'Kuningan, Jawa Barat';
 
   const waLink = `https://wa.me/${WA_NUMBER.replace(/[^0-9]/g, '')}`;
   const mailto = `mailto:${EMAIL}`;
-  const gmaps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    LOCATION
-  )}`;
+  const gmaps = 'https://maps.google.com/maps?q=-6.9939379+108.4861106';
 
   const secondaryButton =
     'cursor-pointer rounded-full bg-green-200 border-2 border-green-500 text-green-800 hover:bg-green-300 dark:border-emerald-400 dark:bg-emerald-900 dark:text-white dark:hover:bg-emerald-500 transition-all duration-300';
@@ -116,74 +120,51 @@ export function Contact({ className }: ContactProps) {
             classNameTitleColor="text-custom"
             space
           />
-          <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">
+          <Description>
             Punya ide, kolaborasi, atau butuh bantuan? Kirim pesan langsung atau
             hubungi melalui WhatsApp & email.
-          </p>
+          </Description>
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          {/* Informasi Kontak */}
-          <div className="transition-transform duration-300 hover:-translate-y-1 max-h-80">
+          <div className="transition-transform duration-300 hover:-translate-y-1">
             <Card className="rounded-2xl border border-border bg-background hover:shadow-custom-hover transition-all duration-300">
               <CardHeader>
-                <CardTitle className="text-xl font-semibold">
+                <CardTitle className="text-2xl font-bold">
                   Informasi Kontak
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <Phone className="h-5 w-5" />
-                    <div>
-                      <p className="text-sm text-muted-foreground">WhatsApp</p>
-                      <Link
-                        href={waLink}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="hover:underline"
-                      >
-                        {WA_NUMBER}
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Mail className="h-5 w-5" />
-                    <div>
-                      <p className="text-sm text-muted-foreground">Email</p>
-                      <Link href={mailto} className="hover:underline">
-                        {EMAIL}
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <MapPin className="h-5 w-5" />
-                    <div>
-                      <p className="text-sm text-muted-foreground">Lokasi</p>
-                      <Link
-                        href={gmaps}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="hover:underline"
-                      >
-                        {LOCATION}
-                      </Link>
-                    </div>
-                  </div>
-                </div>
 
-                <div className="flex flex-wrap gap-3 pt-4">
-                  <Button asChild className={primaryButton}>
-                    <Link href={waLink} target="_blank" rel="noreferrer">
-                      <Phone className="mr-2 h-4 w-4" /> Chat WhatsApp
-                    </Link>
-                  </Button>
-                  <Button asChild className={secondaryButton}>
-                    <Link href={mailto}>
-                      <Mail className="mr-2 h-4 w-4" /> Kirim Email
-                    </Link>
-                  </Button>
-                </div>
+              <CardContent className="space-y-7">
+                <ContactItem
+                  icon={<Mail className="h-5 w-5" />}
+                  label="Email"
+                  value={EMAIL}
+                  description="Untuk pertanyaan umum dan diskusi project"
+                  actionLabel="Send Email"
+                  actionHref={mailto}
+                />
+
+                <ContactItem
+                  icon={<Phone className="h-5 w-5" />}
+                  label="WhatsApp"
+                  value={WA_NUMBER}
+                  description="Untuk komunikasi cepat dan urgent"
+                  actionLabel="Send Message"
+                  actionHref={waLink}
+                  actionExternal
+                />
+
+                <ContactItem
+                  icon={<MapPin className="h-5 w-5" />}
+                  label="Location"
+                  value={LOCATION}
+                  description="Available for remote work worldwide"
+                  actionLabel="View Map"
+                  actionHref={gmaps}
+                  actionExternal
+                  iconMaps={<ExternalLink size={16} />}
+                />
               </CardContent>
             </Card>
           </div>
@@ -192,7 +173,7 @@ export function Contact({ className }: ContactProps) {
           <div className="transition-transform duration-300 hover:-translate-y-1">
             <Card className="rounded-2xl border border-border bg-background hover:shadow-custom-hover transition-all duration-300">
               <CardHeader>
-                <CardTitle className="text-xl font-semibold">
+                <CardTitle className="text-2xl font-bold">
                   Kirim Pesan
                 </CardTitle>
               </CardHeader>
@@ -407,8 +388,13 @@ export function Contact({ className }: ContactProps) {
 
         <div className="mt-16">
           <Persuasif
-            className={cn('text-center border-2', isColorCard)}
-            title="Siap untuk colaborations"
+            className={cn(
+              'text-center border-2',
+              'text-center border-2 border-emerald-700 bg-emerald-950/30'
+            )}
+            title="Tertarik untuk"
+            span="Kolaborasi?"
+            classNameSpan="text-emerald-500"
             classNameTitle="text-2xl font-bold"
             description="Mari berdiskusi tentang proyek selanjutnya dan bagaimana saya dapat membantu mewujudkan visi digital Anda."
             classNameDescription=""
