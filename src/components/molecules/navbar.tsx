@@ -1,11 +1,12 @@
 'use client';
-import { ModeToggle } from '@/components/molecules';
+import { ThemeToggle } from '@/components/molecules';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { Button } from '../ui';
 import { Download, Mail } from 'lucide-react';
 import { buttonColor } from '@/lib/button-custom';
+import Image from 'next/image';
 
 export function Navbar() {
   const routes = [
@@ -72,14 +73,19 @@ export function Navbar() {
       <div className={baseContainer}>
         <Link
           href="/"
-          className="scroll-m-20 text-center text-3xl font-bold tracking-tight text-balance"
+          className="scroll-m-20 text-center text-3xl font-bold tracking-tight text-balance flex items-center"
           onClick={(e) => {
             // jika sedang di halaman yang sama dan ada #home, bisa pakai smooth juga
             e.preventDefault();
             smoothScrollToHash('#home');
           }}
         >
-          Portofolio
+          <Image
+            src={'/logo-as-png-white-crop.png'}
+            alt="logo"
+            width={90}
+            height={0}
+          />
         </Link>
 
         <ul className="flex gap-10 items-center">
@@ -126,7 +132,7 @@ export function Navbar() {
             </Link>
           </Button>
 
-          {/* <ModeToggle /> */}
+          {/* <ThemeToggle className={secondaryButton} /> */}
         </div>
       </div>
     </div>
