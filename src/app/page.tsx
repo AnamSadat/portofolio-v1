@@ -10,6 +10,15 @@ import { milestones } from '@/data/milestones';
 import { ChevronsDown } from 'lucide-react';
 
 export default function Home() {
+  // FIXME:
+  // [] Transition card yet
+  // [] Transition card translate-y
+  // [] Description Menu Section
+  // [] Description on persuasif not yet fix
+  // [] Handle Form Contact, Using SMTP Email for handler
+  // [] Create Page privacy and terms
+  // [] Responsive
+
   return (
     <div className="px-40 mx-auto items-center w-full">
       <HeroSection
