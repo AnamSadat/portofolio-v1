@@ -18,7 +18,13 @@ export function Header({
 }: HeaderProps) {
   const baseClass = cn('text-5xl font-bold', className);
   return (
-    <h1 className={baseClass}>
+    <h1
+      className={baseClass}
+      data-aos="zoom-out-up"
+      data-aos-delay="100"
+      data-aos-once="true"
+      // data-aos-anchor-placement="top-bottom"
+    >
       {title}
       {space && ' '}
       <span className={classNameTitleColor}>{titleColor}</span>
