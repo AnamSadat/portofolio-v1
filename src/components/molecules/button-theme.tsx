@@ -11,8 +11,11 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useEffect, useState } from 'react';
+import { ClassNameProps } from '@/types';
 
-export function ModeToggle() {
+export type ThemeToggleProps = ClassNameProps;
+
+export function ThemeToggle({ className }: ThemeToggleProps) {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -41,7 +44,7 @@ export function ModeToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
+        <Button className={className} size="icon">
           {renderIcon()}
           <span className="sr-only">Toggle theme</span>
         </Button>
