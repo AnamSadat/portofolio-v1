@@ -1,4 +1,4 @@
-import { Container, Database, PanelsTopLeft, Server } from 'lucide-react';
+import { Database, PanelsTopLeft, Server, Workflow } from 'lucide-react';
 
 export const titleSkill = [
   {
@@ -6,24 +6,28 @@ export const titleSkill = [
     description: 'Modern web development dengan fokus pada user experience',
     icon: <PanelsTopLeft />,
     duration: '100',
+    once: true,
   },
   {
     title: 'Back-End Developer',
     description: 'Server-side development dan API management',
     icon: <Server />,
     duration: '200',
+    once: true,
   },
   {
     title: 'Database & Cloud Service',
     description: 'Data management dan cloud infrastructure',
     icon: <Database />,
     duration: '300',
+    once: true,
   },
   {
     title: 'Devops & Devtools',
     description: 'Development workflow dan deployment automation',
-    icon: <Container />,
+    icon: <Workflow />,
     duration: '400',
+    once: true,
   },
 ];
 

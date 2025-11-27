@@ -1,71 +1,133 @@
 [
   {
     "title": "Cerita.in",
-    "description": "A web app for sharing stories with features like posting & public sharing, authentication, like & bookmark, and image upload to Cloud Storage. Built with fullstack Next.js (Route Handler & Next Auth), Postgresql, Shadcn/UI, and Aceternity UI.",
+    "description": "Aplikasi web untuk berbagi cerita dengan fitur posting, publikasi, autentikasi, like & bookmark, serta unggah gambar ke Cloud Storage. Dibangun dengan Next.js fullstack (Route Handler & NextAuth), PostgreSQL, Shadcn/UI, dan Aceternity UI.",
     "categories": ["Web Development"],
     "techStack": [
       "Next.js",
       "TypeScript",
-      "TailwindCSS",
+      "Tailwind CSS",
       "Route Handler",
-      "Prisma"
+      "Prisma",
+      "PostgreSQL",
+      "NeonDB",
+      "Redux Toolkit",
+      "Cloud Storage (GCP)",
+      "Auth.js",
+      "Axios",
+      "Zod"
     ],
     "repoUrl": "https://github.com/AnamSadat/cerita.in",
     "demoUrl": "https://cerita-in.vercel.app",
-    "duration": "100"
+    "duration": "110",
+    "once": true
   },
   {
     "title": "Nutrify with AI",
-    "description": "An AI-powered app that predicts disease vulnerability based on food ingredients, featuring authentication & role-based access (admin, moderator, user), food/drink data management, and OAuth integration. Deployed on Cloud Run & App Engine.",
+    "description": "Aplikasi berbasis AI untuk memprediksi kerentanan penyakit berdasarkan bahan makanan. Memiliki autentikasi & role-based access (admin, moderator, user), manajemen data makanan/minuman, OAuth, serta deployment di Cloud Run dan App Engine.",
     "categories": ["Web Development"],
-    "techStack": ["Next.js", "TypeScript", "TailwindCSS", "Prisma"],
+    "techStack": [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Shadcn/UI",
+      "AOS",
+      "Axios"
+    ],
     "repoUrl": "https://github.com/Capstone-Team-Nutrify/Nutrify-Frontend-Project",
     "demoUrl": "https://nutrify.web.id",
-    "duration": "200"
+    "duration": "130",
+    "once": true
   },
   {
     "title": "Nutrify with AI",
-    "description": "An AI-powered app that predicts disease vulnerability based on food ingredients, featuring authentication & role-based access (admin, moderator, user), food/drink data management, and OAuth integration. Deployed on Cloud Run & App Engine.",
+    "description": "Backend aplikasi Nutrify berbasis AI untuk analisis kerentanan penyakit berdasarkan bahan makanan. Mendukung autentikasi, role-based access, CRUD food/drink, sistem modifikasi data terkelola, serta integrasi OAuth dan GCP.",
     "categories": ["Web Development"],
-    "techStack": ["Next.js", "TypeScript", "TailwindCSS", "Prisma"],
+    "techStack": [
+      "Hapi.js",
+      "JavaScript",
+      "Node.js",
+      "Swagger",
+      "Prisma",
+      "MongoDB Atlas",
+      "Mongoose",
+      "Google Cloud Platform",
+      "Joi"
+    ],
     "repoUrl": "https://github.com/Capstone-Team-Nutrify/Nutrify-Backend-Project",
     "demoUrl": "https://nutrify.web.id",
-    "duration": "300"
+    "duration": "160",
+    "once": true
   },
   {
-    "title": "Nutrify with AI",
-    "description": "An AI-powered app that predicts disease vulnerability based on food ingredients, featuring authentication & role-based access (admin, moderator, user), food/drink data management, and OAuth integration. Deployed on Cloud Run & App Engine.",
+    "title": "Nutrify AI Model API",
+    "description": "REST API Machine Learning untuk model klasifikasi makanan pada aplikasi Nutrify. Menyediakan endpoint prediksi, validasi input, dan integrasi pipeline dengan frontend dan backend melalui Cloud Run.",
     "categories": ["Web Development"],
-    "techStack": ["Next.js", "TypeScript", "TailwindCSS", "Prisma"],
+    "techStack": ["Python", "Flask"],
     "repoUrl": "https://github.com/Capstone-Team-Nutrify/nutrify_ml_api",
     "demoUrl": "https://nutrify.web.id",
-    "duration": "400"
+    "duration": "190",
+    "once": true
   },
   {
     "title": "OpenMusic API",
-    "description": "A backend API for managing music playlists built with Hapi.js, featuring authentication & authorization, playlist collaboration, validation, Hapi plugins, caching with Redis (AWS ElastiCache), file uploads (Amazon S3),relational database (Amazon RDS), message queue with Amazon MQ (RabbitMQ), Nodemailer integration for consumers, and deployment on AWS EC2.",
+    "description": "API backend untuk mengelola playlist musik menggunakan Hapi.js. Mendukung autentikasi & otorisasi, kolaborasi playlist, validasi server, sistem plugin Hapi, caching dengan Redis (AWS ElastiCache), unggah file ke Amazon S3, database Amazon RDS, antrean pesan dengan Amazon MQ (RabbitMQ), pengiriman email via Nodemailer, serta deployment pada AWS EC2.",
     "categories": ["Cloud Computing"],
-    "techStack": ["Next.js", "TypeScript", "TailwindCSS", "Prisma"],
+    "techStack": [
+      "Hapi.js",
+      "JavaScript",
+      "Node.js",
+      "Redis",
+      "AWS Cloud",
+      "RabbitMQ",
+      "Joi",
+      "PostgreSQL"
+    ],
     "repoUrl": "https://github.com/AnamSadat/openmusic-api",
     "demoUrl": "",
-    "duration": "500"
+    "duration": "220",
+    "once": true
   },
   {
     "title": "Smartbite with AI",
-    "description": "A food calorie prediction app using CNN, with OAuth authentication, image upload, and storage integration with Cloud Storage and Cloud SQL.",
+    "description": "Aplikasi prediksi kalori makanan menggunakan CNN dengan autentikasi OAuth, unggah gambar, serta integrasi penyimpanan menggunakan Cloud Storage dan Cloud SQL.",
     "categories": ["Cloud Computing"],
-    "techStack": ["Next.js", "TypeScript", "TailwindCSS", "Prisma"],
+    "techStack": [
+      "Google Cloud Platform",
+      "TypeScript",
+      "Express.js",
+      "Prisma"
+    ],
     "repoUrl": "https://github.com/AnamSadat/SmartBite",
     "demoUrl": "",
-    "duration": "600"
+    "duration": "250",
+    "once": true
   },
   {
     "title": "Storyly App",
-    "description": "A PWA for sharing public stories with authentication, service workers, maps & location, push notifications, camera & screenshot via Canvas, and support for Workbox, IndexedDB, and device permissions (GPS, camera, notifications).",
+    "description": "Aplikasi PWA untuk berbagi cerita publik dengan autentikasi, service workers, peta & lokasi, push notifications, kamera & screenshot melalui Canvas, serta dukungan Workbox, IndexedDB, dan permission perangkat (GPS, kamera, notifikasi).",
     "categories": ["Cloud Computing"],
-    "techStack": ["Next.js", "TypeScript", "TailwindCSS", "Prisma"],
+    "techStack": [
+      "JavaScript (ES6+)",
+      "PWA",
+      "Service Worker",
+      "Web App Manifest",
+      "Workbox",
+      "IndexedDB",
+      "Cache Storage API",
+      "LocalStorage",
+      "Push API",
+      "Notification API",
+      "Geolocation API",
+      "Camera API",
+      "Canvas API",
+      "Permissions API",
+      "Webpack",
+      "Firebase Hosting"
+    ],
     "repoUrl": "https://github.com/AnamSadat/storyly-app-native",
     "demoUrl": "https://storyly-app-b2d55.web.app/",
-    "duration": "700"
+    "duration": "280",
+    "once": true
   }
 ]
