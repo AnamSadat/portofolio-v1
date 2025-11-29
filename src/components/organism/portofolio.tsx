@@ -69,7 +69,7 @@ export function Portofolio({ className }: PortofolioProps) {
   return (
     <>
       <div className={baseClass} id="portofolio">
-        <div className="pb-6">
+        <header className="pb-6 text-center">
           <Header
             title="Portofolio"
             titleColor="Saya"
@@ -77,8 +77,11 @@ export function Portofolio({ className }: PortofolioProps) {
             classNameTitleColor="text-custom"
             space
           />
-          <Description>ya begitulah der</Description>
-        </div>
+          <Description>
+            Karya digital yang saya bangun untuk berbagai kebutuhan dan use
+            case.
+          </Description>
+        </header>
         <div className="gap-3 flex justify-center py-10">
           <ToggleGroup
             type="single"
@@ -153,11 +156,11 @@ export function Portofolio({ className }: PortofolioProps) {
           'text-center border-2 border-emerald-700 bg-emerald-950/30'
         )}
         classNameLayout="py-8"
-        title="Punya Ide Project"
-        span="Menarik?"
+        title="Punya Ide Project Menarik?"
+        span="Kolaborasi Yuk!"
         classNameSpan="text-emerald-500"
         classNameTitle="text-3xl font-bold"
-        description="Mari berdiskusi tentang proyek selanjutnya dan bagaimana saya dapat membantu mewujudkan visi digital Anda."
+        description="Ayo diskusikan konsep Anda dan lihat bagaimana saya bisa membantu mengubah ide tersebut menjadi solusi digital yang fungsional dan modern."
         classNameDescription=""
         classNameChildren="max-w-2xl mx-auto"
       >
@@ -167,7 +170,7 @@ export function Portofolio({ className }: PortofolioProps) {
             'dark:bg-emerald-500 dark:hover:bg-emerald-700'
           )}
         >
-          Mulai project baru
+          Mulai Project Baru
         </Button>
       </Persuasif>
     </>

@@ -112,7 +112,7 @@ export function Contact({ className }: ContactProps) {
   return (
     <section className={baseClass} id="contact">
       <div className="container mx-auto px-4">
-        <div className="mb-10 text-center">
+        <header className="mb-10 text-center">
           <Header
             title="Mari"
             titleColor="Berkomunikasi"
@@ -124,11 +124,16 @@ export function Contact({ className }: ContactProps) {
             Punya ide, kolaborasi, atau butuh bantuan? Kirim pesan langsung atau
             hubungi melalui WhatsApp & email.
           </Description>
-        </div>
+        </header>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          <div className="transition-transform duration-300 hover:-translate-y-1">
-            <Card className="rounded-2xl border border-border bg-background hover:shadow-custom-hover transition-all duration-300">
+          <div className="transition-transform duration-300 hover:-translate-y-1 max-h-80">
+            <Card
+              className="rounded-2xl border border-border bg-background hover:shadow-custom-hover transition-all duration-300"
+              data-aos="fade-right"
+              data-aos-delay="100"
+              data-aos-once="true"
+            >
               <CardHeader>
                 <CardTitle className="text-2xl font-bold">
                   Informasi Kontak
@@ -171,7 +176,12 @@ export function Contact({ className }: ContactProps) {
 
           {/* Kirim Pesan (RHF + Zod + shadcn Field + InputGroup) */}
           <div className="transition-transform duration-300 hover:-translate-y-1">
-            <Card className="rounded-2xl border border-border bg-background hover:shadow-custom-hover transition-all duration-300">
+            <Card
+              className="rounded-2xl border border-border bg-background hover:shadow-custom-hover transition-all duration-300"
+              data-aos="fade-left"
+              data-aos-delay="100"
+              data-aos-once="true"
+            >
               <CardHeader>
                 <CardTitle className="text-2xl font-bold">
                   Kirim Pesan
@@ -396,7 +406,7 @@ export function Contact({ className }: ContactProps) {
             span="Kolaborasi?"
             classNameSpan="text-emerald-500"
             classNameTitle="text-2xl font-bold"
-            description="Mari berdiskusi tentang proyek selanjutnya dan bagaimana saya dapat membantu mewujudkan visi digital Anda."
+            description="Saya siap membantu mulai dari perencanaan, desain, hingga pengembangan aplikasi berbasis web maupun cloud."
             classNameDescription=""
             classNameChildren="flex gap-5 mx-auto"
           >

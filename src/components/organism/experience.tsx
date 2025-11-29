@@ -30,13 +30,18 @@ export function Experience({ className }: ExperienceProps) {
   return (
     <>
       <div ref={ref} className={baseClass} id="experience">
-        <Header
-          title="Expe"
-          titleColor="rience"
-          className="text-5xl font-bold text-center text-white"
-          classNameTitleColor="text-custom"
-        />
-        <Description>saya</Description>
+        <header className="text-center">
+          <Header
+            title="Expe"
+            titleColor="rience"
+            className="text-5xl font-bold text-center text-white"
+            classNameTitleColor="text-custom"
+          />
+          <Description>
+            Perjalanan dan pengalaman saya dalam dunia pengembangan perangkat
+            lunak.
+          </Description>
+        </header>
 
         <div className="relative">
           {/* Garis background */}
@@ -53,10 +58,10 @@ export function Experience({ className }: ExperienceProps) {
       {/* 1d1d22 */}
       <Persuasif
         className={cn(
-          'text-center border-2 hover:shadow-custom-hover',
+          'text-center border-2',
           'text-center border-2 border-emerald-700 bg-emerald-950/30'
         )}
-        classNameLayout="py-8"
+        classNameLayout={cn('py-8')}
         title="Siap untuk"
         classNameTitle="text-2xl font-bold"
         span="Kolaborasi?"

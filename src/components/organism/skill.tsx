@@ -26,7 +26,14 @@ type SkillProps = ClassNameProps;
 
 export function Skill({ className }: SkillProps) {
   const baseClass = cn(className);
-  const baseCard = cn('hover:shadow-custom-hover', isColorCard);
+  const baseCard = cn(
+    'hover:shadow-custom-hover h-full flex flex-col',
+    isColorCard
+  );
+  const baseCardWrapper = cn(
+    'transition-transform duration-300 ease-out hover:-translate-y-2 hover:shadow-custom-hover',
+    ''
+  );
 
   // Menggunakan mapping untuk skill sesuai kategori
   const skillsByCategory: { [key: string]: string[] } = {
@@ -41,9 +48,16 @@ export function Skill({ className }: SkillProps) {
   return (
     <div className={baseClass} id="skills">
       <header className="text-center">
-        <Header title="Skill" className="text-5xl font-bold" />
+        <Header
+          title="Skill &"
+          titleColor="Capabilities"
+          className="text-5xl font-bold"
+          classNameTitleColor="text-emerald-500"
+          space
+        />
         <Description>
-          Mengenal lebih dekat sosok di balik karya-karya digital
+          Kemampuan teknis yang membantu saya membangun produk digital yang
+          fungsional dan berkualitas.
         </Description>
       </header>
       <div className="grid grid-cols-3 gap-5 pt-10">
@@ -52,40 +66,41 @@ export function Skill({ className }: SkillProps) {
           const skillsList = skillsByCategory[skillCategory] || []; // Ambil skill berdasarkan kategori
 
           return (
-            <Card
-              key={index}
-              className={baseCard}
-              data-aos="fade-up"
-              data-aos-delay={skills.duration}
-              data-aos-once={skills.once}
-            >
-              <CardHeader className="gap-3 flex items-center">
-                <Icon
-                  className={
-                    'bg-zinc-500/20 rounded-xl p-2 text-green-500 text-md'
-                  }
-                >
-                  {skills.icon}
-                </Icon>
-                <h1 className="font-bold text-xl">{skillCategory}</h1>
-              </CardHeader>
-              <CardDescription className="px-7">
-                <p>{skills.description}</p>
-              </CardDescription>
-              <CardContent>
-                <span className="flex flex-wrap gap-2">
-                  {skillsList.map((item, index) => (
-                    <Badge
-                      key={index}
-                      variant={'outline'}
-                      className="rounded-2xl text-white border-2 border-green-700/50 bg-[#282830]"
-                    >
-                      {item}
-                    </Badge>
-                  ))}
-                </span>
-              </CardContent>
-            </Card>
+            <div key={index} className={baseCardWrapper}>
+              <Card
+                className={baseCard}
+                data-aos="fade-up"
+                data-aos-delay={skills.duration}
+                data-aos-once={skills.once}
+              >
+                <CardHeader className="gap-3 flex items-center">
+                  <Icon
+                    className={
+                      'bg-zinc-500/20 rounded-xl p-2 text-green-500 text-md'
+                    }
+                  >
+                    {skills.icon}
+                  </Icon>
+                  <h1 className="font-bold text-xl">{skillCategory}</h1>
+                </CardHeader>
+                <CardDescription className="px-7">
+                  <p>{skills.description}</p>
+                </CardDescription>
+                <CardContent>
+                  <span className="flex flex-wrap gap-2">
+                    {skillsList.map((item, index) => (
+                      <Badge
+                        key={index}
+                        variant={'outline'}
+                        className="rounded-2xl text-white border-2 border-green-700/50 bg-[#282830]"
+                      >
+                        {item}
+                      </Badge>
+                    ))}
+                  </span>
+                </CardContent>
+              </Card>
+            </div>
           );
         })}
       </div>
