@@ -99,7 +99,7 @@ export function Navbar() {
                   smoothScrollToHash(route.href);
                 }}
                 className={cn(
-                  'relative group dark:text-white font-medium hover:text-custom-hover transition-all duration-300 text-black',
+                  'relative group dark:text-white font-medium hover:text-custom-hover dark:hover:text-custom-hover transition-all duration-300 text-black',
                   activeSection === route.href && 'text-custom-hover!'
                 )}
               >

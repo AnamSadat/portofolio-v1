@@ -60,9 +60,7 @@ export function HeroSection({
               cursorCharacter="|"
             />
             <BlurText
-              text="Mahasiswa Teknik Komputer yang fokus pada Web Development dan
-              Cloud Computing. Berpengalaman membangun aplikasi modern dengan
-              React, Next.js, Express, dan Docker."
+              text="Mahasiswa Teknik Komputer yang fokus pada Web Development dan Cloud Computing. Berpengalaman membangun aplikasi modern dengan React, Next.js, Express, dan Docker."
               delay={150}
               animateBy="words"
               direction="top"
