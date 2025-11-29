@@ -11,13 +11,15 @@ import { ChevronsDown } from 'lucide-react';
 
 export default function Home() {
   // FIXME:
-  // [] Transition card yet
-  // [] Transition card translate-y
-  // [] Description Menu Section
-  // [] Description on persuasif not yet fix
+  // [x] Transition card yet
+  // [x] Transition card translate-y
+  // [x] Description Menu Section
+  // [x] Description on persuasif not yet fix
   // [] Handle Form Contact, Using SMTP Email for handler
   // [] Create Page privacy and terms
   // [] Responsive
+  // [] Update Not Found
+  // [] Update to indo
 
   return (
     <div className="px-40 mx-auto items-center w-full">
