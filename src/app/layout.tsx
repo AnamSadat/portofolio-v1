@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   title: 'Anam Sadat',
   description: 'Portofolio',
   icons: {
-    icon: [{ url: '/logo-as-white.svg', sizes: '32x32', type: 'image/png' }],
+    icon: [{ url: '/logo-as-circle.svg', sizes: '32x32', type: 'image/png' }],
   },
 };
 
