@@ -10,6 +10,11 @@ import { milestones } from '@/data/milestones';
 import { ChevronsDown } from 'lucide-react';
 
 export default function Home() {
+  // Uncomment baris di bawah untuk test error.tsx
+  // throw new Error(
+  //   'Test error - hapus comment ini untuk trigger error boundary'
+  // );
+
   // FIXME:
   // [x] Transition card yet
   // [x] Transition card translate-y
@@ -20,8 +25,7 @@ export default function Home() {
   // [x] Styling privacy and terms ui
   // [] Add styling hover translate-y for privacy and terms
   // [x] Responsive
-  // [] Update Not Found
-  // [] Update to indo
+  // [x] Update Not Found
 
   return (
     <div className="md:px-40 mx-auto items-center w-full">
