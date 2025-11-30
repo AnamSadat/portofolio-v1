@@ -140,7 +140,7 @@ export function Contact({ className }: ContactProps) {
           <div className="transition-transform duration-300 hover:-translate-y-1 md:max-h-80">
             <Card
               className="rounded-2xl border border-border bg-background hover:shadow-custom-hover transition-all duration-300 h-auto"
-              data-aos={isMobile ? 'fade-up' : 'fade-right'}
+              data-aos={'fade-up'}
               data-aos-delay="100"
               data-aos-once="true"
             >
@@ -188,7 +188,7 @@ export function Contact({ className }: ContactProps) {
           <div className="transition-transform duration-300 hover:-translate-y-1">
             <Card
               className="rounded-2xl border border-border bg-background hover:shadow-custom-hover transition-all duration-300"
-              data-aos={isMobile ? 'fade-up' : 'fade-left'}
+              data-aos={'fade-up'}
               data-aos-delay="100"
               data-aos-once="true"
             >

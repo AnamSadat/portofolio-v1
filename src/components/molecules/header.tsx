@@ -20,7 +20,7 @@ export function Header({
   return (
     <h1
       className={baseClass}
-      data-aos="zoom-out-up"
+      data-aos="fade-up"
       data-aos-delay="100"
       data-aos-once="true"
       // data-aos-anchor-placement="top-bottom"

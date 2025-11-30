@@ -18,7 +18,6 @@ import { isColorCard } from '@/constants';
 import { Header } from '../molecules';
 import { AOSInit } from '@/lib/aos-init';
 import { Description } from '../molecules/description';
-import { useIsMobile } from '@/hooks/isMobile';
 
 type Milestone = {
   icon: React.ReactNode;
@@ -45,8 +44,6 @@ export function AboutMe({ id, className, milestones }: AboutMeProps) {
   );
   const baseCardContentInfo = cn('flex items-start gap-4');
   const baseIcon = cn('bg-zinc-500/20 rounded-xl p-4 text-green-500');
-
-  const isMobile = useIsMobile();
 
   AOSInit();
 
@@ -77,7 +74,7 @@ export function AboutMe({ id, className, milestones }: AboutMeProps) {
         >
           <Card
             className={cn('p-4 sm:p-5 rounded-2xl', baseCard)}
-            data-aos={isMobile ? 'fade-up' : 'fade-left'}
+            data-aos={'fade-up'}
             data-aos-once={true}
           >
             <Image
@@ -95,7 +92,7 @@ export function AboutMe({ id, className, milestones }: AboutMeProps) {
           <div className={baseCardWrapper}>
             <Card
               className={baseCard}
-              data-aos={isMobile ? 'fade-up' : 'fade-right'}
+              data-aos={'fade-up'}
               data-aos-once={true}
             >
               <CardHeader className={baseCardHeader}>
