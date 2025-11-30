@@ -21,162 +21,216 @@ export async function sendContactEmail(data: EmailData) {
 
   // Template email HTML
   const htmlTemplate = `
-    <!DOCTYPE html>
-    <html lang="id">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Pesan Kontak Baru</title>
-      <style>
-        body {
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-          line-height: 1.6;
-          color: #333;
-          max-width: 600px;
-          margin: 0 auto;
-          padding: 20px;
-          background-color: #f4f4f4;
-        }
-        .container {
-          background-color: #ffffff;
-          border-radius: 10px;
-          padding: 30px;
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .header {
-          text-align: center;
-          border-bottom: 3px solid #00ff99;
-          padding-bottom: 20px;
-          margin-bottom: 30px;
-        }
-        .header h1 {
-          color: #1c1c22;
-          margin: 0;
-          font-size: 28px;
-        }
-        .header p {
-          color: #666;
-          margin: 10px 0 0 0;
-          font-size: 16px;
-        }
-        .content {
-          margin-bottom: 30px;
-        }
-        .field {
-          margin-bottom: 20px;
-          padding: 15px;
-          background-color: #f8f9fa;
-          border-radius: 8px;
-          border-left: 4px solid #00ff99;
-        }
-        .field-label {
-          font-weight: bold;
-          color: #1c1c22;
-          margin-bottom: 5px;
-          display: block;
-          font-size: 14px;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-        }
-        .field-value {
-          color: #333;
-          font-size: 16px;
-          word-wrap: break-word;
-        }
-        .message-field {
-          background-color: #f0f9ff;
-          border-left-color: #0ea5e9;
-        }
-        .footer {
-          text-align: center;
-          padding-top: 20px;
-          border-top: 1px solid #eee;
-          color: #666;
-          font-size: 14px;
-        }
-        .footer a {
-          color: #00ff99;
-          text-decoration: none;
-        }
-        .timestamp {
-          background-color: #e7f3ff;
-          padding: 10px;
-          border-radius: 5px;
-          font-size: 12px;
-          color: #666;
-          text-align: center;
-          margin-top: 20px;
-        }
-      </style>
-    </head>
-    <body>
-      <div class="container">
-        <div class="header">
-          <h1>📧 Pesan Kontak Baru</h1>
-          <p>Dari Portfolio Website Anam Sadat</p>
-        </div>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pesan Kontak Baru</title>
+</head>
+<body style="margin:0; padding:0; background-color:#f3f4f6;">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#f3f4f6; padding:24px 0;">
+    <tr>
+      <td align="center">
         
-        <div class="content">
-          <div class="field">
-            <span class="field-label">👤 Nama Pengirim</span>
-            <div class="field-value">${data.name}</div>
-          </div>
-          
-          <div class="field">
-            <span class="field-label">📧 Email</span>
-            <div class="field-value">
-              <a href="mailto:${
-                data.email
-              }" style="color: #00ff99; text-decoration: none;">
-                ${data.email}
-              </a>
-            </div>
-          </div>
-          
-          <div class="field">
-            <span class="field-label">📝 Subjek</span>
-            <div class="field-value">${data.subject}</div>
-          </div>
-          
-          <div class="field message-field">
-            <span class="field-label">💬 Pesan</span>
-            <div class="field-value" style="white-space: pre-wrap;">${
-              data.message
-            }</div>
-          </div>
-        </div>
-        
-        <div class="footer">
-          <p>
-            Pesan ini dikirim otomatis dari form kontak di 
-            <a href="${
-              process.env.NEXT_PUBLIC_SITE_URL || 'https://anamsadat.dev'
-            }">
-              anamsadat.dev
-            </a>
-          </p>
-          <p>
-            Untuk membalas, silakan kirim email langsung ke: 
-            <a href="mailto:${data.email}">${data.email}</a>
-          </p>
-        </div>
-        
-        <div class="timestamp">
-          📅 Dikirim pada: ${new Date().toLocaleString('id-ID', {
-            timeZone: 'Asia/Jakarta',
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit',
-          })} WIB
-        </div>
-      </div>
-    </body>
-    </html>
-  `;
+        <!-- Container -->
+        <table width="600" border="0" cellspacing="0" cellpadding="0" style="background:#ffffff; border-radius:16px; border:1px solid #e5e7eb; box-shadow:0 4px 18px rgba(0,0,0,0.06);">
+
+          <!-- HEADER -->
+          <tr>
+            <td style="padding:20px 24px; border-bottom:1px solid #e5e7eb;">
+              <table width="100%">
+                <tr>
+
+                  <!-- Brand -->
+                  <td align="left">
+                    <table>
+                      <tr>
+                        <td align="center" style="
+                          width:40px;
+                          height:40px;
+                          border-radius:50%;
+                          background:#2563eb;
+                          font-size:15px;
+                          color:#ffffff;
+                          font-weight:600;
+                          font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+                          line-height:40px;
+                        ">
+                          AS
+                        </td>
+                        <td width="12"></td>
+                        <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+                          <div style="font-size:15px; font-weight:600; color:#111827;">Anam Sadat · Portfolio</div>
+                          <div style="font-size:12px; color:#6b7280;">Notifikasi Formulir Kontak</div>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+
+                  <!-- Badge -->
+                  <td align="right">
+                    <span style="
+                      padding:6px 12px;
+                      border-radius:8px;
+                      background:#ecfdf5;
+                      color:#059669;
+                      border:1px solid #a7f3d0;
+                      font-size:11px;
+                      letter-spacing:0.05em;
+                      font-weight:600;
+                      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+                    ">
+                      CONTACT FORM
+                    </span>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- BODY -->
+          <tr>
+            <td style="padding:22px 24px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+
+              <h1 style="margin:0 0 4px 0; font-size:20px; font-weight:600; color:#111827;">
+                Pesan baru diterima
+              </h1>
+              <p style="margin:0; font-size:13px; color:#6b7280;">
+                Anda menerima pesan melalui formulir kontak di ${
+                  process.env.NODE_ENV === 'development'
+                    ? process.env.NEXT_PUBLIC_SITE_URL
+                    : 'https://anamsadat.vercel.app'
+                }.
+              </p>
+
+              <div style="
+                margin-top:14px;
+                display:inline-block;
+                padding:4px 12px;
+                background:#f3f4f6;
+                border:1px solid #e5e7eb;
+                border-radius:6px;
+                font-size:11px;
+                color:#6b7280;
+              ">
+                Channel: Website Portfolio
+              </div>
+
+              <!-- SECTION INFO -->
+              <table width="100%" style="margin-top:24px; border:1px solid #e5e7eb; border-radius:14px;">
+                <tr>
+                  <td style="padding:18px 18px 14px 18px;">
+
+                    <div style="font-size:12px; font-weight:600; color:#6b7280; margin-bottom:12px; letter-spacing:0.08em; text-transform:uppercase;">
+                      Informasi Pengirim
+                    </div>
+
+                    <div style="margin-bottom:14px;">
+                      <div style="font-size:12px; color:#6b7280;">Nama</div>
+                      <div style="font-size:15px; color:#111827;">${
+                        data.name
+                      }</div>
+                    </div>
+
+                    <div style="margin-bottom:14px;">
+                      <div style="font-size:12px; color:#6b7280;">Email</div>
+                      <div style="font-size:15px; color:#111827;">
+                        <a href="mailto:${
+                          data.email
+                        }" style="color:#2563eb; text-decoration:none;">
+                          ${data.email}
+                        </a>
+                      </div>
+                    </div>
+
+                    <div style="margin-bottom:14px;">
+                      <div style="font-size:12px; color:#6b7280;">Subjek</div>
+                      <div style="font-size:15px; color:#111827;">
+                        ${data.subject}
+                      </div>
+                    </div>
+
+                    <!-- MESSAGE -->
+                    <div style="margin-bottom:4px;">
+                      <div style="font-size:12px; color:#6b7280; margin-bottom:4px;">Pesan</div>
+
+                      <!-- Message box updated (less centered) -->
+                      <div style="
+                        padding:12px 14px;
+                        background:#f8fafc;
+                        border:1px solid #e2e8f0;
+                        border-radius:10px;
+                        font-size:14px;
+                        color:#111827;
+                        line-height:1.6;
+                        white-space:pre-wrap;
+                        text-align:left;
+                      ">
+                        ${data.message}
+                      </div>
+                    </div>
+
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+
+          <!-- FOOTER -->
+          <tr>
+            <td style="padding:16px 24px 20px 24px; border-top:1px solid #e5e7eb; background:#fafafa;">
+
+              <p style="margin:0 0 6px 0; font-size:12px; color:#6b7280;">
+                Email ini dikirim otomatis oleh sistem portfolio <strong style="color:#111827;">Anam Sadat</strong>.
+              </p>
+
+              <p style="margin:0 0 6px 0; font-size:12px; color:#6b7280;">
+                Untuk membalas: 
+                <a href="mailto:${
+                  data.email
+                }" style="color:#2563eb; text-decoration:none;">
+                  ${data.email}
+                </a>
+              </p>
+
+              <!-- TIME BADGE -->
+              <div style="margin-top:10px;">
+                <span style="
+                  display:inline-block;
+                  padding:6px 12px;
+                  background:#eef2ff;
+                  border:1px solid #c7d2fe;
+                  color:#4338ca;
+                  font-size:11px;
+                  font-weight:600;
+                  border-radius:8px;
+                  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+                ">
+                  Dikirim pada: ${new Date().toLocaleString('id-ID', {
+                    timeZone: 'Asia/Jakarta',
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                  })} WIB
+                </span>
+              </div>
+
+            </td>
+          </tr>
+
+        </table>
+
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+`;
 
   // Konfigurasi email
   const mailOptions = {
