@@ -15,10 +15,10 @@ const nextConfig: NextConfig = {
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
-  // Add font optimization
-  experimental: {
-    optimizeCss: true,
-  },
+  // Remove experimental optimizeCss for now to fix build
+  // experimental: {
+  //   optimizeCss: true,
+  // },
 };
 
 export default nextConfig;
