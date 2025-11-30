@@ -17,12 +17,12 @@ export default function Home() {
   // [x] Description on persuasif not yet fix
   // [] Handle Form Contact, Using SMTP Email for handler
   // [] Create Page privacy and terms
-  // [] Responsive
+  // [x] Responsive
   // [] Update Not Found
   // [] Update to indo
 
   return (
-    <div className="px-40 mx-auto items-center w-full">
+    <div className="md:px-40 mx-auto items-center w-full">
       <HeroSection
         className="h-screen flex flex-col pb-8"
         classNameScroll=""
