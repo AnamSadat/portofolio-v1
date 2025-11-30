@@ -35,7 +35,10 @@ export type Project = {
 };
 
 export function Portofolio({ className }: PortofolioProps) {
-  const baseClass = cn(className);
+  const baseClass = cn(
+    'w-full mx-auto px-10 sm:px-6 lg:px-0 py-12 sm:py-16',
+    className
+  );
   const filter = [
     { name: 'All' },
     { name: 'Web Development' },
@@ -73,7 +76,7 @@ export function Portofolio({ className }: PortofolioProps) {
           <Header
             title="Portofolio"
             titleColor="Saya"
-            className="xt-5xl font-bold text-center"
+            className="text-4xl sm:text-4xl md:text-5xl font-bold text-center"
             classNameTitleColor="text-custom"
             space
           />
@@ -82,7 +85,9 @@ export function Portofolio({ className }: PortofolioProps) {
             case.
           </Description>
         </header>
-        <div className="gap-3 flex justify-center py-10">
+
+        {/* Filter: dibuat flex-wrap & lebih nyaman di mobile */}
+        <div className="gap-2 sm:gap-3 flex flex-wrap justify-center py-6 sm:py-10">
           <ToggleGroup
             type="single"
             variant="outline"
@@ -100,7 +105,7 @@ export function Portofolio({ className }: PortofolioProps) {
                 value={item.name}
                 aria-label="Toggle bookmark"
                 className={cn(
-                  'data-[state=on]:bg-custom dark:data-[state=on]:bg-custom data-[state=on]:text-black data-[state=off]:bg-emerald-200 dark:bg-[#18181B] hover:bg-custom! hover:text-black border-custom-border-button dark:hover:bg-custom! dark:hover:text-black rounded-full',
+                  'data-[state=on]:bg-custom dark:data-[state=on]:bg-custom data-[state=on]:text-black data-[state=off]:bg-emerald-200 dark:bg-[#18181B] hover:bg-custom! hover:text-black border-custom-border-button dark:hover:bg-custom! dark:hover:text-black rounded-full text-xs sm:text-sm px-3 sm:px-4 py-2',
                   isBlack
                 )}
               >
@@ -109,7 +114,9 @@ export function Portofolio({ className }: PortofolioProps) {
             ))}
           </ToggleGroup>
         </div>
-        <div className="grid grid-cols-3 gap-8">
+
+        {/* Grid project: 1 kolom di mobile, 2 di tablet, 3 di desktop */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 pt-4 sm:pt-6">
           {filterProject.map((project, index) => (
             <CardProject
               title={project.title}
@@ -124,6 +131,8 @@ export function Portofolio({ className }: PortofolioProps) {
             />
           ))}
         </div>
+
+        {/* Pagination masih dikomentarin, dibiarkan apa adanya */}
         {/* <div className="pt-12">
           <Pagination>
             <PaginationContent>
@@ -151,28 +160,32 @@ export function Portofolio({ className }: PortofolioProps) {
           </Pagination>
         </div> */}
       </div>
-      <Persuasif
-        className={cn(
-          'text-center border-2 border-emerald-700 bg-emerald-950/30'
-        )}
-        classNameLayout="py-8"
-        title="Punya Ide Project Menarik?"
-        span="Kolaborasi Yuk!"
-        classNameSpan="text-emerald-500"
-        classNameTitle="text-3xl font-bold"
-        description="Ayo diskusikan konsep Anda dan lihat bagaimana saya bisa membantu mengubah ide tersebut menjadi solusi digital yang fungsional dan modern."
-        classNameDescription=""
-        classNameChildren="max-w-2xl mx-auto"
-      >
-        <Button
+
+      {/* Section ajakan kolaborasi */}
+      <div className="px-10 md:px-0">
+        <Persuasif
           className={cn(
-            secondaryButton,
-            'dark:bg-emerald-500 dark:hover:bg-emerald-700'
+            'text-center border-2 border-emerald-700 bg-emerald-950/30 mx-auto w-full'
           )}
+          classNameLayout="py-8 mx-auto"
+          title="Punya Ide Project Menarik?"
+          span="Kolaborasi Yuk!"
+          classNameSpan="text-emerald-500"
+          classNameTitle="text-2xl sm:text-3xl font-bold"
+          description="Ayo diskusikan konsep Anda dan lihat bagaimana saya bisa membantu mengubah ide tersebut menjadi solusi digital yang fungsional dan modern."
+          classNameDescription="text-sm sm:text-base max-w-2xl mx-auto"
+          classNameChildren="max-w-2xl mx-auto mt-4"
         >
-          Mulai Project Baru
-        </Button>
-      </Persuasif>
+          <Button
+            className={cn(
+              secondaryButton,
+              'dark:bg-emerald-500 dark:hover:bg-emerald-700 text-sm sm:text-base px-6 sm:px-8'
+            )}
+          >
+            Mulai Project Baru
+          </Button>
+        </Persuasif>
+      </div>
     </>
   );
 }
