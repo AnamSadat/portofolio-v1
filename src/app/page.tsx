@@ -15,8 +15,10 @@ export default function Home() {
   // [x] Transition card translate-y
   // [x] Description Menu Section
   // [x] Description on persuasif not yet fix
-  // [] Handle Form Contact, Using SMTP Email for handler
-  // [] Create Page privacy and terms
+  // [x] Handle Form Contact, Using SMTP Email for handler
+  // [x] Create Page privacy and terms
+  // [x] Styling privacy and terms ui
+  // [] Add styling hover translate-y for privacy and terms
   // [x] Responsive
   // [] Update Not Found
   // [] Update to indo
