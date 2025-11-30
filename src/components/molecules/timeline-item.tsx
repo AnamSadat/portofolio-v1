@@ -19,7 +19,7 @@ export function TimelineItem({ item, color }: TimelineItemProps) {
   return (
     <div className="relative flex items-start">
       {/* Dot di garis */}
-      <div className="absolute left-[11px] top-2 z-10">
+      <div className="hidden md:block md:absolute left-[11px] top-2 z-10">
         <div
           className="w-4 h-4 rounded-full border-2 shadow"
           style={{ backgroundColor: color, borderColor: color }}
@@ -31,7 +31,7 @@ export function TimelineItem({ item, color }: TimelineItemProps) {
 
       {/* Card full width */}
       <div
-        className="pl-12 w-full"
+        className="pl-0 md:pl-12 w-full"
         data-aos="fade-up"
         data-aos-delay={item.duration}
         data-aos-once={item.once}
@@ -91,7 +91,7 @@ export function TimelineItem({ item, color }: TimelineItemProps) {
             {item.achievements && (
               <div>
                 <p className="font-semibold text-white mb-1">Pencapaian:</p>
-                <ul className="list-disc list-inside space-y-1 text-neutral-300">
+                <ul className="list-disc list-outside pl-5 space-y-1 text-neutral-300">
                   {item.achievements.map((a, i) => (
                     <li key={i}>{a}</li>
                   ))}
