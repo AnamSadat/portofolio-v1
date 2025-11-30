@@ -36,6 +36,7 @@ import { ClassNameProps } from '@/types';
 import { cn } from '@/lib/utils';
 import { Description } from '../molecules/description';
 import Link from 'next/link';
+import { useIsMobile } from '@/hooks/isMobile';
 
 export type ContactProps = ClassNameProps;
 
@@ -114,6 +115,8 @@ export function Contact({ className }: ContactProps) {
     }
   }
 
+  const isMobile = useIsMobile();
+
   return (
     <section className={baseClass} id="contact">
       <div className="container mx-auto px-4">
@@ -137,7 +140,7 @@ export function Contact({ className }: ContactProps) {
           <div className="transition-transform duration-300 hover:-translate-y-1 md:max-h-80">
             <Card
               className="rounded-2xl border border-border bg-background hover:shadow-custom-hover transition-all duration-300 h-auto"
-              data-aos="fade-right"
+              data-aos={isMobile ? 'fade-up' : 'fade-right'}
               data-aos-delay="100"
               data-aos-once="true"
             >
@@ -185,7 +188,7 @@ export function Contact({ className }: ContactProps) {
           <div className="transition-transform duration-300 hover:-translate-y-1">
             <Card
               className="rounded-2xl border border-border bg-background hover:shadow-custom-hover transition-all duration-300"
-              data-aos="fade-left"
+              data-aos={isMobile ? 'fade-up' : 'fade-left'}
               data-aos-delay="100"
               data-aos-once="true"
             >
