@@ -27,7 +27,7 @@ export function HeroSection({
   title,
   icon,
 }: HeroSectionProps) {
-  const baseClass = cn('', className);
+  const baseClass = cn('px-18 md:px-0', className);
   const baseClassScroll = cn('text-center', classNameScroll);
   const baseClassSocmed = cn(
     'rounded-full bg-zinc-100 dark:bg-zinc-900 p-2 border border-zinc-200 dark:border-zinc-700 ',
@@ -53,7 +53,7 @@ export function HeroSection({
             </h2> */}
             <TextType
               text={['Anam Sadat', 'FullStack Developer']}
-              className="text-7xl md:text-6xl font-bold tracking-tight"
+              className="text-5xl md:text-6xl font-bold tracking-tight"
               typingSpeed={75}
               pauseDuration={1500}
               showCursor={true}
@@ -67,31 +67,23 @@ export function HeroSection({
               className="text-lg dark:text-zinc-400"
             />
             <div className="flex gap-4">
-              <Button
-                className={primaryButton}
-                asChild
-                data-aos="fade-up"
-                data-aos-delay="100"
-                data-aos-once="true"
-              >
-                <Link
-                  href="/files/Resume-Anam-Sadat.pdf"
-                  download="Resume-Anam-Sadat.pdf"
-                >
-                  <Download className="w-4 h-4" /> Download CV
-                </Link>
-              </Button>
-              <Button
-                className={secondaryButton}
-                asChild
-                data-aos="fade-up"
-                data-aos-delay="200"
-                data-aos-once="true"
-              >
-                <Link href="mailto:anamsadat3@gmail.com">
-                  <Mail className="w-4 h-4" /> Hubungi Saya
-                </Link>
-              </Button>
+              <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
+                <Button className={primaryButton} asChild>
+                  <Link
+                    href="/files/Resume-Anam-Sadat.pdf"
+                    download="Resume-Anam-Sadat.pdf"
+                  >
+                    <Download className="w-4 h-4" /> Download CV
+                  </Link>
+                </Button>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="200" data-aos-once="true">
+                <Button className={secondaryButton} asChild>
+                  <Link href="mailto:anamsadat3@gmail.com">
+                    <Mail className="w-4 h-4" /> Hubungi Saya
+                  </Link>
+                </Button>
+              </div>
             </div>
             <div className="flex gap-4">
               <Link
