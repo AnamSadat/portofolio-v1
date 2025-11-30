@@ -7,6 +7,7 @@ import {
   MapPin,
   CheckCircle,
   ExternalLink,
+  Download,
 } from 'lucide-react';
 import { ContactItem, Header, Persuasif } from '../molecules';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
@@ -34,6 +35,7 @@ import {
 import { ClassNameProps } from '@/types';
 import { cn } from '@/lib/utils';
 import { Description } from '../molecules/description';
+import Link from 'next/link';
 
 export type ContactProps = ClassNameProps;
 
@@ -50,7 +52,10 @@ const contactSchema = z.object({
 type ContactFormValues = z.infer<typeof contactSchema>;
 
 export function Contact({ className }: ContactProps) {
-  const baseClass = cn(className);
+  const baseClass = cn(
+    'w-full mx-auto px-4 sm:px-6 lg:px-0 py-12 sm:py-0',
+    className
+  );
 
   const WA_NUMBER = '+62895343428566';
   const EMAIL = 'anamsadat3@gmail.com';
@@ -116,7 +121,7 @@ export function Contact({ className }: ContactProps) {
           <Header
             title="Mari"
             titleColor="Berkomunikasi"
-            className="text-3xl font-semibold tracking-tight md:text-5xl md:font-bold"
+            className="text-4xl font-bold tracking-tight md:text-5xl md:font-bold"
             classNameTitleColor="text-custom"
             space
           />
@@ -126,21 +131,23 @@ export function Contact({ className }: ContactProps) {
           </Description>
         </header>
 
+        {/* 2 kolom di desktop, 1 kolom di mobile/tablet */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          <div className="transition-transform duration-300 hover:-translate-y-1 max-h-80">
+          {/* Informasi kontak */}
+          <div className="transition-transform duration-300 hover:-translate-y-1 md:max-h-80">
             <Card
-              className="rounded-2xl border border-border bg-background hover:shadow-custom-hover transition-all duration-300"
+              className="rounded-2xl border border-border bg-background hover:shadow-custom-hover transition-all duration-300 h-auto"
               data-aos="fade-right"
               data-aos-delay="100"
               data-aos-once="true"
             >
               <CardHeader>
-                <CardTitle className="text-2xl font-bold">
+                <CardTitle className="text-xl sm:text-2xl font-bold">
                   Informasi Kontak
                 </CardTitle>
               </CardHeader>
 
-              <CardContent className="space-y-7">
+              <CardContent className="space-y-6 sm:space-y-7 text-sm sm:text-base">
                 <ContactItem
                   icon={<Mail className="h-5 w-5" />}
                   label="Email"
@@ -183,7 +190,7 @@ export function Contact({ className }: ContactProps) {
               data-aos-once="true"
             >
               <CardHeader>
-                <CardTitle className="text-2xl font-bold">
+                <CardTitle className="text-xl sm:text-2xl font-bold">
                   Kirim Pesan
                 </CardTitle>
               </CardHeader>
@@ -198,7 +205,7 @@ export function Contact({ className }: ContactProps) {
 
                       <FieldGroup>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          {/* Nama dengan InputGroup (ikon) */}
+                          {/* Nama */}
                           <Field>
                             <FieldLabel htmlFor="name">Nama</FieldLabel>
                             <InputGroup>
@@ -209,35 +216,15 @@ export function Contact({ className }: ContactProps) {
                                 aria-invalid={!!errors.name}
                                 className="rounded-r-md"
                               />
-                              {/* <InputGroupAddon align="block-end">
-                                <InputGroupText>
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="16"
-                                    height="16"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="h-4 w-4"
-                                  >
-                                    <path d="M20 21v-2a4 4 0 0 0-3-3.87" />
-                                    <path d="M4 21v-2a4 4 0 0 1 3-3.87" />
-                                    <circle cx="12" cy="7" r="4" />
-                                  </svg>
-                                </InputGroupText>
-                              </InputGroupAddon> */}
                             </InputGroup>
                             {errors.name && (
-                              <FieldDescription className="text-red-500">
+                              <FieldDescription className="text-red-500 text-xs sm:text-sm">
                                 {errors.name.message}
                               </FieldDescription>
                             )}
                           </Field>
 
-                          {/* Email dengan InputGroup (ikon) */}
+                          {/* Email */}
                           <Field>
                             <FieldLabel htmlFor="email">Email</FieldLabel>
                             <InputGroup>
@@ -249,14 +236,9 @@ export function Contact({ className }: ContactProps) {
                                 aria-invalid={!!errors.email}
                                 className="rounded-r-md"
                               />
-                              {/* <InputGroupAddon align="block-end">
-                                <InputGroupText>
-                                  <Mail className="h-4 w-4" />
-                                </InputGroupText>
-                              </InputGroupAddon> */}
                             </InputGroup>
                             {errors.email && (
-                              <FieldDescription className="text-red-500">
+                              <FieldDescription className="text-red-500 text-xs sm:text-sm">
                                 {errors.email.message}
                               </FieldDescription>
                             )}
@@ -268,7 +250,7 @@ export function Contact({ className }: ContactProps) {
                     <FieldSet>
                       <FieldLegend>Pesan</FieldLegend>
                       <FieldGroup>
-                        {/* Subjek - gunakan InputGroup agar konsisten */}
+                        {/* Subjek */}
                         <Field>
                           <FieldLabel htmlFor="subject">Subjek</FieldLabel>
                           <InputGroup>
@@ -279,20 +261,15 @@ export function Contact({ className }: ContactProps) {
                               aria-invalid={!!errors.subject}
                               className="rounded-r-md"
                             />
-                            {/* <InputGroupAddon align="block-end">
-                              <InputGroupText className="tabular-nums">
-                                {watch('subject')?.length ?? 0}/10
-                              </InputGroupText>
-                            </InputGroupAddon> */}
                           </InputGroup>
                           {errors.subject && (
-                            <FieldDescription className="text-red-500">
+                            <FieldDescription className="text-red-500 text-xs sm:text-sm">
                               {errors.subject.message}
                             </FieldDescription>
                           )}
                         </Field>
 
-                        {/* Message - ganti Textarea -> InputGroupTextarea + counter */}
+                        {/* Message */}
                         <Field>
                           <FieldLabel htmlFor="message">Pesan</FieldLabel>
                           <InputGroup>
@@ -305,16 +282,16 @@ export function Contact({ className }: ContactProps) {
                               aria-invalid={!!errors.message}
                             />
                             <InputGroupAddon align="block-end">
-                              <InputGroupText className="tabular-nums">
+                              <InputGroupText className="tabular-nums text-xs sm:text-sm">
                                 {messageValue.length}/10
                               </InputGroupText>
                             </InputGroupAddon>
                           </InputGroup>
-                          <FieldDescription>
+                          <FieldDescription className="text-xs sm:text-sm">
                             Minimal 10 Karakter
                           </FieldDescription>
                           {errors.message && (
-                            <FieldDescription className="text-red-500">
+                            <FieldDescription className="text-red-500 text-xs sm:text-sm">
                               {errors.message.message}
                             </FieldDescription>
                           )}
@@ -324,6 +301,7 @@ export function Contact({ className }: ContactProps) {
 
                     <FieldSet>
                       <FieldGroup>
+                        {/* Checkbox agree */}
                         <Field orientation="horizontal">
                           <Controller
                             control={control}
@@ -341,7 +319,7 @@ export function Contact({ className }: ContactProps) {
 
                           <FieldLabel
                             htmlFor="agree"
-                            className="font-normal"
+                            className="font-normal text-xs sm:text-sm"
                             style={{ cursor: 'pointer' }}
                           >
                             Saya setuju untuk dihubungi kembali dan data saya
@@ -350,19 +328,20 @@ export function Contact({ className }: ContactProps) {
                         </Field>
 
                         {errors.agree && (
-                          <FieldDescription className="text-red-500">
+                          <FieldDescription className="text-red-500 text-xs sm:text-sm">
                             {errors.agree.message}
                           </FieldDescription>
                         )}
 
+                        {/* Buttons */}
                         <Field orientation="horizontal">
-                          <div className="flex items-center gap-2">
+                          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                             <Button
                               type="submit"
                               disabled={!agree || isSubmitting || !isValid}
                               className={cn(
                                 secondaryButton,
-                                'dark:bg-emerald-500 dark:hover:bg-emerald-700'
+                                'dark:bg-emerald-500 dark:hover:bg-emerald-700 min-w-[370px] md:min-w-0 text-sm sm:text-base'
                               )}
                             >
                               <Send className="mr-2 h-4 w-4" />
@@ -373,7 +352,7 @@ export function Contact({ className }: ContactProps) {
                               onClick={() => reset()}
                               className={cn(
                                 primaryButton,
-                                'dark:hover:bg-red-500 dark:hover:border-red-500'
+                                'dark:hover:bg-red-500 dark:hover:border-red-500 w-full sm:w-auto text-sm sm:text-base'
                               )}
                             >
                               Cancel
@@ -396,22 +375,41 @@ export function Contact({ className }: ContactProps) {
           </div>
         </div>
 
-        <div className="mt-16">
+        <div className="mt-14 sm:mt-16">
           <Persuasif
             className={cn(
-              'text-center border-2',
-              'text-center border-2 border-emerald-700 bg-emerald-950/30'
+              'text-center border-2 border-emerald-700 bg-emerald-950/30 px-4'
             )}
             title="Tertarik untuk"
             span="Kolaborasi?"
             classNameSpan="text-emerald-500"
-            classNameTitle="text-2xl font-bold"
+            classNameTitle="text-2xl sm:text-3xl font-bold"
             description="Saya siap membantu mulai dari perencanaan, desain, hingga pengembangan aplikasi berbasis web maupun cloud."
-            classNameDescription=""
-            classNameChildren="flex gap-5 mx-auto"
+            classNameDescription="text-sm sm:text-base max-w-2xl mx-auto"
+            classNameChildren="flex flex-col sm:flex-row gap-3 sm:gap-5 mx-auto justify-center mt-4"
           >
-            <Button className={secondaryButton}>Download CV</Button>
-            <Button className={primaryButton}>Lets start project</Button>
+            <Button
+              asChild
+              className={cn(
+                secondaryButton,
+                'text-sm sm:text-base min-w-sm md:min-w-0 sm:px-8'
+              )}
+            >
+              <Link
+                href="/files/Resume-Anam-Sadat.pdf"
+                download="Resume-Anam-Sadat.pdf"
+              >
+                <Download className="w-4 h-4" /> Download CV
+              </Link>
+            </Button>
+            <Button
+              asChild
+              className={cn(primaryButton, 'text-sm sm:text-base px-6 sm:px-8')}
+            >
+              <Link href="mailto:anamsadat3@gmail.com">
+                <Mail className="w-4 h-4" /> Lets start project
+              </Link>
+            </Button>
           </Persuasif>
         </div>
       </div>
