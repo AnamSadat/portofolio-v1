@@ -129,3 +129,10 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .shadow-custom-hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 255, 153, 0.1),
+      0 10px 10px -5px rgba(0, 255, 153, 0.04);
+  }
+}
