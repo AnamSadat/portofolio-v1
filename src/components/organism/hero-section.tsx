@@ -70,8 +70,8 @@ export function HeroSection({
               <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
                 <Button className={primaryButton} asChild>
                   <Link
-                    href="/files/Resume-Anam-Sadat.pdf"
-                    download="Resume-Anam-Sadat.pdf"
+                    href="/files/Resume_Anam_Sadat.pdf"
+                    download="Resume_Anam_Sadat.pdf"
                   >
                     <Download className="w-4 h-4" /> Download CV
                   </Link>

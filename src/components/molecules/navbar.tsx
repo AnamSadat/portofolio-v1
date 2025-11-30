@@ -138,8 +138,8 @@ export function Navbar() {
         <div className="hidden md:flex gap-4">
           <Button className={primaryButton} asChild>
             <Link
-              href="/files/Resume-Anam-Sadat.pdf"
-              download="Resume-Anam-Sadat.pdf"
+              href="/files/Resume_Anam_Sadat.pdf"
+              download="Resume_Anam_Sadat.pdf"
             >
               <Download className="w-4 h-4 mr-2" /> Unduh
             </Link>
@@ -201,8 +201,8 @@ export function Navbar() {
         <div className="flex flex-col gap-3 w-full max-w-xs mt-4 mb-6">
           <Button className={primaryButton} asChild>
             <Link
-              href="/files/Resume-Anam-Sadat.pdf"
-              download="Resume-Anam-Sadat.pdf"
+              href="/files/Resume_Anam_Sadat.pdf"
+              download="Resume_Anam_Sadat.pdf"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               <Download className="w-4 h-4 mr-2" /> Unduh Resume

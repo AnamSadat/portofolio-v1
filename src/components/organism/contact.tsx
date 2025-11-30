@@ -410,8 +410,8 @@ export function Contact({ className }: ContactProps) {
               )}
             >
               <Link
-                href="/files/Resume-Anam-Sadat.pdf"
-                download="Resume-Anam-Sadat.pdf"
+                href="/files/Resume_Anam_Sadat.pdf"
+                download="Resume_Anam_Sadat.pdf"
               >
                 <Download className="w-4 h-4" /> Download CV
               </Link>
