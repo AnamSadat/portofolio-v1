@@ -106,11 +106,22 @@ export function Contact({ className }: ContactProps) {
     console.log('Contact form payload', payload);
 
     try {
-      await new Promise((res) => setTimeout(res, 600));
-      toast.success('Pesan terkirim! Terima kasih sudah menghubungi.');
-      reset();
+      // Import server action dynamically
+      const { sendContactMessage } = await import('@/app/actions/contact');
+
+      // Kirim email menggunakan server action
+      const result = await sendContactMessage(payload);
+
+      if (result.success) {
+        toast.success(
+          result.message || 'Pesan terkirim! Terima kasih sudah menghubungi.'
+        );
+        reset();
+      } else {
+        toast.error(result.error || 'Terjadi kesalahan saat mengirim pesan.');
+      }
     } catch (err) {
-      console.error(err);
+      console.error('Contact form error:', err);
       toast.error('Terjadi kesalahan saat mengirim pesan.');
     }
   }
