@@ -13,7 +13,7 @@ import {
   ToggleGroup,
   ToggleGroupItem,
 } from '@/components/ui';
-import { CardProject, Header, Persuasif } from '../molecules';
+import { CardProject, Header, Persuasif } from '@/components/molecules';
 import projects from '@/data/portofolio.json';
 import { cn } from '@/lib/utils';
 import { isBlack, isColorCard } from '@/constants';
