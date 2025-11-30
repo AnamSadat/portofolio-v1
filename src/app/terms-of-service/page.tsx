@@ -74,7 +74,7 @@ export default function TermsOfServicePage() {
         <AppBreadcrumb
           items={[
             {
-              name: 'Beranda',
+              name: 'Home',
               href: '/',
             },
             {

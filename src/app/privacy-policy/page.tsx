@@ -71,7 +71,7 @@ export default function PrivacyPolicyPage() {
         <AppBreadcrumb
           items={[
             {
-              name: 'Beranda',
+              name: 'Home',
               href: '/',
             },
             {
