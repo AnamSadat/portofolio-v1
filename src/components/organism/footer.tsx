@@ -100,8 +100,8 @@ export function Footer() {
             />
 
             <p className="text-sm sm:text-md text-gray-600 dark:text-gray-400">
-              Passionate full-stack developer dedicated to creating innovative
-              digital solutions that make a difference.
+              Full-stack developer passionate about building clean, modern, and
+              impactful digital experiences.
             </p>
 
             <div className="flex gap-3 pt-1">
@@ -156,7 +156,7 @@ export function Footer() {
           </div>
 
           {/* Stay Updated / Contact Me */}
-          <div className="space-y-4">
+          {/* <div className="space-y-4">
             <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white">
               Contact Me
             </h3>
@@ -166,7 +166,11 @@ export function Footer() {
               }
             </p>
 
-            <form className="space-y-3">
+            <form
+              action="https://formsubmit.co/anamsadat3@gmail.com"
+              method="POST"
+              className="space-y-3"
+            >
               <Input
                 type="email"
                 placeholder="Your email address"
@@ -178,7 +182,18 @@ export function Footer() {
               >
                 Send a Message
               </Button>
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_subject" value="New footer email" />
             </form>
+          </div> */}
+          <div className="space-y-4">
+            <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white">
+              Let&apos;s Work Together
+            </h3>
+            <p className="text-sm sm:text-md text-gray-600 dark:text-gray-400">
+              Have a project in mind? Leave your email and I&apos;ll get back to
+              you.
+            </p>
           </div>
         </div>
 

@@ -111,7 +111,7 @@ export default function PrivacyPolicyPage() {
             <Card className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-green-100/50 to-emerald-100/50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 shadow-sm hover:shadow-custom-hover transition-all duration-300">
               <FileText className="w-4 h-4 text-green-600 dark:text-green-400" />
               <span className="text-sm text-green-700 dark:text-green-300 font-medium">
-                Terakhir diperbarui: November 2024
+                Terakhir diperbarui: November {new Date().getFullYear()}
               </span>
             </Card>
           </div>

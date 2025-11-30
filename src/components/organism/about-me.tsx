@@ -135,7 +135,7 @@ export function AboutMe({ id, className, milestones }: AboutMeProps) {
                     <Badge
                       key={index}
                       variant={'outline'}
-                      className="rounded-2xl text-white border-2 border-green-700/50 bg-[#282830] text-xs sm:text-sm px-3 py-1"
+                      className="rounded-2xl text-white border-2 border-green-700/50 bg-[#282830] text-xs px-3 py-1"
                     >
                       {item.title}
                     </Badge>
