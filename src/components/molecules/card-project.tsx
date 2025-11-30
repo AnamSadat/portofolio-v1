@@ -98,9 +98,20 @@ export function CardProject({
               className="absolute inset-0 h-full w-full object-cover"
               width={1000}
               height={1000}
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                const parent = target.parentElement;
+                if (parent) {
+                  parent.innerHTML = `<div class="h-full w-full bg-muted flex items-center justify-center"><div class="text-muted-foreground text-sm">${title}</div></div>`;
+                }
+              }}
+              unoptimized
             />
           ) : (
-            <div className="h-full w-full bg-muted" />
+            <div className="h-full w-full bg-muted flex items-center justify-center">
+              <div className="text-muted-foreground text-sm">{title}</div>
+            </div>
           )}
 
           {cats.length > 0 && (

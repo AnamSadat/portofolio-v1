@@ -12,11 +12,34 @@ import { BackToTopButton } from '@/components/molecules/back-to-top-button';
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
+  fallback: [
+    'ui-sans-serif',
+    'system-ui',
+    '-apple-system',
+    'BlinkMacSystemFont',
+    'Segoe UI',
+    'Roboto',
+    'Helvetica Neue',
+    'Arial',
+    'sans-serif',
+  ],
+  display: 'swap',
 });
 
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
+  fallback: [
+    'ui-monospace',
+    'SFMono-Regular',
+    'Menlo',
+    'Monaco',
+    'Consolas',
+    'Liberation Mono',
+    'Courier New',
+    'monospace',
+  ],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
