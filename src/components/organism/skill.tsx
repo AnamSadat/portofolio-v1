@@ -26,7 +26,7 @@ type SkillProps = ClassNameProps;
 
 export function Skill({ className }: SkillProps) {
   const baseClass = cn(
-    'w-full mx-auto px-10 sm:px-6 lg:px-0 py-12 sm:pt-20',
+    'w-full mx-auto px-7 sm:px-6 lg:px-0 py-12 sm:pt-20',
     className
   );
   const baseCard = cn(

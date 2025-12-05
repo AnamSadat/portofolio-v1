@@ -36,7 +36,7 @@ export type Project = {
 
 export function Portofolio({ className }: PortofolioProps) {
   const baseClass = cn(
-    'w-full mx-auto px-10 sm:px-6 lg:px-0 py-12 sm:py-16',
+    'w-full mx-auto px-7 sm:px-6 lg:px-0 py-12 sm:py-16',
     className
   );
   const filter = [
@@ -87,7 +87,7 @@ export function Portofolio({ className }: PortofolioProps) {
         </header>
 
         {/* Filter: dibuat flex-wrap & lebih nyaman di mobile */}
-        <div className="gap-2 sm:gap-3 flex flex-wrap justify-center py-6 sm:py-10">
+        <div className="flex justify-center py-6 sm:py-10">
           <ToggleGroup
             type="single"
             variant="outline"
@@ -95,9 +95,11 @@ export function Portofolio({ className }: PortofolioProps) {
             size="sm"
             defaultValue="All"
             value={selectedFilter}
+            className="flex flex-wrap justify-center gap-2 sm:gap-3"
             onValueChange={(value) => {
               if (value) setSelectedFilter(value);
             }}
+            data-aos={'fade-up'}
           >
             {filter.map((item, index) => (
               <ToggleGroupItem
@@ -105,7 +107,7 @@ export function Portofolio({ className }: PortofolioProps) {
                 value={item.name}
                 aria-label="Toggle bookmark"
                 className={cn(
-                  'data-[state=on]:bg-custom dark:data-[state=on]:bg-custom data-[state=on]:text-black data-[state=off]:bg-emerald-200 dark:bg-[#18181B] hover:bg-custom! hover:text-black border-custom-border-button dark:hover:bg-custom! dark:hover:text-black rounded-full text-xs sm:text-sm px-3 sm:px-4 py-2',
+                  'data-[state=on]:bg-custom dark:data-[state=on]:bg-custom data-[state=on]:text-black data-[state=off]:bg-emerald-200 dark:bg-[#18181B] hover:bg-custom! hover:text-black border-custom-border-button dark:hover:bg-custom! dark:hover:text-black rounded-full text-xs sm:text-sm sm:px-4 py-2',
                   isBlack
                 )}
               >
@@ -165,7 +167,7 @@ export function Portofolio({ className }: PortofolioProps) {
       <div className="px-10 md:px-0">
         <Persuasif
           className={cn(
-            'text-center border-2 border-emerald-700 bg-emerald-950/30 mx-auto w-full'
+            'text-center border-2 border-emerald-700 bg-emerald-950/30 mx-auto w-full px-4'
           )}
           classNameLayout="py-8 mx-auto"
           title="Punya Ide Project Menarik?"

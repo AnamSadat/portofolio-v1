@@ -40,7 +40,7 @@ export default function Home() {
       <Skill className="pt-20 pb-8" />
       <Experience className="relative w-full mx-auto pt-20 pb-8" />
       <Portofolio className="pt-20 pb-8" />
-      <Contact className="w-full py-16 md:py-20" />
+      <Contact className="py-16 md:py-20" />
     </div>
   );
 }

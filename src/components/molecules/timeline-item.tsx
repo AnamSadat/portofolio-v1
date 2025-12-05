@@ -53,27 +53,29 @@ export function TimelineItem({ item, color }: TimelineItemProps) {
               style={{ color }}
             >
               <h1 className="text-2xl font-bold">{item.title}</h1>
-              <p className="text-neutral-300 text-xl font-medium">
+              <p className="text-neutral-300 text-lg font-medium">
                 {item.company}
               </p>
-              <p className="text-sm text-neutral-400 flex gap-2 items-center">
+              <div className="text-sm text-neutral-400 flex flex-wrap gap-2 items-center">
                 <CalendarDays size={baseSizeIcon} />
                 <span>{item.date}</span>
-                <MapPin size={baseSizeIcon} />
-                <span>{item.location}</span>
-              </p>
+                <div className="flex gap-2">
+                  <MapPin size={baseSizeIcon} />
+                  <span>{item.location}</span>
+                </div>
+              </div>
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            <p className="text-neutral-300">{item.description}</p>
+            <p className="text-neutral-300 mb-5">{item.description}</p>
 
             {/* Tech list */}
             {item.tech && (
               <div>
-                <p className="font-semibold text-white mb-2">
+                <p className="font-semibold text-white mb-3">
                   Teknologi & Skills:
                 </p>
-                <ul className="flex flex-wrap gap-2 items-center">
+                <ul className="flex flex-wrap gap-2 items-center mb-5">
                   {item.tech.map((t, i) => (
                     <Badge
                       key={i}

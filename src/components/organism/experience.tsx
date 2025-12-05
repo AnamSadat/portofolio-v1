@@ -25,7 +25,7 @@ const dotColor = '#00ff99';
 
 export function Experience({ className }: ExperienceProps) {
   const ref = useRef(null);
-  const baseClass = cn('w-full mx-auto px-10 sm:px-6 lg:px-0', className);
+  const baseClass = cn('w-full mx-auto px-7 sm:px-6 lg:px-0', className);
 
   return (
     <>

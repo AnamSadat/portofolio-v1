@@ -72,7 +72,7 @@ export function Navbar() {
   );
 
   const baseContainer = cn(
-    'container mx-auto flex justify-between items-center transition-all duration-300 px-4 md:px-8', // Tambah px agar tidak mepet di mobile
+    'container mx-auto flex justify-between items-center transition-all duration-300 px-7 md:px-0', // Tambah px agar tidak mepet di mobile
     scrolled ? 'py-3' : 'py-5',
     isMobileMenuOpen ? 'pb-[500px]' : ''
   );
@@ -177,7 +177,7 @@ export function Navbar() {
           'flex flex-col items-center gap-6 px-4 max-h-screen overflow-y-auto',
           'transition-all duration-300 ease-in-out',
           isMobileMenuOpen
-            ? 'opacity-100 translate-y-0 visible py-3'
+            ? 'opacity-100 translate-y-0 visible py-3 mt-2'
             : 'opacity-0 -translate-y-2 invisible py-0 pointer-events-none'
         )}
       >

@@ -45,7 +45,7 @@ export function HeroSection({
       <div className="flex-grow flex items-center bor">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="flex flex-col gap-5 justify-center">
-            <h1 className="text-3xl md:text-4xl font-semibold text-zinc-500 dark:text-zinc-400">
+            <h1 className="text-3xl md:text-4xl font-semibold text-zinc-500 dark:text-zinc-400 text-center md:text-left">
               Hello, Saya
             </h1>
             {/* <h2 className="text-7xl md:text-6xl font-bold tracking-tight">
@@ -53,7 +53,7 @@ export function HeroSection({
             </h2> */}
             <TextType
               text={['Anam Sadat', 'FullStack Developer']}
-              className="text-5xl md:text-6xl font-bold tracking-tight"
+              className="text-5xl md:text-6xl font-bold tracking-tight text-center md:text-left"
               typingSpeed={75}
               pauseDuration={1500}
               showCursor={true}
@@ -64,11 +64,16 @@ export function HeroSection({
               delay={150}
               animateBy="words"
               direction="top"
-              className="text-lg dark:text-zinc-400"
+              className="text-lg dark:text-zinc-400 flex justify-center md:justify-start md:flex-none"
             />
-            <div className="flex gap-4">
-              <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
-                <Button className={primaryButton} asChild>
+            <div className="flex gap-4 justify-center md:justify-normal flex-wrap md:flex-nowrap">
+              <div
+                data-aos="fade-up"
+                data-aos-delay="100"
+                data-aos-once="true"
+                className="w-1/2 md:w-auto"
+              >
+                <Button className={cn(primaryButton, 'w-full')} asChild>
                   <Link
                     href="/files/Resume_Anam_Sadat.pdf"
                     download="Resume_Anam_Sadat.pdf"
@@ -77,15 +82,20 @@ export function HeroSection({
                   </Link>
                 </Button>
               </div>
-              <div data-aos="fade-up" data-aos-delay="200" data-aos-once="true">
-                <Button className={secondaryButton} asChild>
+              <div
+                data-aos="fade-up"
+                data-aos-delay="200"
+                data-aos-once="true"
+                className="w-1/2 md:w-auto"
+              >
+                <Button className={cn(secondaryButton, 'w-full')} asChild>
                   <Link href="mailto:anamsadat3@gmail.com">
                     <Mail className="w-4 h-4" /> Hubungi Saya
                   </Link>
                 </Button>
               </div>
             </div>
-            <div className="flex gap-4">
+            <div className="flex gap-4 justify-center md:justify-normal">
               <Link
                 href={'https://github.com/AnamSadat'}
                 target="_blank"

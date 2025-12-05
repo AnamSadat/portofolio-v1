@@ -33,7 +33,7 @@ type AboutMeProps = ClassNameProps &
   };
 
 export function AboutMe({ id, className, milestones }: AboutMeProps) {
-  const baseClass = cn(' mx-auto px-10 sm:px-6 lg:px-0', className);
+  const baseClass = cn(' mx-auto px-7 sm:px-6 lg:px-0', className);
   const baseCard = cn('hover:shadow-custom-hover', isColorCard);
 
   const baseCardWrapper =

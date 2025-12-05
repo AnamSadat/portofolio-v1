@@ -54,7 +54,7 @@ type ContactFormValues = z.infer<typeof contactSchema>;
 
 export function Contact({ className }: ContactProps) {
   const baseClass = cn(
-    'w-full mx-auto px-4 sm:px-6 lg:px-0 py-12 sm:py-0',
+    'w-full mx-auto px-7 sm:px-6 lg:px-0 py-12 sm:py-0',
     className
   );
 
@@ -130,7 +130,7 @@ export function Contact({ className }: ContactProps) {
 
   return (
     <section className={baseClass} id="contact">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto">
         <header className="mb-10 text-center">
           <Header
             title="Mari"
@@ -349,13 +349,13 @@ export function Contact({ className }: ContactProps) {
 
                         {/* Buttons */}
                         <Field orientation="horizontal">
-                          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                          <div className="flex md:mx-0 items-stretch sm:items-center gap-3 w-50">
                             <Button
                               type="submit"
                               disabled={!agree || isSubmitting || !isValid}
                               className={cn(
                                 secondaryButton,
-                                'dark:bg-emerald-500 dark:hover:bg-emerald-700 min-w-[370px] md:min-w-0 text-sm sm:text-base'
+                                'dark:bg-emerald-500 dark:hover:bg-emerald-700 md:min-w-0 text-sm sm:text-base'
                               )}
                             >
                               <Send className="mr-2 h-4 w-4" />
@@ -366,7 +366,7 @@ export function Contact({ className }: ContactProps) {
                               onClick={() => reset()}
                               className={cn(
                                 primaryButton,
-                                'dark:hover:bg-red-500 dark:hover:border-red-500 w-full sm:w-auto text-sm sm:text-base'
+                                'dark:hover:bg-red-500 dark:hover:border-red-500 sm:w-auto text-sm sm:text-base'
                               )}
                             >
                               Cancel
@@ -400,13 +400,13 @@ export function Contact({ className }: ContactProps) {
             classNameTitle="text-2xl sm:text-3xl font-bold"
             description="Saya siap membantu mulai dari perencanaan, desain, hingga pengembangan aplikasi berbasis web maupun cloud."
             classNameDescription="text-sm sm:text-base max-w-2xl mx-auto"
-            classNameChildren="flex flex-col sm:flex-row gap-3 sm:gap-5 mx-auto justify-center mt-4"
+            classNameChildren="flex flex-col sm:flex-row gap-3 sm:gap-5 mx-auto justify-center mt-4 w-50"
           >
             <Button
               asChild
               className={cn(
                 secondaryButton,
-                'text-sm sm:text-base min-w-sm md:min-w-0 sm:px-8'
+                'text-sm sm:text-base md:min-w-0 sm:px-8'
               )}
             >
               <Link
@@ -418,7 +418,7 @@ export function Contact({ className }: ContactProps) {
             </Button>
             <Button
               asChild
-              className={cn(primaryButton, 'text-sm sm:text-base px-6 sm:px-8')}
+              className={cn(primaryButton, 'text-sm sm:text-base sm:px-8')}
             >
               <Link href="mailto:anamsadat3@gmail.com">
                 <Mail className="w-4 h-4" /> Lets start project
